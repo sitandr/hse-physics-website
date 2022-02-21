@@ -1,0 +1,36 @@
+{% extends 'main/base.html' %}
+{% block title %}
+{{ title }}
+{% endblock %}
+{% block body %}
+    <h1>Главная страница</h1>
+
+    <p>Разделы сайта:</p>
+
+    <h2>Курсы</h2>
+
+    {% for el in courses %}
+    <div class="alert alert-warning mt-2">
+         <a href="{{ el.absolute_url }}" class="course-link">{{ el.name }}</a>
+    </div>
+    {% endfor %}
+
+    <h2>Задания</h2>
+    {% load tags %}
+    {% if tasks %}
+        <ol>
+        {% for el in tasks %}
+        
+             <li>{{ el|to_str }}</li>
+             <p>{{ el.description }}</p>
+        
+        {% endfor %}
+        </ol>
+    {% else %}
+        <p>Пока нет дел!</p>
+    {% endif %}
+
+
+
+
+{% endblock %}

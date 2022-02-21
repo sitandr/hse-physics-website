@@ -1,0 +1,11 @@
+{% extends 'main/base.html' %}
+{% block title %}
+Профиль {{shown_user.username}}
+{% endblock %}
+
+{% block body %}
+
+<h1>{{shown_user.username}}</h1>
+{{shown_user.profile.get_role_display}}
+
+{% endblock %}
