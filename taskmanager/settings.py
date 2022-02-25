@@ -127,3 +127,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = 'accounts/login'
 LOGOUT_REDIRECT_URL = 'login'
+
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False
+SESSION_COOKIE_AGE = 365 * 24 * 3600 # expire in 1 year
+
+# AUTHENTICATION_BACKENDS = ['accounts.auth.EmailBackend'] # enable log in with email
+AUTH_USER_MODEL = 'main.EmailUser'

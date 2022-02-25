@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Task, CoursePage
 from .forms import TaskForm, CreateCourseForm
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
+from .models import EmailUser
 
 @login_required
 def index(request):
@@ -70,5 +70,5 @@ def create_course(request):
     return render(request, 'main/create_course.html', context)
 
 def show_profile(request, user_id):
-    shown_user = get_object_or_404(User, id=user_id)
+    shown_user = get_object_or_404(EmailUser, id=user_id)
     return render(request, 'main/profile.html', {'shown_user': shown_user})

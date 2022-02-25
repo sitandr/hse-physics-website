@@ -1,10 +1,16 @@
 from django.db import models
-from django.contrib.auth.models import User
 from django.dispatch import receiver
 from django.db.models.signals import post_save
 from unidecode import unidecode
 from django.urls import reverse
+# from django.conf import settings
 
+from main.models import EmailUser
+
+# EmailUser._meta.get_field('email')._unique = True # make possible log in with email
+# EmailUser._meta.get_field('email')._required = True
+
+# from django.contrib.auth.models import EmailUser
 
 
 class CoursePage(models.Model):
@@ -13,7 +19,7 @@ class CoursePage(models.Model):
     
     general_info = models.TextField('Общая информация')
 
-    def create_slug(self):
+    def create_slug(self): # self-written function for better generating slugs
         self.slug = unidecode(self.name).replace(' ', '_')
         copies = CoursePage.objects.all().filter(slug__startswith = self.slug)
         print(copies, len(copies))
@@ -46,7 +52,7 @@ class Group(models.Model):
     courses = models.ManyToManyField(CoursePage)
 
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete = models.CASCADE)
+    user = models.OneToOneField(EmailUser, on_delete = models.CASCADE)
     role = models.CharField(max_length=30, choices =
                             [('lecturer', 'Преподаватель'),
                             ('student', 'Студент'),
@@ -62,12 +68,12 @@ class Profile(models.Model):
         return str(self.user)
     
 
-@receiver(post_save, sender=User)
+@receiver(post_save, sender=EmailUser)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
         Profile.objects.create(user=instance)
 
-@receiver(post_save, sender=User)
+@receiver(post_save, sender=EmailUser)
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
     
