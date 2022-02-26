@@ -1,27 +1,26 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views import generic
-from django.forms import (CharField, TextInput,
-                          PasswordInput, PasswordInput, EmailInput, EmailField)
+from django import forms
 
 from main.models import EmailUser
 
-class ExtendedUserCreationForm(UserCreationForm):
+class BasicRegistrationForm(UserCreationForm):
 
     # this string is important because it allows to edit username
-    first_name = CharField(label='Имя',
-                         widget=TextInput(attrs={'class': 'form-input'}))
-    last_name = CharField(label='Фамилия',
-                         widget=TextInput(attrs={'class': 'form-input'}))
+    first_name = forms.CharField(label='Имя',
+                         widget=forms.TextInput(attrs={'class': 'form-input'}))
+    last_name = forms.CharField(label='Фамилия',
+                         widget=forms.TextInput(attrs={'class': 'form-input'}))
 
-    password1 = CharField(label='Пароль',
-                          widget=PasswordInput(attrs={'class': 'form-input'}))
+    password1 = forms.CharField(label='Пароль',
+                          widget=forms.PasswordInput(attrs={'class': 'form-input'}))
 
-    password2 = CharField(label='Повтор пароля',
-                          widget=PasswordInput(attrs={'class': 'form-input'}))
+    password2 = forms.CharField(label='Повтор пароля',
+                          widget=forms.PasswordInput(attrs={'class': 'form-input'}))
 
-    email = EmailField(label='Email',
-                             widget=EmailInput(attrs={'class': 'form-input'}), required = True)
+    email = forms.EmailField(label='Email',
+                             widget=forms.EmailInput(attrs={'class': 'form-input'}), required = True)
 
     
     class Meta:
@@ -30,24 +29,54 @@ class ExtendedUserCreationForm(UserCreationForm):
                   'email', 'password1',
                   'password2')
 
-    def save(self, commit=True):
+    def save(self, commit=True, role = ''):
         first_name = self.cleaned_data["first_name"]
         second_name = self.cleaned_data["last_name"]
         
-
         user = EmailUser.objects.create_user(email=self.cleaned_data["email"], password=self.cleaned_data["password1"])
+        print('! Email create_user call')
 
         user.username = first_name + '_' + second_name # using space will cause problems with admin site
        # user = super(ExtendedEmailUserCreationForm, self).save(commit=False)
-        user.first_name = first_name
-        user.last_name = second_name
+        user.profile.first_name = first_name
+        user.profile.last_name = second_name # DEBUG!!!
         
         if commit:
             user.save()
+            user.profile.save()
             
         return user
 
+class StudentForm(BasicRegistrationForm):
+    course = forms.ChoiceField(choices =
+                            [('Физика', 'Физика'),
+                            ('ПМИ', 'ПМИ')],
+                            initial = ('Физика', 'Физика'))
+    
+    program_level = forms.ChoiceField(choices =
+                            [('Бакалавриат', 'Бакалавриат'),
+                            ('Магистратура', 'Магистратура')],
+                            initial = ('Бакалавриат', 'Бакалавриат'))
+    
+    course_number = forms.ChoiceField(choices =
+                            [(i, i) for i in range(1, 4 + 1)],
+                            initial = (1))
+
+    class Meta:
+        model = EmailUser
+        fields = BasicRegistrationForm.Meta.fields + ('course', 'program_level', 'course_number')
+
+    def save(self, commit=True):
+        # print(super())
+        user = super().save(commit=False, role='student')
+        user.profile.course = self.cleaned_data["course"]
+        
+        if commit:
+            user.save()
+
+        return user
+
 class SignUpView(generic.CreateView):
-    form_class = ExtendedUserCreationForm
+    form_class = StudentForm
     success_url = reverse_lazy('login')
     template_name = 'signup.html'

@@ -1,6 +1,4 @@
 from django.db import models
-from django.dispatch import receiver
-from django.db.models.signals import post_save
 from unidecode import unidecode
 from django.urls import reverse
 # from django.conf import settings
@@ -22,7 +20,6 @@ class CoursePage(models.Model):
     def create_slug(self): # self-written function for better generating slugs
         self.slug = unidecode(self.name).replace(' ', '_')
         copies = CoursePage.objects.all().filter(slug__startswith = self.slug)
-        print(copies, len(copies))
         if copies:
             self.slug += str(len(copies) + 1)
     
@@ -51,29 +48,7 @@ class Group(models.Model):
     parent_grop = models.ForeignKey('self', on_delete = models.CASCADE)
     courses = models.ManyToManyField(CoursePage)
 
-class Profile(models.Model):
-    user = models.OneToOneField(EmailUser, on_delete = models.CASCADE)
-    role = models.CharField(max_length=30, choices =
-                            [('lecturer', 'Преподаватель'),
-                            ('student', 'Студент'),
-                            ('administrator', 'Администратор')],
-                            default = 'student')
-    
-    groups = models.ManyToManyField(Group)
-                            
-    #college = models.CharField(max_length=30, default = 'HSE')
-    #major = models.CharField(max_length=30, default = 'Physics')
-
-    def __str__(self):
-        return str(self.user)
     
 
-@receiver(post_save, sender=EmailUser)
-def create_user_profile(sender, instance, created, **kwargs):
-    if created:
-        Profile.objects.create(user=instance)
 
-@receiver(post_save, sender=EmailUser)
-def save_user_profile(sender, instance, **kwargs):
-    instance.profile.save()
     
