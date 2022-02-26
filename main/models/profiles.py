@@ -1,7 +1,7 @@
 from django.db import models
 
 from django.dispatch import receiver
-from django.db.models.signals import post_save
+from django.db.models.signals import post_save, post_delete
 
 LECT_ROLE = 'Преподаватель'
 STUD_ROLE = 'Студент'
@@ -33,6 +33,10 @@ class Profile(models.Model):
 # @receiver(post_save, sender=EmailUser)
 # def save_user_profile(sender, instance, **kwargs):
 #     instance.profile.save()
+
+@receiver(post_delete, sender=Profile)
+def auto_delete_user(sender, instance, **kwargs):
+    instance.user.delete()
 
 class Lecturer(Profile):
     role = LECT_ROLE
