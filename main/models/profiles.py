@@ -36,6 +36,7 @@ class Profile(models.Model):
 
 class Lecturer(Profile):
     role = LECT_ROLE
+    link = models.URLField(max_length=200, blank = True)
     def __str__(self):
         return 'a lect'
         #return ' '.join([self.first_name,
@@ -51,14 +52,14 @@ class Student(Profile):
     def __str__(self):
         return 'a stud ' + ' '.join([self.first_name,
                                      self.patronymic,
-                                     self.second_name])
+                                     self.last_name])
 
 class Administrator(Profile):
     role = 'Администратор'
     def __str__(self):
         return ' '.join([self.first_name,
                         self.patronymic,
-                        self.second_name, '(администратор)'])
+                        self.last_name, '(администратор)'])
 
 roles = {LECT_ROLE: Lecturer,
          STUD_ROLE: Student,
