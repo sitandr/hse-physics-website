@@ -3,7 +3,7 @@ from django.urls import reverse_lazy
 from django.views import generic
 from django import forms
 
-from main.models import EmailUser
+from main.models import EmailUser, profiles
 
 class BasicRegistrationForm(UserCreationForm):
 
@@ -33,13 +33,16 @@ class BasicRegistrationForm(UserCreationForm):
         first_name = self.cleaned_data["first_name"]
         second_name = self.cleaned_data["last_name"]
         
-        user = EmailUser.objects.create_user(email=self.cleaned_data["email"], password=self.cleaned_data["password1"])
+        user = EmailUser.objects.create_user(email=self.cleaned_data["email"],
+                                             password=self.cleaned_data["password1"],
+                                             role = role)
         print('! Email create_user call')
 
         user.username = first_name + '_' + second_name # using space will cause problems with admin site
        # user = super(ExtendedEmailUserCreationForm, self).save(commit=False)
         user.profile.first_name = first_name
         user.profile.last_name = second_name # DEBUG!!!
+        print('saving names:', user.profile.first_name, user.profile.last_name )
         
         if commit:
             user.save()
@@ -68,11 +71,15 @@ class StudentForm(BasicRegistrationForm):
 
     def save(self, commit=True):
         # print(super())
-        user = super().save(commit=False, role='student')
+        user = super().save(commit=False, role=profiles.STUD_ROLE)
         user.profile.course = self.cleaned_data["course"]
+        user.profile.program_level = self.cleaned_data["program_level"]
+        user.profile.course_number = self.cleaned_data["course_number"]
         
         if commit:
             user.save()
+            user.profile.save()
+            print('after saving; here ' + str(type(user.profile)))
 
         return user
 

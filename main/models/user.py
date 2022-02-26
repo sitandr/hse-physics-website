@@ -12,6 +12,8 @@ class EmailUserManager(BaseUserManager):
         
         from .profiles import roles # not the best solution, but possible;
         # we need to import it here to avoid cross-reference
+        # (to create roles we need role classes, they need user to be created,
+        # and user needs this class
 
         if not role in roles:
             raise ValueError('Invalid role: ' + str(role))
@@ -22,17 +24,17 @@ class EmailUserManager(BaseUserManager):
         user.save(using=self._db)
 
         roles[role].objects.create(user=user)
-        print('!!!!', role)
+
         
         return user
 
     def create_superuser(self, email, password, role = ''):
-        print(email, password)
+
         user = self.create_user(
             email,
             password=password
         )
-        print(user.email)
+
         user.is_admin = True
         user.is_staff = True
         user.save(using=self._db)
@@ -51,7 +53,7 @@ class EmailUser(AbstractUser):
     # copy-paste from https://docs.djangoproject.com/en/4.0/topics/auth/customizing/#django.contrib.auth.models.CustomUserManager
 
     def __str__(self):
-        return str(self.profile)
+        return str(self.profile) if hasattr(self, 'profile') else 'noprofile' 
 
     def has_perm(self, perm, obj=None):
         "Does the user have a specific permission?"
