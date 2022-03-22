@@ -70,27 +70,29 @@ def create_course(request):
     }
     return render(request, 'main/create_course.html', context)
 
-def show_profile(request, user_id, mode='edit'):
+def show_profile(request, user_id, edit = False):
     "mode can be 'show' or 'edit'"
     shown_user = get_object_or_404(EmailUser, id=user_id)
     profile = shown_user.profile
     error = None
+    form = None
 
-    if mode == "edit":
+    if edit:
         if shown_user != request.user:
-            return PermissionDenied()
+            raise PermissionDenied("Cannot edit this profile")
 
         if request.method == "POST":
             form = EditUserForm(request.POST, request.FILES, instance=profile)
             if form.is_valid():
                 post = form.save(commit=False)
                 post.save()
+                return redirect('profile', user_id)
             else:
                 error = 'Invalid form'
         else:
             form = EditUserForm(instance=profile)
 
     return render(request, 'main/profile.html', {'shown_user': shown_user,
-                                                 'mode': mode,
+                                                 'edit': edit,
                                                  'form': form, 
                                                  'error': error})

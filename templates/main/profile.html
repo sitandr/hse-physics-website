@@ -1,25 +1,37 @@
 {% extends 'main/base.html' %}
 {% block title %}
-Профиль {{shown_user.username}}
+	Профиль {{shown_user.username}}
 {% endblock %}
 
 {% block body %}
-{% load tags %}
-<h1>{{shown_user|to_str}} ({{shown_user.username}})</h1>
+	{% load tags %}
+	<h1>{{shown_user|to_str}}</h1>
 
-{% if shown_user.profile.photo%}
-	<img src="{{shown_user.profile.photo.url}}" height=300></img>
-	{{shown_user.profile.photo.path}}
-{% endif%}
+	{% if shown_user.profile.photo%}
+		<img src="{{shown_user.profile.photo.url}}" height=300></img>
+	{% endif%}
 
-{{shown_user.profile.get_role_display}}
-{{shown_user.email}}
+	{{shown_user.profile.get_role_display}}
+	{{shown_user.email}}
+
+	<br>
+
+	{% if edit %}
+		<form enctype="multipart/form-data" method="post">
+
+		  {% csrf_token %}
+		  {{ form.as_p }}
+		  <button type="submit">Изменить</button>
+
+		</form>
+	{% elif user.id == shown_user.id%}
+		<a href="{% url 'edit_profile' user.id %}">Редактировать профиль</a>
+	{% endif%}
+
+	{% if error %}
+		Error: {{error}}
+	{% endif%}
 
 
-<form enctype="multipart/form-data" method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Изменить</button>
-</form>
 
 {% endblock %}

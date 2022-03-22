@@ -12,6 +12,7 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('pages/<slug:slug>', views.course_page, name='pages'),
     path('create_course', views.create_course, name='create_course'),
-    path('profiles/<int:user_id>', views.show_profile, name='profiles'),
+    path('profiles/<int:user_id>', views.show_profile, name='profile'),
+    path('profiles/<int:user_id>/edit', views.show_profile, {'edit': True}, name='edit_profile'),
 ]
 
