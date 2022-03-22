@@ -3,6 +3,11 @@ from django.db import models
 from django.dispatch import receiver
 from django.db.models.signals import post_save, post_delete
 
+from django.core.files.storage import FileSystemStorage
+from django.db import models
+
+
+
 LECT_ROLE = 'Преподаватель'
 STUD_ROLE = 'Студент'
 
@@ -15,6 +20,8 @@ class Profile(models.Model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     patronymic = models.CharField(max_length=30, blank = True)
+
+    photo = models.ImageField(upload_to='profiles', blank = True)
     
     
     groups = models.ManyToManyField(Group, blank = True)

@@ -4,8 +4,22 @@
 {% endblock %}
 
 {% block body %}
+{% load tags %}
+<h1>{{shown_user|to_str}} ({{shown_user.username}})</h1>
 
-<h1>{{shown_user.username}}</h1>
+{% if shown_user.profile.photo%}
+	<img src="{{shown_user.profile.photo.url}}" height=300></img>
+	{{shown_user.profile.photo.path}}
+{% endif%}
+
 {{shown_user.profile.get_role_display}}
 {{shown_user.email}}
+
+
+<form enctype="multipart/form-data" method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Изменить</button>
+</form>
+
 {% endblock %}

@@ -1,3 +1,7 @@
+"""
+Forms used for registering new users 
+"""
+
 from main.models import EmailUser, profiles
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
@@ -49,6 +53,7 @@ class BasicRegistrationForm(UserCreationForm):
         return user
 
 class StudentForm(BasicRegistrationForm):
+    
     course = forms.ChoiceField(label='Направление', choices =
                             [('Физика', 'Физика'),
                             ('ПМИ', 'ПМИ')],

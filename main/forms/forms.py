@@ -1,4 +1,4 @@
-from .models import Task, CoursePage
+from ..models import Task, CoursePage
 from django.forms import ModelForm, TextInput, Textarea
 
 

@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Task, CoursePage
-from .forms import TaskForm, CreateCourseForm
+from .forms import TaskForm, CreateCourseForm, EditUserForm
 from django.contrib.auth.decorators import login_required
 from .models import EmailUser
+from django.core.exceptions import PermissionDenied
 
 @login_required
 def index(request):
@@ -69,6 +70,27 @@ def create_course(request):
     }
     return render(request, 'main/create_course.html', context)
 
-def show_profile(request, user_id):
+def show_profile(request, user_id, mode='edit'):
+    "mode can be 'show' or 'edit'"
     shown_user = get_object_or_404(EmailUser, id=user_id)
-    return render(request, 'main/profile.html', {'shown_user': shown_user})
+    profile = shown_user.profile
+    error = None
+
+    if mode == "edit":
+        if shown_user != request.user:
+            return PermissionDenied()
+
+        if request.method == "POST":
+            form = EditUserForm(request.POST, request.FILES, instance=profile)
+            if form.is_valid():
+                post = form.save(commit=False)
+                post.save()
+            else:
+                error = 'Invalid form'
+        else:
+            form = EditUserForm(instance=profile)
+
+    return render(request, 'main/profile.html', {'shown_user': shown_user,
+                                                 'mode': mode,
+                                                 'form': form, 
+                                                 'error': error})

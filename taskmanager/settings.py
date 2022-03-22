@@ -139,3 +139,7 @@ SESSION_COOKIE_AGE = 365 * 24 * 3600 # expire in 1 year
 
 # AUTHENTICATION_BACKENDS = ['accounts.auth.EmailBackend'] # enable log in with email
 AUTH_USER_MODEL = 'main.EmailUser'
+
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
