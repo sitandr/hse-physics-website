@@ -43,7 +43,7 @@ class EmailUserManager(BaseUserManager):
 class EmailUser(AbstractUser):
     
     USERNAME_FIELD = 'email'
-    username = models.CharField(max_length=30, default = 'user')
+    username = models.CharField(max_length=30, default='user')
     email = models.EmailField('email address', unique=True) # changes email to unique and blank to false
     
     objects = EmailUserManager()

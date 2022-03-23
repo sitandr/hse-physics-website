@@ -12,19 +12,22 @@ LECT_ROLE = 'Преподаватель'
 STUD_ROLE = 'Студент'
 
 
+
 from .models import EmailUser, Group
 
 class Profile(models.Model):
-    user = models.OneToOneField(EmailUser, on_delete = models.CASCADE)
+    user = models.OneToOneField(EmailUser, on_delete=models.CASCADE)
     
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
-    patronymic = models.CharField(max_length=30, blank = True)
+    patronymic = models.CharField(max_length=30, blank=True)
 
-    photo = models.ImageField(upload_to='profiles', blank = True)
+    photo = models.ImageField(upload_to='profiles', blank=True)
     
     
     groups = models.ManyToManyField(Group, blank = True)
+
+    role = ''
                             
     #college = models.CharField(max_length=30, default = 'HSE')
     #major = models.CharField(max_length=30, default = 'Physics')
@@ -47,7 +50,8 @@ def auto_delete_user(sender, instance, **kwargs):
 
 class Lecturer(Profile):
     role = LECT_ROLE
-    link = models.URLField(max_length=200, blank = True)
+    link = models.URLField(max_length=200, blank=True)
+    story = models.TextField(blank=True)
     def __str__(self):
         return 'a lect'
         #return ' '.join([self.first_name,
@@ -55,9 +59,9 @@ class Lecturer(Profile):
         #                self.second_name])
 
 class Student(Profile):
-    course = models.CharField(max_length=30, blank = True)
-    program_level = models.CharField(max_length=30, blank = True)
-    course_number = models.IntegerField(null = True, blank = True)
+    course = models.CharField(max_length=30, blank=True)
+    program_level = models.CharField(max_length=30, blank=True)
+    course_number = models.IntegerField(null=True, blank=True)
     
     role = STUD_ROLE
     def __str__(self):

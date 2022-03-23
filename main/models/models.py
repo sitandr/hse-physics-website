@@ -19,7 +19,7 @@ class CoursePage(models.Model):
 
     def create_slug(self): # self-written function for better generating slugs
         self.slug = unidecode(self.name).replace(' ', '_')
-        copies = CoursePage.objects.all().filter(slug__startswith = self.slug)
+        copies = CoursePage.objects.all().filter(slug__startswith=self.slug)
         if copies:
             self.slug += str(len(copies) + 1)
     
@@ -33,7 +33,7 @@ class CoursePage(models.Model):
 class Task(models.Model):
     title = models.CharField('Название', max_length=50)
     description = models.TextField('Описание')
-    course = models.ForeignKey(CoursePage, on_delete = models.CASCADE, null = True)
+    course = models.ForeignKey(CoursePage, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return ((str(self.course) + ': ') if self.course else '') + self.title
@@ -45,7 +45,7 @@ class Task(models.Model):
 class Group(models.Model):
     name = models.CharField(max_length=30)
     subgroups = models.ManyToManyField('self')
-    parent_grop = models.ForeignKey('self', on_delete = models.CASCADE)
+    parent_grop = models.ForeignKey('self', on_delete=models.CASCADE)
     courses = models.ManyToManyField(CoursePage)
 
     

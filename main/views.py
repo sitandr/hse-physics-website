@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Task, CoursePage
-from .forms import TaskForm, CreateCourseForm, EditUserForm
+from .forms import TaskForm, CreateCourseForm, EditUserForm, EditLecturerForm, EditStudentForm
 from django.contrib.auth.decorators import login_required
 from .models import EmailUser
 from django.core.exceptions import PermissionDenied
+from . import models
 
 @login_required
 def index(request):
@@ -74,6 +75,11 @@ def show_profile(request, user_id, edit = False):
     "mode can be 'show' or 'edit'"
     shown_user = get_object_or_404(EmailUser, id=user_id)
     profile = shown_user.profile
+    form_class = {'':                        EditUserForm,
+                  models.profiles.LECT_ROLE: EditLecturerForm,
+                  models.profiles.STUD_ROLE: EditStudentForm}
+
+
     error = None
     form = None
 
@@ -82,7 +88,7 @@ def show_profile(request, user_id, edit = False):
             raise PermissionDenied("Cannot edit this profile")
 
         if request.method == "POST":
-            form = EditUserForm(request.POST, request.FILES, instance=profile)
+            form = form_class(request.POST, request.FILES, instance=profile)
             if form.is_valid():
                 post = form.save(commit=False)
                 post.save()
