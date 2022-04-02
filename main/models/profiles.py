@@ -6,8 +6,8 @@ class Profile(models.Model):
     LECT_ROLE = 'Преподаватель'
     STUD_ROLE = 'Студент'
 
-    roles_repr = {NO_ROLE: 'anonym ', LECT_ROLE: 'lect ',
-                  STUD_ROLE:'stud '}
+    roles_repr = {NO_ROLE: 'Аноним ', LECT_ROLE: LECT_ROLE,
+                  STUD_ROLE: STUD_ROLE}
     
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
@@ -40,8 +40,8 @@ class Profile(models.Model):
     
 
     def __str__(self):
-        return (self.roles_repr[self.role] if self.role in self.roles_repr
-                    else 'unknown ' + self.get_full_name())
+        return ((self.roles_repr[self.role] if self.role in self.roles_repr
+                    else 'unknown') + ' ' + self.get_full_name())
 
 #@receiver(post_save, sender=EmailUser)
 #def create_user_profile(sender, instance, created, **kwargs):

@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main',
-    'accounts'
+    'accounts',
+    'widget_tweaks' # add extra template filters; e.g. field|field_type (field from form)
 ]
 
 MIDDLEWARE = [

@@ -5,13 +5,13 @@
 
 {% block body %}
 	{% load tags %}
+	{% load widget_tweaks %}
 	<h1>{{shown_user|to_str}}</h1>
 
 	{% if shown_user.profile.photo%}
 		<img src="{{shown_user.profile.photo.url}}" height=300></img>
 	{% endif%}
 
-	{{shown_user.profile.get_role_display}}
 	{{shown_user.email}}
 
 	<br>
@@ -27,7 +27,11 @@
 	{% else %}
 		<ul>
 		{% for field in form %}
-            <li>{{ field.label }}: {{ field.value }}</li>
+			{% if field|field_type != "imagefield" %}
+				<li>{{ field.label }}: {{ field.value }}</li>
+			{% endif %}
+            
+			
     	{% endfor %}
     	</ul>
 		{% if user.id == shown_user.id%}
