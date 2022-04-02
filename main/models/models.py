@@ -1,14 +1,6 @@
 from django.db import models
 from unidecode import unidecode
 from django.urls import reverse
-# from django.conf import settings
-
-from main.models import EmailUser
-
-# EmailUser._meta.get_field('email')._unique = True # make possible log in with email
-# EmailUser._meta.get_field('email')._required = True
-
-# from django.contrib.auth.models import EmailUser
 
 
 class CoursePage(models.Model):

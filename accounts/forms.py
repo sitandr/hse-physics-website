@@ -37,9 +37,8 @@ class BasicRegistrationForm(UserCreationForm):
         second_name = self.cleaned_data["last_name"]
         
         user = EmailUser.objects.create_user(email=self.cleaned_data["email"],
-                                             password=self.cleaned_data["password1"],
-                                             role = role)
-
+                                             password=self.cleaned_data["password1"])
+        user.profile.role = role
         user.username = first_name + '_' + second_name # using space will cause problems with admin site
        # user = super(ExtendedEmailUserCreationForm, self).save(commit=False)
         user.profile.first_name = first_name
@@ -59,7 +58,7 @@ class StudentForm(BasicRegistrationForm):
                             ('ПМИ', 'ПМИ')],
                             initial = ('Физика', 'Физика'))
     
-    program_level = forms.ChoiceField(label='', choices =
+    program_level = forms.ChoiceField(label='Программа', choices =
                             [('Бакалавриат', 'Бакалавриат'),
                             ('Магистратура', 'Магистратура')],
                             initial = ('Бакалавриат', 'Бакалавриат'))
@@ -74,7 +73,7 @@ class StudentForm(BasicRegistrationForm):
 
     def save(self, commit=True):
         # print(super())
-        user = super().save(commit=False, role=profiles.STUD_ROLE)
+        user = super().save(commit=False, role=profiles.Profile.STUD_ROLE)
         user.profile.course = self.cleaned_data["course"]
         user.profile.program_level = self.cleaned_data["program_level"]
         user.profile.course_number = self.cleaned_data["course_number"]
@@ -94,7 +93,7 @@ class LecturerForm(BasicRegistrationForm):
 
     def save(self, commit=True):
         # print(super())
-        user = super().save(commit=False, role=profiles.LECT_ROLE)
+        user = super().save(commit=False, role=profiles.Profile.LECT_ROLE)
         user.profile.link = self.cleaned_data["link"]
         
         if commit:

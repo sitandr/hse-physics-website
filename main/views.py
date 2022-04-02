@@ -75,9 +75,10 @@ def show_profile(request, user_id, edit = False):
     "mode can be 'show' or 'edit'"
     shown_user = get_object_or_404(EmailUser, id=user_id)
     profile = shown_user.profile
-    form_class = {'':                        EditUserForm,
-                  models.profiles.LECT_ROLE: EditLecturerForm,
-                  models.profiles.STUD_ROLE: EditStudentForm}
+    form_class = {models.profiles.Profile.NO_ROLE:   EditUserForm,
+                  models.profiles.Profile.LECT_ROLE: EditLecturerForm,
+                  models.profiles.Profile.STUD_ROLE: EditStudentForm
+                  }[shown_user.profile.role]
 
 
     error = None
@@ -96,7 +97,7 @@ def show_profile(request, user_id, edit = False):
             else:
                 error = 'Invalid form'
         else:
-            form = EditUserForm(instance=profile)
+            form = form_class(instance=profile)
 
     return render(request, 'main/profile.html', {'shown_user': shown_user,
                                                  'edit': edit,

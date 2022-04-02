@@ -1,0 +1,1 @@
+python manage.py createsuperuser --email admin@mail.ru --skip-checks

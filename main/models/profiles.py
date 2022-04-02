@@ -1,39 +1,47 @@
 from django.db import models
-
-from django.dispatch import receiver
-from django.db.models.signals import post_save, post_delete
-
-from django.core.files.storage import FileSystemStorage
-from django.db import models
-
-
-
-LECT_ROLE = 'Преподаватель'
-STUD_ROLE = 'Студент'
-
-
-
-from .models import EmailUser, Group
+from .models import Group
 
 class Profile(models.Model):
-    user = models.OneToOneField(EmailUser, on_delete=models.CASCADE)
+    NO_ROLE = ''
+    LECT_ROLE = 'Преподаватель'
+    STUD_ROLE = 'Студент'
+
+    roles_repr = {NO_ROLE: 'anonym ', LECT_ROLE: 'lect ',
+                  STUD_ROLE:'stud '}
     
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     patronymic = models.CharField(max_length=30, blank=True)
 
     photo = models.ImageField(upload_to='profiles', blank=True)
-    
-    
     groups = models.ManyToManyField(Group, blank = True)
 
-    role = ''
-                            
+    role = models.CharField(max_length=30, choices=roles_repr.items())
+
+    ## for students
+
+    course = models.CharField(max_length=30, blank=True)
+    program_level = models.CharField(max_length=30, blank=True)
+    course_number = models.IntegerField(null=True, blank=True)
+
+    ## for lectors
+
+    link = models.URLField(max_length=200, blank=True)
+    story = models.TextField(blank=True)
+
     #college = models.CharField(max_length=30, default = 'HSE')
     #major = models.CharField(max_length=30, default = 'Physics')
 
+    def get_full_name(self):
+        return ' '.join([self.first_name,
+                        self.last_name,
+                        self.patronymic,])
+
+    
+
     def __str__(self):
-        return 'anonym ' + ' '.join([self.first_name, self.last_name])
+        return (self.roles_repr[self.role] if self.role in self.roles_repr
+                    else 'unknown ' + self.get_full_name())
 
 #@receiver(post_save, sender=EmailUser)
 #def create_user_profile(sender, instance, created, **kwargs):
@@ -43,41 +51,5 @@ class Profile(models.Model):
 # @receiver(post_save, sender=EmailUser)
 # def save_user_profile(sender, instance, **kwargs):
 #     instance.profile.save()
-
-@receiver(post_delete, sender=Profile)
-def auto_delete_user(sender, instance, **kwargs):
-    instance.user.delete()
-
-class Lecturer(Profile):
-    role = LECT_ROLE
-    link = models.URLField(max_length=200, blank=True)
-    story = models.TextField(blank=True)
-    def __str__(self):
-        return 'a lect'
-        #return ' '.join([self.first_name,
-        #                self.patronymic,
-        #                self.second_name])
-
-class Student(Profile):
-    course = models.CharField(max_length=30, blank=True)
-    program_level = models.CharField(max_length=30, blank=True)
-    course_number = models.IntegerField(null=True, blank=True)
-    
-    role = STUD_ROLE
-    def __str__(self):
-        return 'a stud ' + ' '.join([self.first_name,
-                                     self.patronymic,
-                                     self.last_name])
-
-class Administrator(Profile):
-    role = 'Администратор'
-    def __str__(self):
-        return ' '.join([self.first_name,
-                        self.patronymic,
-                        self.last_name, '(администратор)'])
-
-roles = {LECT_ROLE: Lecturer,
-         STUD_ROLE: Student,
-         '': Profile,}
 
 
