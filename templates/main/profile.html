@@ -24,8 +24,15 @@
 		  <button type="submit">Изменить</button>
 
 		</form>
-	{% elif user.id == shown_user.id%}
-		<a href="{% url 'edit_profile' user.id %}">Редактировать профиль</a>
+	{% else %}
+		<ul>
+		{% for field in form %}
+            <li>{{ field.label }}: {{ field.value }}</li>
+    	{% endfor %}
+    	</ul>
+		{% if user.id == shown_user.id%}
+			<a href="{% url 'edit_profile' user.id %}">Редактировать профиль</a>
+		{% endif %}
 	{% endif%}
 
 	{% if error %}

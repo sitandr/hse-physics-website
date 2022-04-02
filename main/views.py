@@ -84,6 +84,8 @@ def show_profile(request, user_id, edit = False):
     error = None
     form = None
 
+    form = form_class(instance=profile)
+    
     if edit:
         if shown_user != request.user:
             raise PermissionDenied("Cannot edit this profile")
@@ -96,8 +98,6 @@ def show_profile(request, user_id, edit = False):
                 return redirect('profile', user_id)
             else:
                 error = 'Invalid form'
-        else:
-            form = form_class(instance=profile)
 
     return render(request, 'main/profile.html', {'shown_user': shown_user,
                                                  'edit': edit,
