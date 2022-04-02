@@ -28,7 +28,7 @@
 		<ul>
 		{% for field in form %}
 			{% if field|field_type != "imagefield" %}
-				<li>{{ field.label }}: {{ field.value }}</li>
+				<li><b>{{ field.label }}</b>: {{ field.value|linebreaksbr }}</li>
 			{% endif %}
             
 			
