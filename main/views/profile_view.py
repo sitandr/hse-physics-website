@@ -4,6 +4,7 @@ from ..forms import EditUserForm, EditLecturerForm, EditStudentForm
 from ..models import EmailUser, StudentUser, LecturerUser, Profile
 from django.shortcuts import render, redirect, get_object_or_404
 
+
 def show_profile(request, user_id, edit=False):
     "mode can be 'show' or 'edit'"
     shown_user = get_object_or_404(EmailUser, id=user_id)
@@ -12,17 +13,16 @@ def show_profile(request, user_id, edit=False):
 
     shown_user = shown_user.concretize()
 
-    form_class = {models.profiles.Profile.NO_ROLE:   EditUserForm,
+    form_class = {models.profiles.Profile.NO_ROLE: EditUserForm,
                   models.profiles.Profile.LECT_ROLE: EditLecturerForm,
                   models.profiles.Profile.STUD_ROLE: EditStudentForm
                   }[shown_user.profile.role]
-
 
     error = None
     form = None
 
     form = form_class(instance=profile)
-    
+
     if edit:
         if shown_user != request.user:
             raise PermissionDenied("Cannot edit this profile")
@@ -38,5 +38,5 @@ def show_profile(request, user_id, edit=False):
 
     return render(request, 'main/profile.html', {'shown_user': shown_user,
                                                  'edit': edit,
-                                                 'form': form, 
+                                                 'form': form,
                                                  'error': error})

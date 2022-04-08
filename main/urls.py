@@ -15,4 +15,3 @@ urlpatterns = [
     path('profiles/<int:user_id>', views.profile_view.show_profile, name='profile'),
     path('profiles/<int:user_id>/edit', views.profile_view.show_profile, {'edit': True}, name='edit_profile'),
 ]
-
