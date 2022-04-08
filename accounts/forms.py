@@ -2,7 +2,7 @@
 Forms used for registering new users 
 """
 
-from main.models import EmailUser, StudentUser, LecturerUser, Profile
+from main.models import EmailUser, StudentUser, LecturerUser
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 
@@ -39,8 +39,6 @@ class BasicRegistrationForm(UserCreationForm):
 
         user = user_type.objects.create_user(email=self.cleaned_data["email"],
                                              password=self.cleaned_data["password1"])
-
-        user.username = first_name + '_' + second_name  # using space will cause problems with admin site
 
         user.profile.first_name = first_name
         user.profile.last_name = second_name  # DEBUG!!!

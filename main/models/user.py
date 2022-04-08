@@ -67,11 +67,16 @@ class EmailUser(AbstractUser):
 
 class StudentUser(EmailUser):
     default_role = Profile.STUD_ROLE
-    ...
+
+    class Meta:
+        verbose_name = 'StudentUser'
 
 
 class LecturerUser(EmailUser):
     default_role = Profile.LECT_ROLE
+
+    class Meta:
+        verbose_name = 'LectorUser'
 
 
 @receiver(post_delete, sender=EmailUser)
