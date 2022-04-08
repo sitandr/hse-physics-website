@@ -36,16 +36,16 @@ class BasicRegistrationForm(UserCreationForm):
     def save(self, user_type, commit=True):
         first_name = self.cleaned_data["first_name"]
         second_name = self.cleaned_data["last_name"]
-        print(user_type)
+
         user = user_type.objects.create_user(email=self.cleaned_data["email"],
                                              password=self.cleaned_data["password1"])
 
         user.username = first_name + '_' + second_name  # using space will cause problems with admin site
-       # user = super(ExtendedEmailUserCreationForm, self).save(commit=False)
+
         user.profile.first_name = first_name
         user.profile.last_name = second_name  # DEBUG!!!
         user.profile.patronymic = self.cleaned_data["patronymic"]
-        print(user)
+
         if commit:
             user.save()
             user.profile.save()

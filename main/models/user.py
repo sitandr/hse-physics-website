@@ -51,23 +51,13 @@ class EmailUser(AbstractUser):
     objects = EmailUserManager()
     REQUIRED_FIELDS = []
 
-    # class Meta:
-    #     abstract = True
-
-    # copy-paste from
-    # https://docs.djangoproject.com/en/4.0/topics/auth/customizing/#django.contrib.auth.models.CustomUserManager
-
     def __str__(self):
         return str(self.profile) if hasattr(self, 'profile') else 'noprofile'
 
     def has_perm(self, perm, obj=None):
-        "Does the user have a specific permission?"
-        # Simplest possible answer: Yes, always
         return True
 
     def has_module_perms(self, app_label):
-        "Does the user have permissions to view the app `app_label`?"
-        # Simplest possible answer: Yes, always
         return True
 
     def concretize(self):

@@ -19,10 +19,7 @@ class Profile(models.Model):
 
     @property
     def role(self):
-        print(1, self.get_full_name(), type(self.user))
         return self.user.role if hasattr(self.user, "role") else self.NO_ROLE
-
-    # role = models.CharField(max_length=30, choices=roles_repr.items())
 
     # for students
 
@@ -47,12 +44,3 @@ class Profile(models.Model):
         child = self.user.concretize()
         return ((self.roles_repr[child.role] if child.role in self.roles_repr
                  else 'unknown') + ' ' + self.get_full_name())
-
-# @receiver(post_save, sender=EmailUser)
-# def create_user_profile(sender, instance, created, **kwargs):
-#    if created:
-#        Profile.objects.create(user=instance)
-
-# @receiver(post_save, sender=EmailUser)
-# def save_user_profile(sender, instance, **kwargs):
-#     instance.profile.save()
