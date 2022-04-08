@@ -10,7 +10,7 @@ def show_profile(request, user_id, edit=False):
     profile = shown_user.profile
     print(vars(shown_user))
 
-    shown_user = EmailUser.objects.get_subclass(id=shown_user.id)
+    shown_user = shown_user.concretize()
 
     form_class = {models.profiles.Profile.NO_ROLE:   EditUserForm,
                   models.profiles.Profile.LECT_ROLE: EditLecturerForm,
