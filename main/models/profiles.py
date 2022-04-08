@@ -16,7 +16,12 @@ class Profile(models.Model):
     photo = models.ImageField(upload_to='profiles', blank=True)
     groups = models.ManyToManyField(Group, blank = True)
 
-    role = models.CharField(max_length=30, choices=roles_repr.items())
+    @property
+    def role(self):
+        print(1, self.get_full_name(), type(self.user))
+        return self.user.role if hasattr(self.user, "role") else self.NO_ROLE
+
+    # role = models.CharField(max_length=30, choices=roles_repr.items())
 
     ## for students
 

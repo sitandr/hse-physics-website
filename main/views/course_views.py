@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def index(request):
+    print(request.user)
     tasks = Task.objects.all()
     courses = CoursePage.objects.all()
     return render(request, 'main/index.html',

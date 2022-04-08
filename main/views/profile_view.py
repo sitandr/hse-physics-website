@@ -1,13 +1,17 @@
 from .. import models
 from django.core.exceptions import PermissionDenied
 from ..forms import EditUserForm, EditLecturerForm, EditStudentForm
-from ..models import EmailUser
+from ..models import EmailUser, StudentUser, LecturerUser, Profile
 from django.shortcuts import render, redirect, get_object_or_404
 
 def show_profile(request, user_id, edit=False):
     "mode can be 'show' or 'edit'"
     shown_user = get_object_or_404(EmailUser, id=user_id)
     profile = shown_user.profile
+    print(vars(shown_user))
+
+    shown_user = EmailUser.objects.get_subclass(id=shown_user.id)
+
     form_class = {models.profiles.Profile.NO_ROLE:   EditUserForm,
                   models.profiles.Profile.LECT_ROLE: EditLecturerForm,
                   models.profiles.Profile.STUD_ROLE: EditStudentForm
