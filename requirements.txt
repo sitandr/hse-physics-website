@@ -1,4 +1,4 @@
 django
 django-widget-tweaks
 unidecode
-model_utils
+django-model-utils

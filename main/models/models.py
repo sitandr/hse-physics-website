@@ -3,6 +3,7 @@ from unidecode import unidecode
 from django.urls import reverse
 
 
+
 class CoursePage(models.Model):
     name = models.CharField('Название курса', max_length=50)
     slug = models.SlugField(max_length=255, verbose_name="URL")
@@ -27,7 +28,7 @@ class MaterialMaster:
 
 class Material(models.Model):
     name = models.CharField(max_length=30)
-    descripiton = models.TextField(blank=True)
+    description = models.TextField(blank=True)
     # master = models.ForeignKey(MaterialMaster)
 
 
@@ -39,11 +40,6 @@ class File(Material):
     file_material = models.FileField(upload_to='files/%Y/%m/%d')
     is_published = models.BooleanField(default=True)
 
-
-class Task(models.Model):
-    title = models.CharField('Название', max_length=50)
-    description = models.TextField('Описание')
-    course = models.ForeignKey(CoursePage, on_delete=models.CASCADE, null=True)
 
 
 class Task(models.Model):
