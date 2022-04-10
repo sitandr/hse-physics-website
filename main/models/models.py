@@ -22,6 +22,30 @@ class CoursePage(models.Model):
     def absolute_url(self):
         return reverse('pages', kwargs={'slug': self.slug})
 
+class MaterialMaster:
+    ...
+
+class Material(models.Model):
+    name = models.CharField(max_length=30)
+    descripiton = models.TextField(blank=True)
+    # master = models.ForeignKey(MaterialMaster)
+
+
+class Url(Material):
+    address = models.URLField(max_length=200)
+
+
+class File(Material):
+    file_material = models.FileField(upload_to='files/%Y/%m/%d')
+    is_published = models.BooleanField(default=True)
+
+
+class Task(models.Model):
+    title = models.CharField('Название', max_length=50)
+    description = models.TextField('Описание')
+    course = models.ForeignKey(CoursePage, on_delete=models.CASCADE, null=True)
+
+
 class Task(models.Model):
     title = models.CharField('Название', max_length=50)
     description = models.TextField('Описание')
@@ -39,6 +63,10 @@ class Group(models.Model):
     subgroups = models.ManyToManyField('self')
     parent_grop = models.ForeignKey('self', on_delete=models.CASCADE)
     courses = models.ManyToManyField(CoursePage)
+
+
+
+
 
     
 

@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from ..models import Task, CoursePage
+from ..models import Task, CoursePage, MaterialMaster, Material, Url, File
 from ..forms import TaskForm, CreateCourseForm
 from django.contrib.auth.decorators import login_required
 
@@ -71,3 +71,6 @@ def create_course(request):
         'error': error
     }
     return render(request, 'main/create_course.html', context)
+
+
+
