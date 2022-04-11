@@ -1,0 +1,12 @@
+{% extends 'main/base.html' %}
+{% block title %}
+    Объявления
+{% endblock %}
+
+{% block body %}
+
+    {% for a in viewed_ann %}
+        <li> a.text </li>
+    {% endfor %}
+
+{% endblock %}

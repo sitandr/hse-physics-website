@@ -14,4 +14,5 @@ urlpatterns = [
     path('create_course', views.course_views.create_course, name='create_course'),
     path('profiles/<int:user_id>', views.profile_view.show_profile, name='profile'),
     path('profiles/<int:user_id>/edit', views.profile_view.show_profile, {'edit': True}, name='edit_profile'),
+    path('announcements', views.announcement_view.show_announcements, name='announce')
 ]

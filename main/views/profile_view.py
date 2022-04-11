@@ -1,7 +1,7 @@
 from .. import models
 from django.core.exceptions import PermissionDenied
 from ..forms import EditUserForm, EditLecturerForm, EditStudentForm
-from ..models import EmailUser, StudentUser, LecturerUser, Profile
+from ..models import EmailUser
 from django.shortcuts import render, redirect, get_object_or_404
 
 

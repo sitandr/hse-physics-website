@@ -20,7 +20,7 @@ class Profile(models.Model):
     @property
     def role(self):
         "Important: doesn't concretize user"
-        return self.user.role if hasattr(self.user, "role") else self.NO_ROLE
+        return self.user.role
 
     # for students
 
