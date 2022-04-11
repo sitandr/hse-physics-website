@@ -24,7 +24,7 @@ class CreateCourseForm(ModelForm):
         widgets = {"name": TextInput(attrs={
             'class': 'form-control',
             'placeholder': 'Название курса'
-            }),
+        }),
             'general_info': Textarea(attrs={
                 'class': 'form-control',
                 'placeholder': 'Общая информация'

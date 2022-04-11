@@ -3,19 +3,18 @@ from unidecode import unidecode
 from django.urls import reverse
 
 
-
 class CoursePage(models.Model):
     name = models.CharField('Название курса', max_length=50)
     slug = models.SlugField(max_length=255, verbose_name="URL")
-    
+
     general_info = models.TextField('Общая информация')
 
-    def create_slug(self): # self-written function for better generating slugs
+    def create_slug(self):  # self-written function for better generating slugs
         self.slug = unidecode(self.name).replace(' ', '_')
         copies = CoursePage.objects.all().filter(slug__startswith=self.slug)
         if copies:
             self.slug += str(len(copies) + 1)
-    
+
     def __str__(self):
         return self.name
 
@@ -23,8 +22,10 @@ class CoursePage(models.Model):
     def absolute_url(self):
         return reverse('pages', kwargs={'slug': self.slug})
 
+
 class MaterialMaster:
     ...
+
 
 class Material(models.Model):
     name = models.CharField(max_length=30)
@@ -41,7 +42,6 @@ class File(Material):
     is_published = models.BooleanField(default=True)
 
 
-
 class Task(models.Model):
     title = models.CharField('Название', max_length=50)
     description = models.TextField('Описание')
@@ -54,17 +54,9 @@ class Task(models.Model):
         verbose_name = 'Задача'
         verbose_name_plural = 'Задачи'
 
+
 class Group(models.Model):
     name = models.CharField(max_length=30)
     subgroups = models.ManyToManyField('self')
     parent_grop = models.ForeignKey('self', on_delete=models.CASCADE)
     courses = models.ManyToManyField(CoursePage)
-
-
-
-
-
-    
-
-
-    

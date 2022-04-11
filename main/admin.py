@@ -14,4 +14,3 @@ admin.site.register(LecturerUser)
 admin.site.register(Material)
 admin.site.register(Url)
 admin.site.register(File)
-

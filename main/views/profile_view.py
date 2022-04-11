@@ -6,7 +6,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 
 
 def show_profile(request, user_id, edit=False):
-    "mode can be 'show' or 'edit'"
+    "display any user profile's, probably trying to edit"
+
     shown_user = get_object_or_404(EmailUser, id=user_id)
     profile = shown_user.profile
     print(vars(shown_user))
@@ -29,6 +30,7 @@ def show_profile(request, user_id, edit=False):
 
         if request.method == "POST":
             form = form_class(request.POST, request.FILES, instance=profile)
+
             if form.is_valid():
                 post = form.save(commit=False)
                 post.save()

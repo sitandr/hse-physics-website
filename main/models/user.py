@@ -8,6 +8,7 @@ from . import Profile
 
 
 class EmailUserManager(BaseUserManager, InheritanceManager):
+    "Inheriting InheritanceManager helps deciding which usertype has some user we get (e. g. from request)"
 
     def create_user(self, email, password):
         if not email:
