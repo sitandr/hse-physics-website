@@ -1,6 +1,8 @@
 from django.contrib import admin
 from .models import Task, Profile, CoursePage, Material, Url, File
 from .models import EmailUser, StudentUser, LecturerUser
+from .models import Announcement
+
 from django.contrib.auth.admin import UserAdmin
 
 UserAdmin.list_display = ('__str__', 'email')
@@ -14,3 +16,4 @@ admin.site.register(LecturerUser)
 admin.site.register(Material)
 admin.site.register(Url)
 admin.site.register(File)
+admin.site.register(Announcement)

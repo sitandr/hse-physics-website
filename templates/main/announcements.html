@@ -6,7 +6,7 @@
 {% block body %}
 
     {% for a in viewed_ann %}
-        <li> a.text </li>
+        <li> {{a.sender}}: {{a.text}} </li>
     {% endfor %}
 
 {% endblock %}
