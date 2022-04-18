@@ -12,10 +12,15 @@
             <button type="submit" class="btn btn-success">Отправить</button>
             <span>{{ error }}</span>
         </form>
+        <a href="{% url 'announce'%}">Просмотр объявлений</a>
+
     {% else %}
+
         {% for a in viewed_ann %}
             <li> {{a.sender}}: {{a.text}} </li>
         {% endfor %}
+        <a href="{% url 'write_announce'%}">Создать объявление</a>
+
     {% endif %}
 
 
