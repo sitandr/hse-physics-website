@@ -5,8 +5,18 @@
 
 {% block body %}
 
-    {% for a in viewed_ann %}
-        <li> {{a.sender}}: {{a.text}} </li>
-    {% endfor %}
+    {% if edit %}
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-success">Отправить</button>
+            <span>{{ error }}</span>
+        </form>
+    {% else %}
+        {% for a in viewed_ann %}
+            <li> {{a.sender}}: {{a.text}} </li>
+        {% endfor %}
+    {% endif %}
+
 
 {% endblock %}
