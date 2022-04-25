@@ -1,6 +1,10 @@
 from django.db import models
+from embed_video.fields import EmbedVideoField
 from unidecode import unidecode
 from django.urls import reverse
+from model_utils.managers import InheritanceManager
+from embed_video.admin import AdminVideoMixin
+from embed_video.fields import EmbedVideoField
 
 
 class CoursePage(models.Model):
@@ -23,23 +27,62 @@ class CoursePage(models.Model):
         return reverse('pages', kwargs={'slug': self.slug})
 
 
-class MaterialMaster:
-    ...
+class MaterialMaster(InheritanceManager):
+    pass
 
 
 class Material(models.Model):
     name = models.CharField(max_length=30)
     description = models.TextField(blank=True)
+    objects = MaterialMaster()
+
     # master = models.ForeignKey(MaterialMaster)
+
+    @property
+    def view(self):
+        pass
+
+    def concretize(self):
+        "return inherited version of self"
+        return Material.objects.get_subclass(id=self.id)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Материал'
+        verbose_name_plural = 'Материалы'
 
 
 class Url(Material):
     address = models.URLField(max_length=200)
 
+    @property
+    def view(self):
+        return self.address
+
 
 class File(Material):
     file_material = models.FileField(upload_to='files/%Y/%m/%d')
     is_published = models.BooleanField(default=True)
+
+    @property
+    def view(self):
+        return "Dummy place for a file"
+
+
+class Video(Material):
+    video_material = EmbedVideoField()
+
+    # class Meta:
+    #     verbose_name_plural = "Video"
+
+    def __str__(self):
+        return str(self.name) if self.name else " "
+
+    @property
+    def view(self):
+        return self.video_material
 
 
 class Task(models.Model):

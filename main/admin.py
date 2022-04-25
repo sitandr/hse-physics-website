@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Task, Profile, CoursePage, Material, Url, File
+from .models import Task, Profile, CoursePage, Material, Url, File, Video
 from .models import EmailUser, StudentUser, LecturerUser
 from django.contrib.auth.admin import UserAdmin
 
@@ -14,3 +14,4 @@ admin.site.register(LecturerUser)
 admin.site.register(Material)
 admin.site.register(Url)
 admin.site.register(File)
+admin.site.register(Video)

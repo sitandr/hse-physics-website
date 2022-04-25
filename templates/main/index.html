@@ -17,21 +17,28 @@
          <a href="{{ el.absolute_url }}" class="course-link">{{ el.name }}</a>
     </div>
     {% endfor %}
+    {% for el in materials %}
+    <div class="alert alert-warning mt-2">
+        <h3>{{ el.name }}</h3>
+        <p>{{ el.description }}</p>
+        <p>{{ el.view }}</p>
+    </div>
+    {% endfor %}
 
-    <h2>Задания</h2>
-    
-    {% if tasks %}
-        <ol>
-        {% for el in tasks %}
-        
-             <li>{{ el|to_str }}</li>
-             <p>{{ el.description }}</p>
-        
-        {% endfor %}
-        </ol>
-    {% else %}
-        <p>Пока нет дел!</p>
-    {% endif %}
+{#    <h2>Файлы</h2>#}
+{##}
+{#    {% if files %}#}
+{#        <ol>#}
+{#        {% for el in files %}#}
+{#             <p>{{ el.file_material }}</p>#}
+{##}
+{#        {% endfor %}#}
+{#        </ol>#}
+{#    {% else %}#}
+{#        <p>Файлы не добавлены!</p>#}
+{#    {% endif %}#}
+
+
 
     <h2>Расписание</h2>
     <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vRD59ze5tGfZYMzTULP1fzqkb4P0rEtGuGC2f49aaG4uU6A1BIHL_hOdCyUGJtR20VMO82zklFd8zZo/pubhtml?gid=238010881#">Неделя</a>
