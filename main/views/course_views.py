@@ -3,16 +3,22 @@ from ..models import Task, CoursePage, MaterialMaster, Material, Url, File
 from ..forms import TaskForm, CreateCourseForm
 from django.contrib.auth.decorators import login_required
 
-
 @login_required
 def index(request):
     print(request.user)
     tasks = Task.objects.all()
+    materials = Material.objects.all()
     courses = CoursePage.objects.all()
+    concr_materials = []
+    for material in materials:
+        concr_materials.append(material.concretize())
+    print(concr_materials)
     return render(request, 'main/index.html',
                   {'title': 'Главная страница сайта',
                    'tasks': tasks,
-                   'courses': courses})
+                   'courses': courses,
+                   'materials': concr_materials})
+
 
 
 def about(request):
