@@ -59,7 +59,9 @@ class Url(Material):
 
     @property
     def view(self):
-        return self.address
+        return
+
+            # self.address
 
 
 class File(Material):
