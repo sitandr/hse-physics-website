@@ -32,7 +32,8 @@ def show_announcements(request, edit=False):
 
                     print()
                     inst.receivers.set(EmailUser.objects.filter(profile__course_number=request.POST['course_number']))
-                    # due to the fact "course" is not model field, it is not auto-completed when creating form from request
+                    # due to the fact "course" is not model field,
+                    # it is not auto-completed when creating form from request
 
                     return redirect('announce')
 
@@ -65,3 +66,14 @@ def show_announcements(request, edit=False):
                                                        'edit': edit,
                                                        'viewed_ann': viewed_ann,
                                                        'form': form})
+
+
+def remove_announcement(request, ann_id):
+    "removes user from recievers"
+    # Announcement.objects.filter(id=ann_id).delete()
+    Announcement.objects.get(id=ann_id).receivers.remove(request.user)
+
+    if Announcement.objects.get(id=ann_id).receivers.count() == 0:
+        Announcement.objects.get(id=ann_id).delete()
+
+    return redirect('announce')

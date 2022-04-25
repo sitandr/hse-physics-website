@@ -17,7 +17,12 @@
     {% else %}
 
         {% for a in viewed_ann %}
-            <li> {{a.sender}}: {{a.text}} </li>
+            <li> {{a.sender}}: {{a.text}} 
+                <form action="{% url 'remove_announce' ann_id=a.id %}" method=POST>
+                    {% csrf_token %}
+                    <button id="close-btn" type="submit">Close</button>
+                </form>
+            </li>
         {% endfor %}
         <a href="{% url 'write_announce'%}">Создать объявление</a>
 

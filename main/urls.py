@@ -16,4 +16,5 @@ urlpatterns = [
     path('profiles/<int:user_id>/edit', views.profile_view.show_profile, {'edit': True}, name='edit_profile'),
     path('announcements', views.announcement_view.show_announcements, name='announce'),
     path('announcements/edit', views.announcement_view.show_announcements, {'edit': True}, name='write_announce'),
+    path('announcements/remove?<int:ann_id>', views.announcement_view.remove_announcement, name='remove_announce'),
 ]
