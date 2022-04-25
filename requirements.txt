@@ -2,3 +2,4 @@ django
 django-widget-tweaks
 unidecode
 django-model-utils
+django-embed-video
