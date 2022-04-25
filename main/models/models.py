@@ -5,7 +5,9 @@ from django.urls import reverse
 from model_utils.managers import InheritanceManager
 from embed_video.admin import AdminVideoMixin
 from embed_video.fields import EmbedVideoField
+from django.template import Template, Context
 
+from copy import deepcopy
 
 class CoursePage(models.Model):
     name = models.CharField('Название курса', max_length=50)
@@ -59,9 +61,8 @@ class Url(Material):
 
     @property
     def view(self):
-        return
-
-            # self.address
+        return Template(f"""<h2>{self.name}:</h2>
+    <a href="{self.address}">{self.description}</a>""").render(Context({}))
 
 
 class File(Material):
@@ -70,7 +71,9 @@ class File(Material):
 
     @property
     def view(self):
-        return "Dummy place for a file"
+        return Template(f"""<h2>Dummy</h2>""").render(Context({}))
+
+
 
 
 class Video(Material):
@@ -84,7 +87,8 @@ class Video(Material):
 
     @property
     def view(self):
-        return self.video_material
+        return Template(f'''{{% load embed_video_tags %}}
+        {{% video material '600x400' %}}''').render(Context({'material': self.video_material}))
 
 
 class Task(models.Model):

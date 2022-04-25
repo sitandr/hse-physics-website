@@ -1,4 +1,5 @@
 {% extends 'main/base.html' %}
+
 {% load tags %}
 {% block title %}
 {{ title }}
@@ -17,11 +18,14 @@
          <a href="{{ el.absolute_url }}" class="course-link">{{ el.name }}</a>
     </div>
     {% endfor %}
+
     {% for el in materials %}
     <div class="alert alert-warning mt-2">
         <h3>{{ el.name }}</h3>
         <p>{{ el.description }}</p>
-        <p>{{ el.view }}</p>
+
+{#        {{ el.view | safe}}#}
+        {{ el.view }}
     </div>
     {% endfor %}
 
