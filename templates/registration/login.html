@@ -1,18 +1,50 @@
-{% extends 'main/base.html' %}
-{% block title %}
-Вход
-{% endblock %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="{% static 'main/css/login.css' %}">
+<head>
+    <meta charset="UTF-8">
+    <title>Вход</title>
+</head>
+<body>
 
-{% block body %}
+<div class="main-container">
+    <div class="centering">
+        <div class="data-container">
+            <div class="login-box">
+                <form method="post" name="loginform">
+                    {% csrf_token %}
+                    <div class="form-header">
+                        <h2 class="form-title">Вход на сайт физиков
+                            НИУ ВШЭ СПб</h2>
+                    </div>
+                    <div class="form-content">
+                        <div class="form-row">
+                            <label class="input-box">
+                                <span class="input-box__label">Логин</span>
+                                <input class="input-box_input" type="text" value="" name="username"
+                                       autofocus="autofocus">
+                            </label>
+                            <label class="input-box">
+                                <span class="input-box__label">Пароль</span>
+                                <input class="input-box_input" type="password" name="password">
+                            </label>
+                        </div>
+                        <input class="enter-button" type="submit" value="Войти">
+                    </div>
+                </form>
+            </div>
+            <div class="form-footer">
+                <p><a href="{% url 's_signup' %}" class="nav-link">Зарегистрироваться как <b>студент</b></a>
+                </p>
+                <p><a href="{% url 'l_signup' %}" class="nav-link">Зарегистрироваться как
+                    <b>преподаватель</b></a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
 
-<h2>Log In</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">Войти</button>
-</form>
 
-<p><a href="{% url 's_signup' %}" class="nav-link">Зарегистрироваться как <b>студент</b></a></p>
-<p><a href="{% url 'l_signup' %}" class="nav-link">Зарегистрироваться как <b>преподаватель</b></a></p>
-
-{% endblock %}
+</html>
