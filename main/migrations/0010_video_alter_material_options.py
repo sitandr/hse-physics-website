@@ -8,7 +8,7 @@ import embed_video.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('main', '0009_rename_descripiton_material_description'),
+        ('main', '0009_video_alter_material_options_and_more'),
     ]
 
     operations = [
