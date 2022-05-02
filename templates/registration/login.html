@@ -15,19 +15,18 @@
                 <form method="post" name="loginform">
                     {% csrf_token %}
                     <div class="form-header">
-                        <h2 class="form-title">Вход на сайт физиков
-                            НИУ ВШЭ СПб</h2>
+                        <h2 class="form-title">Вход на сайт физиков НИУ ВШЭ СПб</h2>
                     </div>
                     <div class="form-content">
                         <div class="form-row">
                             <label class="input-box">
-                                <span class="input-box__label">Логин</span>
-                                <input class="input-box_input" type="text" value="" name="username"
+                                <label>Логин</label>
+                                <input type="text" value="" name="username"
                                        autofocus="autofocus">
                             </label>
                             <label class="input-box">
-                                <span class="input-box__label">Пароль</span>
-                                <input class="input-box_input" type="password" name="password">
+                                <label>Пароль</label>
+                                <input type="password" name="password">
                             </label>
                         </div>
                         <input class="enter-button" type="submit" value="Войти">
