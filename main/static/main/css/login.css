@@ -86,6 +86,7 @@ body {
 }
 
 /* Окошки ввода */
+/* общее */
 
 .input-box {
 	float: none;
@@ -95,14 +96,18 @@ body {
 	padding-right: 10px;
 }
 
-.input-box__label {
+/* подпись над окошком */
+
+.input-box label {
 	display: block;
 	margin-bottom: 1rem;
 	color: #1658da;
 	font-size: 1.3rem;
 }
 
-.input-box_input {
+/* само окошко */
+
+.input-box input {
 	width: 100%;
 	font-size: 1.8rem;
 	color: #000;
@@ -112,16 +117,34 @@ body {
 	padding-bottom: 1rem;
 }
 
-.input-box_input:-webkit-autofill,
-.input-box_input:-webkit-autofill:hover,
-.input-box_input:-webkit-autofill:focus,
-.input-box_input:-webkit-autofill:active  {
+.input-box input:-webkit-autofill,
+.input-box input:-webkit-autofill:hover,
+.input-box input:-webkit-autofill:focus,
+.input-box input:-webkit-autofill:active  {
     -webkit-box-shadow: 0 0 0 30px white inset !important;
 }
 
-.input-box_input:focus {
+.input-box input:focus {
 	border-color: #000;
 }
+
+/* выпадающее окошко */
+
+.input-box select {
+	width: 100%;
+	font-size: 1.8rem;
+	color: #000;
+	background: white;
+	border-color: rgba(0, 0, 0, 0.25);
+	outline: none;
+	border-width: 0 0 1px;
+	padding-bottom: 1rem;
+}
+
+.input-box select:focus {
+	border-color: #000;
+}
+
 
 /* Кнопка входа */
 
