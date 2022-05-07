@@ -6,10 +6,44 @@
 
 <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
 <body>
-    <aside>
-        <img src="{% static 'main/img/hse.jpeg' %}" width="100" height="100">
-        <span class="logo">НИУ ВШЭ СПБ ФИЗИКА</span>
-    </aside>
+<aside class="fixed-top-bar">
+    <a href="{% url 'home' %}">
+        <div class="logo-holder">
+            <img src="{% static 'main/img/logo-blue.png' %}" width="18" height="26" alt="Эмблема ВШЭ" id="logo">
+            <img src="{% static 'main/img/phys-logo-blue.png' %}" height="26" alt="Эмблема физики" id="logo"
+                 style="margin-left: 8px">
+        </div>
+    </a>
+
+    <ul class="navigation-bar">
+        <li class="dropdown-button">
+            <img src="{% static 'main/img/plus-blue.png' %}" height="26" alt="plus">
+            <ul class="dropdown-menu">
+                <li><a href="{% url 'create_course' %}">Новый курс</a></li>
+                <li><a href="{% url 'create_task' %}">Новый материал</a></li>
+                <li><a href="{% url 'announce' %}">Новое объявление</a></li>
+            </ul>
+        </li>
+        <li class="dropdown-button">
+            <img src="{% static 'main/img/notification-bell-blue.png' %}" height="26" alt="bell">
+            <ul class="dropdown-menu">
+                <li>Уведомления:</li>
+                <li>(пусто)</li>
+            </ul>
+        </li>
+        <li class="dropdown-button">
+            <img src="{% static 'main/img/user-head-blue.png' %}" height="26" alt="user">
+            <ul class="dropdown-menu">
+                <li>ФИО</li>
+                <li><a href="{% url 'profile' user.id %}">Профиль</a></li>
+                <li><a href="{% url 'edit_profile' user.id %}">Редактировать</a></li>
+                <li><a href="{% url 'logout' %}">Выйти</a></li>
+            </ul>
+        </li>
+    </ul>
+
+    <!--<span class="uni-name">НИУ ВШЭ СПб физика</span>-->
+</aside>
 </body>
 <head>
     <meta charset="UTF-8">
@@ -19,10 +53,10 @@
     {% endif %}{% endcomment %}
 </head>
 <body>
-    {% block body %}{% endblock %}
-    <header class="d-flex justify-content-center py-3">
-      <ul class="nav nav-pills">
-        
+{% block body %}{% endblock %}
+<header class="d-flex justify-content-center py-3">
+    <ul class="nav nav-pills">
+
         {% if user.is_authenticated %}
 
             <li class="nav-item"><a href="{% url 'home' %}" class="nav-link active" aria-current="page">Home</a></li>
@@ -33,15 +67,15 @@
             <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link">Log out</a></li>
 
         {% else %}
-        
+
             <li class="nav-item"><a href="{% url 'login' %}" class="nav-link">Log in</a></li>
 
         {% endif %}
-        
+
         <li class="nav-item"><a href="{% url 'about' %}" class="nav-link">About</a></li>
-        
-        
-      </ul>
-    </header>
+
+
+    </ul>
+</header>
 </body>
 </html>
