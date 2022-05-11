@@ -10,8 +10,8 @@ def show_profile(request, user_id, edit=False):
 
     shown_user = get_object_or_404(EmailUser, id=user_id)
     profile = shown_user.profile
-    print(vars(shown_user))
 
+    src_user = shown_user
     shown_user = shown_user.concretize()
 
     form_class = {models.profiles.Profile.NO_ROLE: EditUserForm,
@@ -25,7 +25,7 @@ def show_profile(request, user_id, edit=False):
     form = form_class(instance=profile)
 
     if edit:
-        if shown_user != request.user:
+        if src_user != request.user:
             raise PermissionDenied("Cannot edit this profile")
 
         if request.method == "POST":
