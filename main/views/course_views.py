@@ -20,7 +20,6 @@ def index(request):
                    'materials': concr_materials})
 
 
-
 def about(request):
     return render(request, 'main/about.html')
 

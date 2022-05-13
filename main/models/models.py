@@ -66,12 +66,13 @@ class Url(Material):
 
 
 class File(Material):
-    file_material = models.FileField(blank=True, null=True, upload_to='files/%Y/%m/%D')
+    file_material = models.FileField(blank=True, null=True, upload_to='documents')
     is_published = models.BooleanField(default=True)
 
     @property
     def view(self):
-        return
+        return Template(f"""<h2>{self.name}</h2>
+    <h2>DOWNLOAD FROM HERE<a href="{self.file_material.url}" download>{self.name}</a></h2>""").render(Context({}))
 
 
 class Video(Material):
