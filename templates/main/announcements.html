@@ -18,10 +18,23 @@
 
         {% for a in viewed_ann %}
             <li> {{a.sender}}: {{a.text}} 
-                <form action="{% url 'remove_announce' ann_id=a.id %}" method=POST>
-                    {% csrf_token %}
-                    <button id="close-btn" type="submit">Close</button>
-                </form>
+
+                {% if a.sender == user %}
+                    <form action="{% url 'remove_announce' ann_id=a.id %}" method=POST>
+                        {% csrf_token %}
+                        <button id="close-btn" type="submit">
+                            Close!
+                        </button>
+                    </form>
+
+                {% else %}
+                    <form action="{% url 'delete_announce' ann_id=a.id %}" method=POST>
+                        {% csrf_token %}
+                        <button id="close-btn" type="submit">
+                            Delete!
+                        </button>
+                    </form>
+                {% endif %}
             </li>
         {% endfor %}
         <a href="{% url 'write_announce'%}">Создать объявление</a>

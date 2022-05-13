@@ -1,5 +1,6 @@
 from django.db import models
 from .models import Group
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 class Profile(models.Model):

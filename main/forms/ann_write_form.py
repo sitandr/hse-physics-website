@@ -11,4 +11,5 @@ class WriteAnnounceForm(forms.ModelForm):
 
 
 class WriteLectorsForm(WriteAnnounceForm):
-    course_number = Profile._meta.get_field('course_number').formfield()
+    course_number = forms.ChoiceField(label='Курс', choices=[(i, i) for i in range(1, 4 + 1)],
+                                      initial=(1))
