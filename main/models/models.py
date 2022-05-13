@@ -66,14 +66,12 @@ class Url(Material):
 
 
 class File(Material):
-    file_material = models.FileField(upload_to='files/%Y/%m/%d')
+    file_material = models.FileField(blank=True, null=True, upload_to='files/%Y/%m/%D')
     is_published = models.BooleanField(default=True)
 
     @property
     def view(self):
-        return Template(f"""<h2>Dummy</h2>""").render(Context({}))
-
-
+        return
 
 
 class Video(Material):
@@ -89,6 +87,9 @@ class Video(Material):
     def view(self):
         return Template(f'''{{% load embed_video_tags %}}
         {{% video material '600x400' %}}''').render(Context({'material': self.video_material}))
+#
+# class Google_Sheet(Material):
+#     pass
 
 
 class Task(models.Model):
