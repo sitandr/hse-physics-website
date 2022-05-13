@@ -40,8 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main',
     'accounts',
-    'widget_tweaks', # add extra template filters; e.g. field|field_type (field from form)
+    'widget_tweaks',  # add extra template filters; e.g. field|field_type (field from form)
     'embed_video'
+
+
 
 ]
 
