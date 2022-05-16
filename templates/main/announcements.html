@@ -4,6 +4,7 @@
 {% endblock %}
 
 {% block body %}
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3.0.0/es5/tex-mml-chtml.js?config=TeX-AMS_HTML"></script>
 
     {% if edit %}
         <form method="post">
@@ -17,9 +18,9 @@
     {% else %}
 
         {% for a in viewed_ann %}
-            <li> {{a.sender}}: {{a.text}} 
+            <li> {{a.sender}}: {{a.html}} 
 
-                {% if a.sender == user %}
+                {% if a.sender.id != user.id %}
                     <form action="{% url 'remove_announce' ann_id=a.id %}" method=POST>
                         {% csrf_token %}
                         <button id="close-btn" type="submit">

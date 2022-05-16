@@ -1,5 +1,7 @@
 from django.db import models
 from . import EmailUser
+import markdown
+from django.template import Template, Context
 
 
 class Announcement(models.Model):
@@ -8,3 +10,7 @@ class Announcement(models.Model):
     receivers = models.ManyToManyField(EmailUser, related_name='recieved_announcements')
 
     text = models.TextField()
+
+    @property
+    def html(self):
+        return Template(markdown.markdown(self.text)).render(Context({}))
