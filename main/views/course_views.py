@@ -3,6 +3,7 @@ from ..models import Task, CoursePage, MaterialMaster, Material, Url, File
 from ..forms import TaskForm, CreateCourseForm
 from django.contrib.auth.decorators import login_required
 
+
 @login_required
 def index(request):
     print(request.user)

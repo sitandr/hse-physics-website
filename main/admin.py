@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import Task, Profile, CoursePage, Material, Url, File, Video
 from .models import EmailUser, StudentUser, LecturerUser
-from .models import Announcement
+from .models import Announcement, MarkdownPage
 
 from django.contrib.auth.admin import UserAdmin
 
@@ -19,3 +19,4 @@ admin.site.register(File)
 
 admin.site.register(Announcement)
 admin.site.register(Video)
+admin.site.register(MarkdownPage)

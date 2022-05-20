@@ -1,0 +1,14 @@
+{% extends 'main/base.html' %}
+{% block title %}
+    Объявления
+{% endblock %}
+
+{% block body %}
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3.0.0/es5/tex-mml-chtml.js?config=TeX-AMS_HTML">
+    </script>
+
+    {{page.html}}
+
+    <a href="{% url 'edit_markdown_page' page.id %}">Редактировать страницу</a>
+
+{% endblock %}
