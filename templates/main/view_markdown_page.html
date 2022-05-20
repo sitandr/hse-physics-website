@@ -4,7 +4,8 @@
 {% endblock %}
 
 {% block body %}
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3.0.0/es5/tex-mml-chtml.js?config=TeX-AMS_HTML">
+    {% load static %}
+    <script type="text/javascript" src="{% static 'main/tex-mml-chtml.js' %}">
     </script>
 
     {{page.html}}
