@@ -2,12 +2,18 @@ body {
     background: #e3eef5;
 }
 
+/* Add a top margin to avoid content overlay */
+
+.main {
+    margin-top: 70px;
+}
+
 .fixed-top-bar  {
     height: 45px;
     -webkit-box-shadow: 5px 0 10px rgba(0, 0, 0, .1);
     box-shadow: 0 0 20px rgba(0, 0, 0, .1);
     background-color: #fff;
-    /*position: fixed;*/
+    position: fixed;
     top: 0;
     right: 0;
     left: 0;
