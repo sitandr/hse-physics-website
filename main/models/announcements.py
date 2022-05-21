@@ -5,22 +5,38 @@ from django.template import Template, Context
 import re
 
 
-markdown_extensions = ['tables', 'sane_lists', 'footnotes', 'nl2br', 'pymdownx.arithmatex']
+markdown_extensions = ['tables', 'sane_lists', 'footnotes', 'nl2br']
 
-DOLLAR_REPLACER = re.compile(r'(?<!\$)\$(?!\$)(.*?)(?<!\$)\$(?!\$)')  # "?" stands for being lazy
+DOLLAR = re.compile(r'(?<!\$)\$(?!\$)(.*?)(?<!\$)\$(?!\$)')  # "?" stands for being lazy
+DOUBLE_DOLLAR = re.compile(r'(?<!\$)\$\$(?!\$)([\S\s]*?)(?<!\$)\$\$(?!\$)', re.MULTILINE)
+
+
+def replace_linear_math(match):
+    text = f'\\({match.group(1)}\\)'
+
+    return escape_math(text)
+
+
+def replace_block_math(match):
+
+    # can't include dollars, otherwise they will be also escaped
+    return '$$' + escape_math(match.group(1)) + '$$'
+
+
+def escape_math(text):
+    # the problem is that markdown needs escaping to these chars, so we replace user's smth with \smth
+    return re.sub(r'[\\\{\}<>\[\]\$_\*]', lambda match: '\\' + match.group(0), text)
 
 
 def generate_html(md_text):
 
-    md_text = md_text.replace(r'\\', r'\\\\')
-    md_text = md_text.replace('\\{', r'\\{').replace('\\}', r'\\}')
-    # the problem is that markdown also uses \ as escaping, so we replace user's \\ with \\\\
-
-    md_text = re.sub(DOLLAR_REPLACER, r'\\\\( \g<1> \\\\)', md_text)
+    md_text = re.sub(DOLLAR, replace_linear_math, md_text)
+    md_text = re.sub(DOUBLE_DOLLAR, replace_block_math, md_text)
 
     print(md_text)
-
-    return Template(markdown.markdown(md_text, extensions=markdown_extensions)).render(Context({}))
+    md_text = markdown.markdown(md_text, extensions=markdown_extensions)
+    print(md_text)
+    return Template(md_text).render(Context({}))
 
 
 class Announcement(models.Model):

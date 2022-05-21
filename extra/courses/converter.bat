@@ -1,3 +1,3 @@
-python -c "f=open('file.html','r',encoding='utf-8');t=f.read();f=open('file2.html','w',encoding='utf-8');f.write(t.replace('<math>',' $ ').replace('</math>', ' $ '))"
+python -c "f=open('file.html','r',encoding='utf-8');t=f.read();f=open('file2.html','w',encoding='utf-8');f.write(t.replace('<math>','<code>').replace('</math>', '</code>'))"
 pandoc file2.html --to markdown-bracketed_spans+hard_line_breaks -o file.md --wrap=none
-python -c "import re;f=open('file.md','r',encoding='utf-8');t=f.read();f=open('out.md','w',encoding='utf-8'); t=re.sub(r'\\([<>\[\]$^_*])','\\g<1>',t).replace(r'\\','\\').replace('\\mathrm','\\rm').replace('---', chr(8212)) .replace('\\!', ' ').replace('_', '\\_').replace('</span>', '**');t=re.sub(r'<span .*?>', '**', t);f.write(t)"
+python -c "import re;f=open('file.md','r',encoding='utf-8');t=f.read();f=open('out.md','w',encoding='utf-8'); t=t.replace('`', ' $ ').replace('\\mathrm','\\rm').replace('---', chr(8212)).replace('</span>', '**');t=re.sub(r'<span .*?>', '**', t);f.write(t)"
