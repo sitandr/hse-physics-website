@@ -6,19 +6,19 @@
 
 -   Пр.-во билинейных форм:  $ \rm{Bi}(V) $ . Примеры билин. форм:  $ (v,w)\mapsto v^{\scriptscriptstyle\mathsf T}\!\cdot s\cdot w $  ( $ V=K^n $ ,  $ s\in\rm{Mat}(n,K) $ ),  $ (f,g)\mapsto\!\int_\alpha^\beta\!\!sfg $  ( $ V=\rm C^0\!([\alpha;\beta],\mathbb R) $ ,  $ s\in V $ ).
 
--   Поля с инволюцией. Пространство  $ \overline V $ :  $ c\overline\cdot v=\overline c\,v $ . Пространство ¯-билинейн. форм (полуторалинейных форм, если  $ \overline{\phantom c}\ne\rm{id}_K $ ):  $ \overline\rm{Bi}(V)=\rm{Bi}(V,\overline V,K) $ .
+-   Поля с инволюцией. Пространство  $ \overline V $ :  $ c\overline\cdot v=\overline c\,v $ . Пространство ¯-билинейн. форм (полуторалинейных форм, если  $ \overline{\phantom c}\ne\rm{id}_K $ ):  $ \rm{\overline{Bi}}(V)=\rm{Bi}(V,\overline V,K) $ .
 
 -   Матрица Грама формы  $ \sigma $ :  $ {(\sigma_{e,e})}_{j_1,j_2}\!=\sigma(e_{j_1}\!,e_{j_2}) $ . Обобщенная матрица Грама:  $ (\sigma_{(v_1,\ldots,v_m),(w_1,\ldots,w_m)})_{j_1,j_2}\!=\sigma(v_{j_1}\!,w_{j_2}) $ . Теорема о матрице Грама.
 
-    **Теорема о матрице Грама.** *Пусть  $ K $  — поле с инволюцией,  $ V $  — векторное простр.-во над  $ K $ ,  $ n=\dim V<\infty $ ,  $ \sigma\in\overline\rm{Bi}(V) $  и  $ e\in\rm{OB}(V) $ ; тогда
+    **Теорема о матрице Грама.** *Пусть  $ K $  — поле с инволюцией,  $ V $  — векторное простр.-во над  $ K $ ,  $ n=\dim V<\infty $ ,  $ \sigma\in\rm{\overline{Bi}}(V) $  и  $ e\in\rm{OB}(V) $ ; тогда
     (1) для любых  $ v,w\in V $  выполнено  $ \sigma(v,w)=(v^e)^{\scriptscriptstyle\mathsf T}\!\cdot\sigma_{e,e}\!\cdot\overline{w^e}=\sum_{j_1=1}^n\sum_{j_2=1}^n\sigma_{j_1,j_2}v^{j_1}\overline{w^{j_2}} $  (координаты вычисляются относительно  $ e $ );
     (2) для любых  $ m\in\mathbb N_0 $  и  $ v_1,\ldots,v_m,w_1,\ldots,w_m\in V $  выполнено  $ \sigma_{(v_1,\ldots,v_m),(w_1,\ldots,w_m)}\!=\bigl(v_1^e\;\ldots\;v_m^e\bigr)^{\scriptscriptstyle\mathsf T}\!\cdot\sigma_{e,e}\!\cdot\overline{\bigl(w_1^e\;\ldots\;w_m^e\bigr)} $ .*
 
--   Изоморфизм вект. пр.-в  $ \biggl(\!\begin{align}\overline\rm{Bi}(V)&\to\rm{Mat}(n,K)\\\sigma&\mapsto\sigma_{e,e}\end{align}\!\biggr) $ . Преобразования при замене базиса:  $ \sigma_{\tilde e,\tilde e}=(\rm c_\tilde e^e)^{\scriptscriptstyle\mathsf T}\!\cdot\sigma_{e,e}\!\cdot\overline{\rm c_\tilde e^e} $  и  $ \sigma_{\tilde{j_1},\tilde{j_2}}\!=\sum_{l_1=1}^n\sum_{l_2=1}^n(e_\tilde{j_1})^{l_1}\overline{(e_\tilde{j_2})^{l_2}}\,\sigma_{l_1,l_2} $ .
+-   Изоморфизм вект. пр.-в  $ \biggl(\!\begin{align}\rm{\overline{Bi}}(V)&\to\rm{Mat}(n,K)\\\sigma&\mapsto\sigma_{e,e}\end{align}\!\biggr) $ . Преобразования при замене базиса:  $ \sigma_{\tilde e,\tilde e}=(\rm c_\tilde e^e)^{\scriptscriptstyle\mathsf T}\!\cdot\sigma_{e,e}\!\cdot\overline{\rm c_\tilde e^e} $  и  $ \sigma_{\tilde{j_1},\tilde{j_2}}\!=\sum_{l_1=1}^n\sum_{l_2=1}^n(e_\tilde{j_1})^{l_1}\overline{(e_\tilde{j_2})^{l_2}}\,\sigma_{l_1,l_2} $ .
 
--   Простр.-ва ¯-симметричных форм и матриц:  $ \overline\rm{SBi}(V)=\{\sigma\in\overline\rm{Bi}(V)\mid\forall\,v,w\in V\;\bigl(\sigma(w,v)=\overline{\sigma(v,w)}\bigr)\} $  и  $ \overline\rm S\rm{Mat}(n,K)=\{s\in\rm{Mat}(n,K)\mid s^{\scriptscriptstyle\mathsf T}\!=\overline s\} $ .
+-   Простр.-ва ¯-симметричных форм и матриц:  $ \rm{\overline{SBi}}(V)=\{\sigma\in\rm{\overline{Bi}}(V)\mid\forall\,v,w\in V\;\bigl(\sigma(w,v)=\overline{\sigma(v,w)}\bigr)\} $  и  $ \rm{\overline S}\rm{Mat}(n,K)=\{s\in\rm{Mat}(n,K)\mid s^{\scriptscriptstyle\mathsf T}\!=\overline s\} $ .
 
--   Пр.-ва ¯-антисимметр. форм и матриц:  $ \overline\rm{ABi}(V)=\{\sigma\in\overline\rm{Bi}(V)\mid\forall\,v,w\in V\;\bigl(\sigma(w,v)=-\overline{\sigma(v,w)}\bigr)\} $  и  $ \overline\rm A\rm{Mat}(n,K)=\{s\in\rm{Mat}(n,K)\mid s^{\scriptscriptstyle\mathsf T}\!=-\overline s\} $ .
+-   Пр.-ва ¯-антисимметр. форм и матриц:  $ \rm{\overline{ABi}}(V)=\{\sigma\in\rm{\overline{Bi}}(V)\mid\forall\,v,w\in V\;\bigl(\sigma(w,v)=-\overline{\sigma(v,w)}\bigr)\} $  и  $ \rm{\overline A}\rm{Mat}(n,K)=\{s\in\rm{Mat}(n,K)\mid s^{\scriptscriptstyle\mathsf T}\!=-\overline s\} $ .
 
 -   Гомоморфизмы между простр.-вами с ¯-билинейной формой:  $ \rm{Hom}((V,\sigma),(Y,\varphi))=\{a\in\rm{Hom}(V,Y)\mid\forall\,v,w\in V\;\bigl(\sigma(v,w)=\varphi(a(v),a(w))\bigr)\} $ .
 
@@ -33,9 +33,9 @@
      $ \rm{pol}_\kappa $  — симметричная билинейная форма (то есть  $ \rm{pol}_\kappa\!\in\rm{SBi}(V) $ ), а также  $ \forall\,v\in V\;\bigl(\rm{pol}_\kappa(v,v)=\kappa(v)\bigr) $ ;
     (2) линейные операторы  $ \biggl(\!\begin{align}\rm{SBi}(V)&\to\rm{Quad}(V)\\\sigma&\mapsto\bigl(v\mapsto\sigma(v,v)\bigr)\!\end{align}\!\biggr) $  и  $ \biggl(\!\begin{align}\rm{Quad}(V)&\to\rm{SBi}(V)\\\kappa&\mapsto\rm{pol}_\kappa\end{align}\!\biggr) $  — взаимно обратные изоморфизмы векторных пространств.*
 -   **Теорема о поляризации ¯-квадратичных форм над полем **C**.** *Пусть  $ V $  — векторное пространство над  $ \,\mathbb C $ ; тогда
-    (1) для любых  $ \kappa\in\overline\rm{Quad}(V) $ , обозначая через  $ \,\rm{pol}_\kappa $  отображение  $ \biggl(\!\begin{align}V\times V&\to\mathbb C\\(v,w)&\mapsto\bigl(\kappa(v+w)+\rm i\,\kappa(v+\rm i\,w)-\kappa(v-w)-\rm i\,\kappa(v-\rm i\,w)\bigr)/4\end{align}\!\biggr) $ , имеем
-    следующие факты:  $ \rm{pol}_\kappa $  — полуторалинейная форма (то есть  $ \rm{pol}_\kappa\!\in\overline\rm{Bi}(V) $ ), а также  $ \forall\,v\in V\;\bigl(\rm{pol}_\kappa(v,v)=\kappa(v)\bigr) $ ;
-    (2) линейные операторы  $ \biggl(\!\begin{align}\overline{\rm{Bi}}(V)&\to\overline{\rm{Quad}}(V)\\\sigma&\mapsto\bigl(v\mapsto\sigma(v,v)\bigr)\!\end{align}\!\biggr) $  и  $ \biggl(\!\begin{align}\overline\rm{Quad}(V)&\to\overline\rm{Bi}(V)\\\kappa&\mapsto\rm{pol}_\kappa\end{align}\!\biggr) $  — взаимно обратные изоморфизмы векторных пространств.*
+    (1) для любых  $ \kappa\in\rm{\overline{Quad}}(V) $ , обозначая через  $ \,\rm{pol}_\kappa $  отображение  $ \biggl(\!\begin{align}V\times V&\to\mathbb C\\(v,w)&\mapsto\bigl(\kappa(v+w)+\rm i\,\kappa(v+\rm i\,w)-\kappa(v-w)-\rm i\,\kappa(v-\rm i\,w)\bigr)/4\end{align}\!\biggr) $ , имеем
+    следующие факты:  $ \rm{pol}_\kappa $  — полуторалинейная форма (то есть  $ \rm{pol}_\kappa\!\in\rm{\overline{Bi}}(V) $ ), а также  $ \forall\,v\in V\;\bigl(\rm{pol}_\kappa(v,v)=\kappa(v)\bigr) $ ;
+    (2) линейные операторы  $ \biggl(\!\begin{align}\overline{\rm{Bi}}(V)&\to\overline{\rm{Quad}}(V)\\\sigma&\mapsto\bigl(v\mapsto\sigma(v,v)\bigr)\!\end{align}\!\biggr) $  и  $ \biggl(\!\begin{align}\rm{\overline{Quad}}(V)&\to\rm{\overline{Bi}}(V)\\\kappa&\mapsto\rm{pol}_\kappa\end{align}\!\biggr) $  — взаимно обратные изоморфизмы векторных пространств.*
 -   Гиперповерхность втор. порядка (аффинная квадрика) в  $ V $ : мн.-во вида  $ \{v\in V\mid\kappa(v)+2\,\lambda(v)+c=0\} $ , где  $ \kappa\in\rm{Quad}(V)\!\setminus\!\{0\} $ ,  $ \lambda\in V^* $  и  $ c\in K $ .
 -   Примеры аффинных квадрик. Утверждение: *пусть  $ s\in\rm{Mat}(n,K) $ ,  $ \lambda\in K_n $ ,  $ c\in K $  и  $ v\in K^n $ ; тогда  $ \,v^{\scriptscriptstyle\mathsf T}\!\cdot s\cdot v+2\,\lambda\cdot v+c=\Bigl(\begin{smallmatrix}v\\1\end{smallmatrix}\Bigr)^{\!\scriptscriptstyle\mathsf T}\!\!\cdot\!\Bigl(\begin{smallmatrix}s&\lambda^{\scriptscriptstyle\mathsf T}\\\lambda&c\end{smallmatrix}\Bigr)\!\cdot\!\Bigl(\begin{smallmatrix}v\\1\end{smallmatrix}\Bigr) $ *.
 
@@ -46,10 +46,10 @@
 -   Топологическая невырожденность ( $ K=\mathbb R $  или  $ K=\mathbb C $ ,  $ V $  — нормир. пр.-во,  $ \sigma\in\overline{\rm{Bi}}(V)\cap\rm C^0\!(V\times V,K) $ ):  $ \biggl(\!\begin{align}\flat_\sigma\colon V&\to\overline V^*\!\!\cap\rm C^0\!(V,K)\\v&\mapsto\bigl(w\mapsto\sigma(v,w)\bigr)\!\end{align}\!\biggr) $  — биекция.
 -   Пример:  $ K=\mathbb R $  или  $ K=\mathbb C $ ,  $ V=\ell^2_K=\bigl\{f\in\rm{Func}(\mathbb N,K)\mid\sum_{n=1}^\infty|f_i|^2\!<\infty\bigr\} $  и  $ \sigma\,\colon(f,g)\mapsto\sum_{i=1}^\infty f_i\overline{g_i} $ ; тогда  $ \sigma $  топологически невырожд. (без док.-ва).
 -   Оператор диез (подъем индекса):  $ \sharp^\sigma\!=\flat_\sigma^{-1} $  ( $ \sigma $  невырождена). Подъем индекса в коорд. ( $ \sigma^{e,e}=(\sigma_{e,e}^{-1})^{\scriptscriptstyle\mathsf T} $ ):  $ (\sharp^\sigma\lambda)^e=\sigma^{e,e}\!\cdot(\lambda_e)^{\scriptscriptstyle\mathsf T} $  и  $ (\sharp^\sigma\lambda)^i=\sum_{j=1}^n\sigma^{i,j}\,\lambda_j $ .
--   **Теорема о базисах и невырожденных формах.** *Пусть  $ K $  — поле с инволюцией,  $ V $  — вект. простр.-во над  $ K $ ,  $ \sigma\in\overline\rm{Bi}(V) $ ,  $ m\in\mathbb N_0 $ ,  $ v_1,\ldots,v_m\in V $  и
+-   **Теорема о базисах и невырожденных формах.** *Пусть  $ K $  — поле с инволюцией,  $ V $  — вект. простр.-во над  $ K $ ,  $ \sigma\in\rm{\overline{Bi}}(V) $ ,  $ m\in\mathbb N_0 $ ,  $ v_1,\ldots,v_m\in V $  и
      $ U=\langle v_1,\ldots,v_m\rangle $ ; тогда  $ \sigma_{(v_1,\ldots,v_m),(v_1,\ldots,v_m)}\!\in\rm{GL}(m,K) $ , если и только если  $ (v_1,\ldots,v_m)\in\rm{OB}(U) $  и форма  $ \sigma|_{U\times U} $  невырождена.*
--   Ортогональные векторы ( $ \sigma\in\overline\rm{SBi}(V)\cup\overline\rm{ABi}(V) $ ):  $ v\perp w\,\Leftrightarrow\,\sigma(v,w)=0\,\Leftrightarrow\,\sigma(w,v)=0 $ . Ортогональн. дополнение:  $ U^\perp\!=\{v\in V\mid U\perp v\}\le V $ .
--   **Теорема об ортогональном дополнении.** *Пусть  $ K $  — поле с инволюцией,  $ V $  — вект. простр.-во над  $ K $ ,  $ \sigma\in\overline\rm{SBi}(V)\cup\overline\rm{ABi}(V) $  и  $ U,W\le V $ ; тогда
+-   Ортогональные векторы ( $ \sigma\in\rm{\overline{SBi}}(V)\cup\rm{\overline{ABi}}(V) $ ):  $ v\perp w\,\Leftrightarrow\,\sigma(v,w)=0\,\Leftrightarrow\,\sigma(w,v)=0 $ . Ортогональн. дополнение:  $ U^\perp\!=\{v\in V\mid U\perp v\}\le V $ .
+-   **Теорема об ортогональном дополнении.** *Пусть  $ K $  — поле с инволюцией,  $ V $  — вект. простр.-во над  $ K $ ,  $ \sigma\in\rm{\overline{SBi}}(V)\cup\rm{\overline{ABi}}(V) $  и  $ U,W\le V $ ; тогда
     (1)  $ U\subseteq U^{\perp\perp} $ ,  $ U\subseteq W\,\Rightarrow\,W^\perp\!\subseteq U^\perp $ ,  $ (U+W)^\perp\!=U^\perp\!\cap W^\perp $  и  $ \,U^\perp\!+W^\perp\!\subseteq(U\cap W)^\perp $ ;
     (2) если  $ \dim V<\infty $  и форма  $ \sigma $  невырождена, то  $ \dim U^\perp\!=\dim V-\dim U $ , а также  $ U=U^{\perp\perp} $  и  $ \,U^\perp\!+W^\perp\!=(U\cap W)^\perp $ ;
     (3)  $ \rm{Ker}\bigl(\flat_{\sigma|_{U\times U}}\!\bigr)\!=U\cap U^\perp $  и, если  $ \dim U<\infty $ , то  $ \bigl( $ форма  $ \sigma|_{U\times U} $  невырождена $ \bigr) $  $ \;\Leftrightarrow\;\, $  $ U\cap U^\perp\!=\{0\} $ ;
@@ -61,25 +61,25 @@
 
 -   Ортонормированный базис ( $ K=\mathbb R $  или  $ K=\mathbb C $ ):  $ e\in\rm{OnOB}(V,\sigma) $  $ \;\Leftrightarrow\; $  $ \bigl( $  $ \sigma_{e,e} $  — диагональная матрица с  $ 1,\ldots,1,-1,\ldots,-1,0,\ldots,0 $  на диагонали $ \bigr) $ .
 
--   **Лемма о неизотропном векторе.** *Пусть  $ K $  — поле с инволюцией,  $ \rm{char}\,K\ne2 $ ,  $ V $  — вект. пр. над  $ K $  и  $ \sigma\in\overline\rm{SBi}(V)\!\setminus\!\{0\} $ ; тогда  $ \exists\,v\in V\;\bigl(\sigma(v,v)\ne0\bigr) $ .*
+-   **Лемма о неизотропном векторе.** *Пусть  $ K $  — поле с инволюцией,  $ \rm{char}\,K\ne2 $ ,  $ V $  — вект. пр. над  $ K $  и  $ \sigma\in\rm{\overline{SBi}}(V)\!\setminus\!\{0\} $ ; тогда  $ \exists\,v\in V\;\bigl(\sigma(v,v)\ne0\bigr) $ .*
 
 -   Теорема Лагранжа. Матричная формулировка теоремы Лагранжа. Алгоритм приведения квадратичной формы к сумме квадратов с коэффициентами.
 
-    **Теорема Лагранжа.** *Пусть  $ K $  — поле с инволюцией,  $ \rm{char}\,K\ne2 $ ,  $ V $  — векторное пространство над  $ K $ ,  $ \dim V<\infty $  и  $ \sigma\in\overline\rm{SBi}(V) $ ; тогда
+    **Теорема Лагранжа.** *Пусть  $ K $  — поле с инволюцией,  $ \rm{char}\,K\ne2 $ ,  $ V $  — векторное пространство над  $ K $ ,  $ \dim V<\infty $  и  $ \sigma\in\rm{\overline{SBi}}(V) $ ; тогда
     (1) в пространстве  $ V $  существует ортогональный базис (то есть  $ \rm{OOB}(V,\sigma)\ne\varnothing $ );
     (2) если  $ K=\mathbb R $  или  $ K=\mathbb C $ , то в пространстве  $ V $  существует ортонормированный базис (то есть  $ \rm{OnOB}(V,\sigma)\ne\varnothing $ ).*
 
-    **Матричная формулировка теоремы Лагранжа.** *Пусть  $ K $  — поле с инволюцией,  $ \rm{char}\,K\ne2 $ ,  $ n\in\mathbb N_0 $  и  $ s\in\overline\rm S\rm{Mat}(n,K) $ ; тогда
+    **Матричная формулировка теоремы Лагранжа.** *Пусть  $ K $  — поле с инволюцией,  $ \rm{char}\,K\ne2 $ ,  $ n\in\mathbb N_0 $  и  $ s\in\rm{\overline S}\rm{Mat}(n,K) $ ; тогда
     (1) существует такая матрица  $ g\in\rm{GL}(n,K) $ , что  $ g^{\scriptscriptstyle\mathsf T}\!\cdot s\cdot\overline g $  — диагональная матрица;
     (2) если  $ K=\mathbb R $  или  $ K=\mathbb C $ , то сущ.-т такая матрица  $ g\in\rm{GL}(n,K) $ , что  $ g^{\scriptscriptstyle\mathsf T}\!\cdot s\cdot\overline g $  — диаг. матрица с  $ 1,\ldots,1,-1,\ldots,-1,0,\ldots,0 $  на диагонали.*
 
--   **Лемма об ортогональном проекторе.** *Пусть  $ K $  — поле с инволюцией,  $ V $  — вект. пр.-во над  $ K $ ,  $ \sigma\in\overline\rm{SBi}(V) $ ,  $ U\le V $ ,  $ m=\dim U<\infty $ ,  $ e\in\rm{OB}(U) $ ,
+-   **Лемма об ортогональном проекторе.** *Пусть  $ K $  — поле с инволюцией,  $ V $  — вект. пр.-во над  $ K $ ,  $ \sigma\in\rm{\overline{SBi}}(V) $ ,  $ U\le V $ ,  $ m=\dim U<\infty $ ,  $ e\in\rm{OB}(U) $ ,
     форма  $ \sigma|_{U\times U} $  невырождена и  $ v\in V $ ; тогда  $ \rm{proj}_U(v)^e=(\sigma|_{U\times U})^{e,e}\!\cdot\!\biggl(\begin{smallmatrix}\sigma(v,e_1)\\\vdots\\\sigma(v,e_m)\end{smallmatrix}\biggr) $  и, если  $ e\in\rm{OOB}(U,\sigma|_{U\times U}) $ , то  $ \rm{proj}_U(v)=\sum_{i=1}^m\frac{\sigma(v,e_i)}{\sigma(e_i,e_i)}\,e_i $ *.
 
--   **Лемма об определителе матрицы Грама.** *Пусть  $ K $  — поле с инволюцией,  $ V $  — векторное простр.-во над  $ K $ ,  $ \sigma\in\overline\rm{SBi}(V) $ ,  $ m\in\mathbb N $ ,  $ v_1,\ldots,v_m\in V $ ,
+-   **Лемма об определителе матрицы Грама.** *Пусть  $ K $  — поле с инволюцией,  $ V $  — векторное простр.-во над  $ K $ ,  $ \sigma\in\rm{\overline{SBi}}(V) $ ,  $ m\in\mathbb N $ ,  $ v_1,\ldots,v_m\in V $ ,
      $ U=\langle v_1,\ldots,v_{m-1}\rangle $ , форма  $ \sigma|_{U\times U} $  невырождена и  $ \hat v_m=v_m-\rm{proj}_U(v_m) $ ; тогда  $ \det\sigma_{(v_1,\ldots,v_m),(v_1,\ldots,v_m)}=\det\sigma_{(v_1,\ldots,v_{m-1}),(v_1,\ldots,v_{m-1})}\cdot\sigma(\hat v_m,\hat v_m) $ .*
 
--   **Процесс ортогонализации Грама--Шмидта.** *Пусть  $ K $  — поле с инволюцией,  $ V $  — векторное пространство над  $ K $ ,  $ n=\dim V<\infty $ ,  $ \sigma\in\overline\rm{SBi}(V) $  и
+-   **Процесс ортогонализации Грама--Шмидта.** *Пусть  $ K $  — поле с инволюцией,  $ V $  — векторное пространство над  $ K $ ,  $ n=\dim V<\infty $ ,  $ \sigma\in\rm{\overline{SBi}}(V) $  и
      $ e\in\rm{OB}(V) $ ; для любых  $ i\in\{0,\ldots,n\} $  обозначим через  $ V_i $  пространство  $ \langle e_1,\ldots,e_i\rangle $  и обозначим через  $ cm_i $   $ i $ -й угловой минор матрицы  $ \sigma_{e,e} $  (то
     есть  $ cm_i=\det\sigma_{(e_1,\ldots,e_i),(e_1,\ldots,e_i)} $ ). Пусть для любых  $ i\in\{1,\ldots,n-1\} $  форма  $ \sigma|_{V_i\times V_i} $  невырождена (это эквивалентно тому, что  $ cm_i\ne0 $ ); для
     любых  $ i\in\{1,\ldots,n\} $  обозначим через  $ \hat e_i $  вектор  $ e_i-\rm{proj}_{V_{i-1}}(e_i) $ . Тогда для любых  $ i\in\{1,\ldots,n\} $  выполнено  $ (\hat e_1,\dots,\hat e_i)\in\rm{OOB}(V_i,\sigma|_{V_i\times V_i}) $  и
@@ -91,23 +91,23 @@
 
 ##### 7.1  Положительно и отрицательно определенные формы и сигнатура формы
 
--   Мн.-ва положительно и отрицательно определенных форм:  $ \overline\rm{SBi}_{>0}(V)=\{\sigma\in\overline\rm{SBi}(V)\mid\forall\,v\in V\!\setminus\!\{0\}\;\bigl(\sigma(v,v)>0\bigr)\} $  и  $ \overline\rm{SBi}_{<0}(V)=-\overline\rm{SBi}_{>0}(V) $ .
--   Мн.-ва полож. и отриц. опред. матриц:  $ \overline\rm S\rm{Mat}_{>0}(n,K)=\{s\in\overline\rm S\rm{Mat}(n,K)\mid\forall\,v\in K^n\!\setminus\!\{0\}\;\bigl(v^{\scriptscriptstyle\mathsf T}\!\cdot s\cdot\overline v>0\bigr)\} $  и  $ \overline\rm S\rm{Mat}_{<0}(n,K)=-\overline\rm S\rm{Mat}_{>0}(n,K){} $ .
--   **Следствия из теоремы об ортогональном дополнении и теоремы Лагранжа.** *Пусть  $ K=\mathbb R $  или  $ K=\mathbb C $ ,  $ V $  — вект. пр.-во над  $ K $  и  $ \sigma\in\overline\rm{Bi}(V) $ ; тогда
-    (1) если  $ \sigma\in\overline\rm{SBi}_{>0}(V) $  и  $ U\le V $ , то  $ U\cap U^\perp\!=\{0\} $  и, если  $ \dim U<\infty $ , то форма  $ \sigma|_{U\times U} $  невырождена и  $ V=U\oplus U^\perp $ ;
-    (2) если  $ n=\dim V<\infty $ , то  $ \sigma\in\overline\rm{SBi}_{>0}(V) $ , если и только если  $ \exists\,e\in\rm{OB}(V)\;\bigl(\sigma_{e,e}=\rm{id}_n\bigr) $ ;
-    (3) если  $ n=\dim V<\infty $  и  $ e\in\rm{OB}(V) $ , то  $ \sigma\in\overline\rm{SBi}_{>0}(V) $ , если и только если  $ \exists\,g\in\rm{GL}(n,K)\;\bigl(\sigma_{e,e}=g^{\scriptscriptstyle\mathsf T}\!\cdot\overline g\bigr) $ .*
--   **Критерий Сильвестра.** *Пусть  $ K=\mathbb R $  или  $ K=\mathbb C $ ,  $ V $  — векторное пространство над  $ K $ ,  $ n=\dim V<\infty $ ,  $ \sigma\in\overline\rm{SBi}(V) $  и  $ e\in\rm{OB}(V) $ ; для любых
+-   Мн.-ва положительно и отрицательно определенных форм:  $ \rm{\overline{SBi}}_{>0}(V)=\{\sigma\in\rm{\overline{SBi}}(V)\mid\forall\,v\in V\!\setminus\!\{0\}\;\bigl(\sigma(v,v)>0\bigr)\} $  и  $ \rm{\overline{SBi}}_{<0}(V)=-\rm{\overline{SBi}}_{>0}(V) $ .
+-   Мн.-ва полож. и отриц. опред. матриц:  $ \rm{\overline S}\rm{Mat}_{>0}(n,K)=\{s\in\rm{\overline S}\rm{Mat}(n,K)\mid\forall\,v\in K^n\!\setminus\!\{0\}\;\bigl(v^{\scriptscriptstyle\mathsf T}\!\cdot s\cdot\overline v>0\bigr)\} $  и  $ \rm{\overline S}\rm{Mat}_{<0}(n,K)=-\rm{\overline S}\rm{Mat}_{>0}(n,K){} $ .
+-   **Следствия из теоремы об ортогональном дополнении и теоремы Лагранжа.** *Пусть  $ K=\mathbb R $  или  $ K=\mathbb C $ ,  $ V $  — вект. пр.-во над  $ K $  и  $ \sigma\in\rm{\overline{Bi}}(V) $ ; тогда
+    (1) если  $ \sigma\in\rm{\overline{SBi}}_{>0}(V) $  и  $ U\le V $ , то  $ U\cap U^\perp\!=\{0\} $  и, если  $ \dim U<\infty $ , то форма  $ \sigma|_{U\times U} $  невырождена и  $ V=U\oplus U^\perp $ ;
+    (2) если  $ n=\dim V<\infty $ , то  $ \sigma\in\rm{\overline{SBi}}_{>0}(V) $ , если и только если  $ \exists\,e\in\rm{OB}(V)\;\bigl(\sigma_{e,e}=\rm{id}_n\bigr) $ ;
+    (3) если  $ n=\dim V<\infty $  и  $ e\in\rm{OB}(V) $ , то  $ \sigma\in\rm{\overline{SBi}}_{>0}(V) $ , если и только если  $ \exists\,g\in\rm{GL}(n,K)\;\bigl(\sigma_{e,e}=g^{\scriptscriptstyle\mathsf T}\!\cdot\overline g\bigr) $ .*
+-   **Критерий Сильвестра.** *Пусть  $ K=\mathbb R $  или  $ K=\mathbb C $ ,  $ V $  — векторное пространство над  $ K $ ,  $ n=\dim V<\infty $ ,  $ \sigma\in\rm{\overline{SBi}}(V) $  и  $ e\in\rm{OB}(V) $ ; для любых
      $ i\in\{1,\ldots,n\} $  обозначим через  $ cm_i $   $ i $ -й угловой минор матрицы  $ \sigma_{e,e} $  (то есть  $ cm_i=\det\sigma_{(e_1,\ldots,e_i),(e_1,\ldots,e_i)} $ ); тогда
-    (1)  $ \sigma\in\overline\rm{SBi}_{>0}(V) $ , если и только если  $ \forall\,i\in\{1,\ldots,n\}\;\bigl(cm_i>0\bigr) $ ;
-    (2)  $ \sigma\in\overline\rm{SBi}_{<0}(V) $ , если и только если  $ \forall\,i\in\{1,\ldots,n\}\;\bigl((-1)^i\,cm_i>0\bigr) $ .*
+    (1)  $ \sigma\in\rm{\overline{SBi}}_{>0}(V) $ , если и только если  $ \forall\,i\in\{1,\ldots,n\}\;\bigl(cm_i>0\bigr) $ ;
+    (2)  $ \sigma\in\rm{\overline{SBi}}_{<0}(V) $ , если и только если  $ \forall\,i\in\{1,\ldots,n\}\;\bigl((-1)^i\,cm_i>0\bigr) $ .*
 -   Индексы инерции формы  $ \sigma $ :  $ \rm{ind}_{>0}(\sigma)=\max\{\dim U\mid U\le V\,\land\,\sigma|_{U\times U}\!\in\overline{\rm{SBi}}_{>0}(U)\} $  и  $ \rm{ind}_{<0}(\sigma)=\max\{\dim U\mid U\le V\,\land\,\sigma|_{U\times U}\!\in\overline{\rm{SBi}}_{<0}(U)\} $ .
--   **Закон инерции Сильвестра.** *Пусть  $ K=\mathbb R $  или  $ K=\mathbb C $ ,  $ V $  — векторное простр.-во над  $ K $ ,  $ n=\dim V<\infty $ ,  $ \sigma\in\overline\rm{SBi}(V) $  и  $ e\in\rm{OOB}(V,\sigma) $ ; тогда
+-   **Закон инерции Сильвестра.** *Пусть  $ K=\mathbb R $  или  $ K=\mathbb C $ ,  $ V $  — векторное простр.-во над  $ K $ ,  $ n=\dim V<\infty $ ,  $ \sigma\in\rm{\overline{SBi}}(V) $  и  $ e\in\rm{OOB}(V,\sigma) $ ; тогда
     (1)  $ \rm{ind}_{>0}(\sigma)=|\{i\in\{1,\ldots,n\}\mid\sigma(e_i,e_i)>0\}| $  (и, значит, число  $ |\{i\in\{1,\ldots,n\}\mid\sigma(e_i,e_i)>0\}| $  не зависит от  $ e $ );
     (2)  $ \rm{ind}_{<0}(\sigma)=|\{i\in\{1,\ldots,n\}\mid\sigma(e_i,e_i)<0\}| $  (и, значит, число  $ |\{i\in\{1,\ldots,n\}\mid\sigma(e_i,e_i)<0\}| $  не зависит от  $ e $ );
     (3)  $ \rm{ind}_{>0}(\sigma)+\rm{ind}_{<0}(\sigma)=\rm{rk}(\sigma) $ .*
--   **Теорема о классификации пространств с формой.** *Пусть  $ K=\mathbb R $  или  $ K=\mathbb C $ ,  $ V,Y $  — вект. простр.-ва над  $ K $ ,  $ \dim V,\dim Y<\infty $ ,  $ \sigma\in\overline\rm{SBi}(V) $  и
-     $ \varphi\in\overline\rm{SBi}(Y) $ ; тогда  $ (V,\sigma)\cong(Y,\varphi) $ , если и только если  $ \dim V=\dim Y $ ,  $ \rm{ind}_{>0}(\sigma)=\rm{ind}_{>0}(\varphi) $  и  $ \rm{ind}_{<0}(\sigma)=\rm{ind}_{<0}(\varphi) $ .*
+-   **Теорема о классификации пространств с формой.** *Пусть  $ K=\mathbb R $  или  $ K=\mathbb C $ ,  $ V,Y $  — вект. простр.-ва над  $ K $ ,  $ \dim V,\dim Y<\infty $ ,  $ \sigma\in\rm{\overline{SBi}}(V) $  и
+     $ \varphi\in\rm{\overline{SBi}}(Y) $ ; тогда  $ (V,\sigma)\cong(Y,\varphi) $ , если и только если  $ \dim V=\dim Y $ ,  $ \rm{ind}_{>0}(\sigma)=\rm{ind}_{>0}(\varphi) $  и  $ \rm{ind}_{<0}(\sigma)=\rm{ind}_{<0}(\varphi) $ .*
 -   Сигнатура формы  $ \sigma $ :  $ (\rm{ind}_{>0}(\sigma),\rm{ind}_{<0}(\sigma)) $  (или  $ \rm{ind}_{>0}(\sigma)-\rm{ind}_{<0}(\sigma) $ ). Исследование кривых и поверхностей второго порядка (см. § 2 главы VIII в \[1\]).
 
 ##### 7.2  Предгильбертовы пространства
@@ -173,10 +173,10 @@
 ##### 7.4  Автоморфизмы пространств с формой, ортогональные и унитарные операторы и матрицы
 
 -   Группа автоморфизмов пр.-ва с ¯-билинейной формой:  $ \rm{Aut}(V,\sigma)=\rm{Iso}((V,\sigma),(V,\sigma))=\{a\in\rm{GL}(V)\mid\forall\,v,w\in V\;\bigl(\sigma(a(v),a(w))=\sigma(v,w)\bigr)\} $ .
--   Утверждение: *пусть  $ \rm{char}\,K\ne2 $  и  $ \sigma\in\rm{SBi}(V) $ , или  $ K=\mathbb C $  и  $ \sigma\in\overline\rm{Bi}(V) $ ; тогда  $ \,\rm{Aut}(V,\sigma)=\{a\in\rm{GL}(V)\mid\forall\,v\in V\;\bigl(\sigma(a(v),a(v))=\sigma(v,v)\bigr)\} $ *.
--   Ортогональная группа ( $ V $  — в. пр. над  $ \mathbb R $ ,  $ \sigma\in\rm{SBi}(V) $ ):  $ \rm O(V)=\rm{Aut}(V,\sigma) $ . Унитарная группа ( $ V $  — в. пр. над  $ \mathbb C $ ,  $ \sigma\in\overline\rm{SBi}(V) $ ):  $ \rm U(V)=\rm{Aut}(V,\sigma) $ .
+-   Утверждение: *пусть  $ \rm{char}\,K\ne2 $  и  $ \sigma\in\rm{SBi}(V) $ , или  $ K=\mathbb C $  и  $ \sigma\in\rm{\overline{Bi}}(V) $ ; тогда  $ \,\rm{Aut}(V,\sigma)=\{a\in\rm{GL}(V)\mid\forall\,v\in V\;\bigl(\sigma(a(v),a(v))=\sigma(v,v)\bigr)\} $ *.
+-   Ортогональная группа ( $ V $  — в. пр. над  $ \mathbb R $ ,  $ \sigma\in\rm{SBi}(V) $ ):  $ \rm O(V)=\rm{Aut}(V,\sigma) $ . Унитарная группа ( $ V $  — в. пр. над  $ \mathbb C $ ,  $ \sigma\in\rm{\overline{SBi}}(V) $ ):  $ \rm U(V)=\rm{Aut}(V,\sigma) $ .
 -   **Лемма об автоморфизмах пространств с формой и матрицах.**
-    *(1) Пусть  $ K $  — поле с инволюцией,  $ V $  — векторное пространство над  $ K $ ,  $ n=\dim V<\infty $ ,  $ \sigma\in\overline\rm{Bi}(V) $ ,  $ a\in\rm{End}(V) $  и  $ e\in\rm{OB}(V) $ ; тогда
+    *(1) Пусть  $ K $  — поле с инволюцией,  $ V $  — векторное пространство над  $ K $ ,  $ n=\dim V<\infty $ ,  $ \sigma\in\rm{\overline{Bi}}(V) $ ,  $ a\in\rm{End}(V) $  и  $ e\in\rm{OB}(V) $ ; тогда
      $ a\in\rm{Aut}(V,\sigma)\,\Leftrightarrow\,a_e^e\in\rm{GL}(n,K)\,\land\,(a_e^e)^{\scriptscriptstyle\mathsf T}\!\cdot\sigma_{e,e}\!\cdot\overline{a_e^e}=\sigma_{e,e} $  и, если форма  $ \sigma $  невырождена, то условие « $ \,a_e^e\in\rm{GL}(n,K) $ » можно убрать.
     (2) Пусть  $ V $  — псевдоевклидово пространство сигнатуры  $ (p,q) $  и  $ e,\tilde e\in\rm{OnOB}(V) $ ; тогда  $ (\rm c_\tilde e^e)^{\scriptscriptstyle\mathsf T}\!\cdot\!\Bigl(\begin{smallmatrix}\rm{id}_p&0\\0&-\rm{id}_q\end{smallmatrix}\Bigr)\!\cdot\rm c_\tilde e^e=\!\Bigl(\begin{smallmatrix}\rm{id}_p&0\\0&-\rm{id}_q\end{smallmatrix}\Bigr) $ .
     (3) Пусть  $ V $  — псевдоунитарное пространство сигнатуры  $ (p,q) $  и  $ e,\tilde e\in\rm{OnOB}(V) $ ; тогда  $ (\rm c_\tilde e^e)^{\scriptscriptstyle\mathsf T}\!\cdot\!\Bigl(\begin{smallmatrix}\rm{id}_p&0\\0&-\rm{id}_q\end{smallmatrix}\Bigr)\!\cdot\overline{\rm c_\tilde e^e}=\!\Bigl(\begin{smallmatrix}\rm{id}_p&0\\0&-\rm{id}_q\end{smallmatrix}\Bigr) $ .*

@@ -25,7 +25,7 @@ def replace_block_math(match):
 
 def escape_math(text):
     # the problem is that markdown needs escaping to these chars, so we replace user's smth with \smth
-    return re.sub(r'[\\\{\}<>\[\]\$_\*]', lambda match: '\\' + match.group(0), text)
+    return re.sub(r'[\\\{\}\[\]\$_\*]', lambda match: '\\' + match.group(0), text)
 
 
 def generate_html(md_text):
