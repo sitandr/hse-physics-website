@@ -11,7 +11,9 @@ DOLLAR_REPLACER = re.compile(r'(?<!\$)\$(?!\$)(.*?)(?<!\$)\$(?!\$)')  # "?" stan
 
 
 def generate_html(md_text):
+
     md_text = md_text.replace(r'\\', r'\\\\')
+    md_text = md_text.replace('\\{', r'\\{').replace('\\}', r'\\}')
     # the problem is that markdown also uses \ as escaping, so we replace user's \\ with \\\\
 
     md_text = re.sub(DOLLAR_REPLACER, r'\\\\( \g<1> \\\\)', md_text)
