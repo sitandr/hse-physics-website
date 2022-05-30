@@ -4,3 +4,4 @@ unidecode
 django-model-utils
 django-embed-video
 markdown
+markdown-grid-tables

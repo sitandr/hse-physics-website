@@ -24,6 +24,10 @@ def index(request):
 def about(request):
     return render(request, 'main/about.html')
 
+@login_required
+def add_material(request):
+    return render(request, 'main/add_material.html')
+
 
 @login_required
 def create_task(request, course_id=None):
