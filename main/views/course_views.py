@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from ..models import Task, CoursePage, MaterialMaster, Material, Url, File
-from ..forms import TaskForm, CreateCourseForm, MaterialForm
+from ..forms import TaskForm, CreateCourseForm, MaterialForm, FileForm, VideoForm, MarkdownMatForm
 from django.contrib.auth.decorators import login_required
 
 
@@ -27,14 +27,29 @@ def about(request):
 @login_required
 def add_material(request):
     if request.method == 'POST':
-        form = MaterialForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
+        form_1 = MaterialForm(request.POST, request.FILES)
+        form_2 = FileForm(request.POST, request.FILES)
+        form_3 = VideoForm(request.POST, request.FILES)
+        form_4 = MarkdownMatForm(request.POST, request.FILES)
+        if all([form_1.is_valid(), form_2.is_valid(), form_3.is_valid(), form_4.is_valid()]):
+            if form_2.data['file_material']:
+                form_2.save()
+            form_1.save()
+            form_3.save()
+            form_4.save()
             return redirect('home')
     else:
-        form = MaterialForm()
+        form_1 = MaterialForm()
+        form_2 = FileForm()
+        form_3 = VideoForm()
+        form_4 = MarkdownMatForm()
     return render(request, 'main/add_material.html', {
-        'form': form
+        'form_1': form_1,
+        'form_2': form_2,
+        'form_3': form_3,
+        'form_4': form_4
+
+
     })
 
 
@@ -56,9 +71,9 @@ def create_task(request, course_id=None):
         else:
             error = 'Ошибка'
 
-    form = TaskForm()
+    form_1 = TaskForm()
     context = {
-        'form': form,
+        'form_1': form_1,
         'error': error
     }
     return render(request, 'main/create_task.html', context)

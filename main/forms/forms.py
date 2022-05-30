@@ -1,11 +1,43 @@
-from ..models import Task, CoursePage, Block, File
-from django.forms import ModelForm, TextInput, Textarea
+from ..models import Task, CoursePage, Block, File, Url, Video, MarkdownMat, Material
+from django.forms import ModelForm, TextInput, Textarea, FileField
 
 
 class MaterialForm(ModelForm):
     class Meta:
+        model = Material
+        fields = ('name', 'description')
+
+
+class FileForm(ModelForm):
+    file_material = FileField(required=False)
+
+    class Meta:
         model = File
-        fields = ('name', 'description', 'file_material',)
+        fields = ('file_material',)
+
+
+class UrlForm(ModelForm):
+    class Meta:
+        model = Url
+        fields = ('address',)
+
+
+
+
+class VideoForm(ModelForm):
+    # video_material = EmbedVideoField(required=False)
+    class Meta:
+        model = Video
+        fields = ('video_material',)
+
+
+class MarkdownMatForm(ModelForm):
+    class Meta:
+        model = MarkdownMat
+        fields = ('text',)
+
+
+
 
 class TaskForm(ModelForm):
     class Meta:
