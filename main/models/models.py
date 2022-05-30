@@ -3,15 +3,19 @@ from embed_video.fields import EmbedVideoField
 from unidecode import unidecode
 from django.urls import reverse
 from model_utils.managers import InheritanceManager
-from embed_video.admin import AdminVideoMixin
-from embed_video.fields import EmbedVideoField
 from django.template import Template, Context
 
-from copy import deepcopy
+
+class Block(models.Model):
+    # contains number of diff. materials, can be anchored to some page
+    pass
+
 
 class CoursePage(models.Model):
     name = models.CharField('Название курса', max_length=50)
     slug = models.SlugField(max_length=255, verbose_name="URL")
+    student_block = models.ForeignKey(Block, on_delete=models.CASCADE, related_name='page_as_st')
+    lecturer_block = models.ForeignKey(Block, on_delete=models.CASCADE, related_name='page_as_lect')
 
     general_info = models.TextField('Общая информация')
 
@@ -37,6 +41,7 @@ class Material(models.Model):
     name = models.CharField(max_length=30)
     description = models.TextField(blank=True)
     objects = MaterialMaster()
+    parent = models.ForeignKey(Block, on_delete=models.CASCADE)
 
     # master = models.ForeignKey(MaterialMaster)
 
