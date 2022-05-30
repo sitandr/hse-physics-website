@@ -46,6 +46,7 @@ class Url(Material):
 class File(Material):
     file_material = models.FileField(blank=True, null=True, upload_to='documents')
     is_published = models.BooleanField(default=True)
+    uploaded_at=models.DateTimeField(auto_now_add=True)
 
     @property
     def view(self):

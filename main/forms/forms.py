@@ -1,6 +1,11 @@
-from ..models import Task, CoursePage
+from ..models import Task, CoursePage, File
 from django.forms import ModelForm, TextInput, Textarea
 
+
+class MaterialForm(ModelForm):
+    class Meta:
+        model = File
+        fields = ('name', 'description', 'file_material',)
 
 class TaskForm(ModelForm):
     class Meta:
