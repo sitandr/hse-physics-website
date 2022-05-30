@@ -1,36 +1,9 @@
 from django.db import models
 from embed_video.fields import EmbedVideoField
-from unidecode import unidecode
-from django.urls import reverse
+
 from model_utils.managers import InheritanceManager
 from django.template import Template, Context
-
-
-class Block(models.Model):
-    # contains number of diff. materials, can be anchored to some page
-    pass
-
-
-class CoursePage(models.Model):
-    name = models.CharField('Название курса', max_length=50)
-    slug = models.SlugField(max_length=255, verbose_name="URL")
-    student_block = models.ForeignKey(Block, on_delete=models.CASCADE, related_name='page_as_st')
-    lecturer_block = models.ForeignKey(Block, on_delete=models.CASCADE, related_name='page_as_lect')
-
-    general_info = models.TextField('Общая информация')
-
-    def create_slug(self):  # self-written function for better generating slugs
-        self.slug = unidecode(self.name).replace(' ', '_')
-        copies = CoursePage.objects.all().filter(slug__startswith=self.slug)
-        if copies:
-            self.slug += str(len(copies) + 1)
-
-    def __str__(self):
-        return self.name
-
-    @property
-    def absolute_url(self):
-        return reverse('pages', kwargs={'slug': self.slug})
+from .pages import Block, CoursePage
 
 
 class MaterialMaster(InheritanceManager):
