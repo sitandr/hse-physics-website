@@ -1,10 +1,10 @@
 {% extends 'main/base.html' %}
 {% block title %}
-Создать задачу
+Добавить материал
 {% endblock %}
 
 {% block body %}
-    <h1>Добавить задание</h1>
+    <h1>Добавить материал</h1>
     <form method="post">
         {% csrf_token %}<br>
         {{ form.title }}<br>

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from ..models import Task, CoursePage, MaterialMaster, Material, Url, File
-from ..forms import TaskForm, CreateCourseForm
+from ..forms import TaskForm, CreateCourseForm, MaterialForm
 from django.contrib.auth.decorators import login_required
 
 
@@ -23,6 +23,20 @@ def index(request):
 
 def about(request):
     return render(request, 'main/about.html')
+
+@login_required
+def add_material(request):
+    if request.method == 'POST':
+        form = MaterialForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    else:
+        form = MaterialForm()
+    return render(request, 'main/add_material.html', {
+        'form': form
+    })
+
 
 
 @login_required
