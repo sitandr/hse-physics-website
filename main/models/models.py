@@ -3,7 +3,7 @@ from embed_video.fields import EmbedVideoField
 
 from model_utils.managers import InheritanceManager
 from django.template import Template, Context
-from .pages import Block, CoursePage
+from ..other.markdown import generate_html
 
 
 class MaterialMaster(InheritanceManager):
@@ -14,7 +14,7 @@ class Material(models.Model):
     name = models.CharField(max_length=30)
     description = models.TextField(blank=True)
     objects = MaterialMaster()
-    parent = models.ForeignKey(Block, on_delete=models.CASCADE, null=True, related_name='materials')
+    parent = models.ForeignKey('Block', on_delete=models.CASCADE, null=True, related_name='materials')
 
     # master = models.ForeignKey(MaterialMaster)
 
@@ -32,6 +32,7 @@ class Material(models.Model):
     class Meta:
         verbose_name = 'Материал'
         verbose_name_plural = 'Материалы'
+        ordering = ['id']
 
 
 class Url(Material):
@@ -71,10 +72,18 @@ class Video(Material):
 #     pass
 
 
+class MarkdownMat(Material):
+    text = models.TextField()
+
+    @property
+    def view(self):
+        return Template(generate_html(self.text))
+
+
 class Task(models.Model):
     title = models.CharField('Название', max_length=50)
     description = models.TextField('Описание')
-    course = models.ForeignKey(CoursePage, on_delete=models.CASCADE, null=True)
+    course = models.ForeignKey('CoursePage', on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return ((str(self.course) + ': ') if self.course else '') + self.title
@@ -88,4 +97,4 @@ class Group(models.Model):
     name = models.CharField(max_length=30)
     subgroups = models.ManyToManyField('self')
     parent_grop = models.ForeignKey('self', on_delete=models.CASCADE)
-    courses = models.ManyToManyField(CoursePage)
+    courses = models.ManyToManyField('CoursePage')

@@ -38,6 +38,7 @@ class Block(models.Model):
         return self.type_() + ' ' + ''.join(map(str, list(self.pages_as_st.all()) + list(self.pages_as_lect.all())))
 
 
+
 def new_block():
     return Block()
 

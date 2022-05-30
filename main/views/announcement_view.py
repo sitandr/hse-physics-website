@@ -22,7 +22,6 @@ def show_announcements(request, edit=False):
 
             if request.method == "POST":
                 form = WriteLectorsForm(request.POST)
-                print(request.POST)
 
                 if form.is_valid():
                     inst = form.save(commit=False)
@@ -30,7 +29,6 @@ def show_announcements(request, edit=False):
                     inst.sender = user
                     inst.save()
 
-                    print()
                     inst.receivers.set(EmailUser.objects.filter(profile__course_number=request.POST['course_number']))
                     # due to the fact "course" is not model field,
                     # it is not auto-completed when creating form from request
