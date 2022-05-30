@@ -31,7 +31,8 @@ def add_material(request):
         form_2 = FileForm(request.POST, request.FILES)
         form_3 = VideoForm(request.POST, request.FILES)
         form_4 = MarkdownMatForm(request.POST, request.FILES)
-        if all([form_1.is_valid(), form_2.is_valid(), form_3.is_valid(), form_4.is_valid()]):
+        print(form_3.fields['video_material'].validators)
+        if True: #all([form_1.is_valid(), form_2.is_valid(), form_3.is_valid(), form_4.is_valid()]):
             if form_2.data['file_material']:
                 form_2.save()
             form_1.save()

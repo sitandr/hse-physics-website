@@ -1,6 +1,7 @@
+from embed_video.fields import EmbedVideoFormField
+
 from ..models import Task, CoursePage, Block, File, Url, Video, MarkdownMat, Material
 from django.forms import ModelForm, TextInput, Textarea, FileField
-
 
 class MaterialForm(ModelForm):
     class Meta:
@@ -25,7 +26,7 @@ class UrlForm(ModelForm):
 
 
 class VideoForm(ModelForm):
-    # video_material = EmbedVideoField(required=False)
+    video_material = EmbedVideoFormField(required=False)
     class Meta:
         model = Video
         fields = ('video_material',)
