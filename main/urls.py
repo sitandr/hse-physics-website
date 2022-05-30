@@ -17,4 +17,9 @@ urlpatterns = [
     path('announcements', views.announcement_view.show_announcements, name='announce'),
     path('announcements/edit', views.announcement_view.show_announcements, {'edit': True}, name='write_announce'),
     path('announcements/remove?<int:ann_id>', views.announcement_view.remove_announcement, name='remove_announce'),
+    path('announcements/delete?<int:ann_id>', views.announcement_view.delete_announcement, name='delete_announce'),
+
+    path('pages/markdown/create', views.markdown_page_view.create_page, name='create_markdown_page'),
+    path('pages/markdown/<int:id>', views.markdown_page_view.view_page, name='view_markdown_page'),
+    path('pages/markdown/<int:id>/edit', views.markdown_page_view.edit_page, name='edit_markdown_page'),
 ]

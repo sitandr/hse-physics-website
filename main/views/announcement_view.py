@@ -77,3 +77,8 @@ def remove_announcement(request, ann_id):
         Announcement.objects.get(id=ann_id).delete()
 
     return redirect('announce')
+
+
+def delete_announcement(request, ann_id):
+    Announcement.objects.get(id=ann_id).delete()
+    return redirect('announce')

@@ -1,0 +1,13 @@
+{% extends 'main/base.html' %}
+{% block title %}
+Добавить текстовую страницу
+{% endblock %}
+
+{% block body %}
+    <h1>{% if edit %}Редактировать{% else %}Добавить{% endif %} текстовую страницу</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">{% if edit %}Редактировать{% else %}Добавить{% endif %}</button>
+    </form>
+{% endblock %}

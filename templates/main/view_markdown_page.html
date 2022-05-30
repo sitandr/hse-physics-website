@@ -1,0 +1,15 @@
+{% extends 'main/base.html' %}
+{% block title %}
+    Объявления
+{% endblock %}
+
+{% block body %}
+    {% load static %}
+    <script type="text/javascript" src="{% static 'main/tex-mml-chtml.js' %}">
+    </script>
+
+    {{page.html}}
+
+    <a href="{% url 'edit_markdown_page' page.id %}">Редактировать страницу</a>
+
+{% endblock %}
