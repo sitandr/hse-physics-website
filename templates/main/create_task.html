@@ -1,15 +1,17 @@
-{% extends 'main/base.html' %}
+{% extends 'main/base_form.html' %}
 {% block title %}
-Добавить материал
+Создать задачу
 {% endblock %}
 
-{% block body %}
-    <h1>Добавить материал</h1>
-    <form method="post">
-        {% csrf_token %}<br>
-        {{ form.title }}<br>
-        {{ form.description }}<br>
-        <button type="submit" class="btn btn-success">Добавить</button>
-        <span>{{ error }}</span>
-    </form>
+{% block form_title %}
+    Добавить задание
+{% endblock %}
+
+{% block form_insides %}
+    {{ form.title }}<br>
+    {{ form.description }}
+{% endblock %}
+
+{% block button_name %}
+Добавить
 {% endblock %}
