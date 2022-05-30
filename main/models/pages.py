@@ -3,14 +3,20 @@ from unidecode import unidecode
 from django.urls import reverse
 from ..other.markdown import generate_html
 from django.template import Template, Context
+from .profiles import Profile
 
 
 class Block(models.Model):
+    # contains number of diff. materials, can be anchored to some page
+    # Page:
+    # <Block>   <Block>
+    # — Mat      — Mat
+    # — Mat      — Mat
+    # …
     OF_STUDENT = "student's"
     OF_LECTURER = "lecturer's"
     UNKNOWN = 'unknown'
 
-    # contains number of diff. materials, can be anchored to some page
     @property
     def html(self):
         print('htmling…')
@@ -22,6 +28,11 @@ class Block(models.Model):
         elif self.pages_as_lect.count():
             return Block.OF_LECTURER
         return Block.UNKNOWN
+
+    def can_edit(self, user):
+        user = user.concretize()
+        return ((user.role == Profile.STUD_ROLE and self.type_ == Block.OF_STUDENT)
+                or (user.role == Profile.LECT_ROLE and self.type_ == Block.OF_LECTURER))
 
     def __str__(self):
         return self.type_() + ' ' + ''.join(map(str, list(self.pages_as_st.all()) + list(self.pages_as_lect.all())))
