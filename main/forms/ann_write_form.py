@@ -6,7 +6,7 @@ from django import forms
 class WriteAnnounceForm(forms.ModelForm):
     class Meta:
         model = Announcement
-        fields = ["text"]
+        fields = ["name", "text"]
         # exclude = ["sender", "receivers"]  # user must't be able to edit these
 
 

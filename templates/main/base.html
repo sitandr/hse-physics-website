@@ -35,8 +35,10 @@
         <li class="dropdown-button">
             <img src="{% static 'main/img/notification-bell-blue.png' %}" height="26" alt="bell">
             <ul class="dropdown-menu">
-                <li>Уведомления:</li>
-                <li>(пусто)</li>
+                <li><a href="{% url 'announce' %}">Уведомления</a></li>
+                {% for ann in user.recieved_announcements.all %}
+                    <li>{{ann.name}}</li>
+                {% endfor %}
             </ul>
         </li>
         <li class="dropdown-button">
