@@ -45,3 +45,9 @@ class CreateCourseForm(ModelForm):
         if commit:
             page.save()
         return page
+
+
+class EditCourseGeneralInfo(ModelForm):
+    class Meta:
+        model = CoursePage
+        fields = ['general_info']

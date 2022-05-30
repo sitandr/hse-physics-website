@@ -99,3 +99,18 @@ ul li:hover .dropdown-menu {
     align-self: center;
 }
 
+
+#block-double-wrapper{
+    display:table;
+    width: 100%;
+}
+
+
+#block-wrapper{
+  display:table-row;
+}
+
+#block-wrapper>div{
+  display:table-cell
+}
+

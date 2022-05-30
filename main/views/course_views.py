@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from ..models import Task, CoursePage, MaterialMaster, Material, Url, File
-from ..forms import TaskForm, CreateCourseForm, MaterialForm
+from ..models import Task, CoursePage, Material
+from ..forms import TaskForm, CreateCourseForm, MaterialForm, EditCourseGeneralInfo
 from django.contrib.auth.decorators import login_required
 
 
@@ -24,6 +24,7 @@ def index(request):
 def about(request):
     return render(request, 'main/about.html')
 
+
 @login_required
 def add_material(request):
     if request.method == 'POST':
@@ -36,7 +37,6 @@ def add_material(request):
     return render(request, 'main/add_material.html', {
         'form': form
     })
-
 
 
 @login_required
@@ -64,9 +64,22 @@ def create_task(request, course_id=None):
     return render(request, 'main/create_task.html', context)
 
 
-def course_page(request, slug):
+def course_page(request, slug, edit_general_info=False):
     page = get_object_or_404(CoursePage, slug=slug)
-    return render(request, 'main/course_page.html', {'page': page})
+    print(edit_general_info)
+    if edit_general_info:
+        edit_general_info = EditCourseGeneralInfo(instance=page)
+
+        if request.method == "POST":
+            form = EditCourseGeneralInfo(request.POST, request.FILES, instance=page)
+
+            if form.is_valid():
+                post = form.save(commit=False)
+                post.save()
+                return redirect('pages', slug)
+
+    return render(request, 'main/course_page.html', {'page': page,
+                                                     'edit_general_info': edit_general_info})
 
 
 @login_required

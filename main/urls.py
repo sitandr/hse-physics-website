@@ -13,6 +13,8 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/', include('accounts.urls')),
     path('pages/<slug:slug>', views.course_views.course_page, name='pages'),
+    path('pages/<slug:slug>/edit_general_info', views.course_views.course_page,
+         {'edit_general_info': True}, name='pages_edit_general_info'),
     path('create_course', views.course_views.create_course, name='create_course'),
     path('profiles/<int:user_id>', views.profile_view.show_profile, name='profile'),
     path('profiles/<int:user_id>/edit', views.profile_view.show_profile, {'edit': True}, name='edit_profile'),

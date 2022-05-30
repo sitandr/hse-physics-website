@@ -1,4 +1,32 @@
-<h1>{{page.name}}</h1>
-<div>{{page.general_info}}</div>
-{{page.block_html}}
-<a href="{% url 'create_course_task' page.id %}" class="nav-link">Добавить задание</a>
+{% extends 'main/base.html' %}
+{% block title %}
+    {{page.name}}
+{% endblock %}
+
+{% block body %}
+	<h1>{{page.name}}</h1>
+	{% if edit_general_info %}
+		<form enctype="multipart/form-data" method="post">
+		  {% csrf_token %}
+		  {{ edit_general_info.general_info }}
+		  <button type="submit">Изменить</button>
+		</form>
+	{% else %}
+		<div>{{page.general_info}}</div>
+		<a href="{% url 'pages_edit_general_info' slug=page.slug %}">Edit</a>
+	{% endif%}
+	<div id="block-double-wrapper">
+		<div id="block-wrapper">
+			<div class="st_block">
+				<h3>Записи студентов</h3>
+				{{page.student_block.html| safe}}
+			</div>
+			<div class="lt_block">
+				<h3>Записи преподавателя</h3>
+				{{page.lecturer_block.html| safe}}
+			</div>
+		</div>
+	</div>
+
+	<a href="{% url 'create_course_task' page.id %}" class="nav-link">Добавить задание</a>
+{% endblock %}

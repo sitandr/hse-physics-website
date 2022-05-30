@@ -38,7 +38,6 @@ class Block(models.Model):
         return self.type_() + ' ' + ''.join(map(str, list(self.pages_as_st.all()) + list(self.pages_as_lect.all())))
 
 
-
 def new_block():
     return Block()
 
@@ -66,11 +65,6 @@ class CoursePage(models.Model):
     @property
     def absolute_url(self):
         return reverse('pages', kwargs={'slug': self.slug})
-
-    @property
-    def block_html(self):
-        return Template('<div class="st_block">' + self.student_block.html + '</div>'
-                        + '<div class="lt_block">' + self.lecturer_block.html + '</div>').render(Context({}))
 
 
 class MarkdownPage(models.Model):
