@@ -52,7 +52,7 @@ def create_task(request, course_id=None):
 
 def course_page(request, slug):
     page = get_object_or_404(CoursePage, slug=slug)
-    return render(request, 'main/course_page.html', {'post': page})
+    return render(request, 'main/course_page.html', {'page': page})
 
 
 @login_required

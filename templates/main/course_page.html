@@ -1,4 +1,4 @@
 <h1>{{page.name}}</h1>
 <div>{{page.general_info}}</div>
 {{page.inner_html}}
-<a href="{% url 'create_course_task' post.id %}" class="nav-link">Добавить задание</a>
+<a href="{% url 'create_course_task' page.id %}" class="nav-link">Добавить задание</a>
