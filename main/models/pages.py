@@ -6,14 +6,22 @@ from ..other.markdown import generate_html
 
 class Block(models.Model):
     # contains number of diff. materials, can be anchored to some page
-    pass
+    def html(self):
+        return ''.join({'<div>' + m.html + '</div>' for m in self.materals})
+
+
+def new_block():
+    return Block()
 
 
 class CoursePage(models.Model):
+
     name = models.CharField('Название курса', max_length=50)
     slug = models.SlugField(max_length=255, verbose_name="URL")
-    student_block = models.ForeignKey(Block, on_delete=models.CASCADE, related_name='page_as_st')
-    lecturer_block = models.ForeignKey(Block, on_delete=models.CASCADE, related_name='page_as_lect')
+    student_block = models.ForeignKey(Block, on_delete=models.CASCADE,
+                                      related_name='page_as_st')
+    lecturer_block = models.ForeignKey(Block, on_delete=models.CASCADE,
+                                       related_name='page_as_lect')
 
     general_info = models.TextField('Общая информация')
 
@@ -29,6 +37,11 @@ class CoursePage(models.Model):
     @property
     def absolute_url(self):
         return reverse('pages', kwargs={'slug': self.slug})
+
+    @property
+    def block_html(self):
+        return ('<div class="st_block">' + self.student_block.html + '</div>'
+                + '<div class="lt_block">' + self.lecturer_block.html + '</div>')
 
 
 class MarkdownPage(models.Model):

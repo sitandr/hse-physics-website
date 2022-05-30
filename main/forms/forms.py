@@ -1,4 +1,4 @@
-from ..models import Task, CoursePage
+from ..models import Task, CoursePage, Block
 from django.forms import ModelForm, TextInput, Textarea
 
 
@@ -30,3 +30,13 @@ class CreateCourseForm(ModelForm):
                 'placeholder': 'Общая информация'
             }),
         }
+
+    def save(self, commit=True):
+        page = super(ModelForm, self).save(commit=False)
+        page.lecturer_block = Block()
+        page.lecturer_block.save()
+        page.student_block = Block()
+        page.student_block.save()
+        if commit:
+            page.save()
+        return page
