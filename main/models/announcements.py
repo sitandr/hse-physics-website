@@ -1,11 +1,13 @@
 from django.db import models
 from . import EmailUser
-import markdown
 from django.template import Template, Context
+
 import re
+import markdown
+from markdown_grid_tables import GridTableExtension
 
+markdown_extensions = ['tables', 'sane_lists', 'footnotes', 'nl2br', GridTableExtension()]
 
-markdown_extensions = ['tables', 'sane_lists', 'footnotes', 'nl2br']
 
 DOLLAR = re.compile(r'(?<!\$)\$(?!\$)(.*?)(?<!\$)\$(?!\$)')  # "?" stands for being lazy
 DOUBLE_DOLLAR = re.compile(r'(?<!\$)\$\$(?!\$)([\S\s]*?)(?<!\$)\$\$(?!\$)', re.MULTILINE)

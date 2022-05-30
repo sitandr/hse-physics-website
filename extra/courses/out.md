@@ -1,264 +1,372 @@
-## Подробный план четвертого модуля курса алгебры
+## Подробный план третьего модуля курса алгебры
 
-### 6   Векторные пространства с ¯-билинейной формой
+<table data-cellpadding="6" data-cellspacing="0">
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><table data-cellpadding="0" data-cellspacing="3">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td>Содержание линейной алгебры состоит в проработке математического языка для выражения одной из самых общих естественно-научных идей — идеи линейности. Возможно, ее важнейшим специальным случаем является принцип линейности малых приращений: почти всякий естественный процесс почти всюду в малом линеен. Этот принцип лежит в основе всего математическогоанализа и его приложений. Векторная алгебра трехмерного физического пространства, исторически ставшая краеугольным камнем в здании линейной алгебры, восходит к тому же источнику: после Эйнштейна мы понимаем, что и физическое пространствоприближенно линейно лишь в малой окрестности наблюдателя. К счастью, эта малая окрестность довольно велика.Физика двадцатого века резко и неожиданно расширила сферу применения идеи линейности, добавив к принципу линейностималых приращений принцип суперпозиции векторов состояний. Грубо говоря, пространство состояний любой квантовой системыявляется линейным пространством над полем комплексных чисел. В результате почти все конструкции комплексной линейнойалгебры превратились в аппарат, используемый для формулировки фундаментальных законов природы: от теории линейнойдвойственности, объясняющей квантовый принцип дополнительности Бора, до теории представлений групп, объясняющей таблицу Менделеева, «зоологию» элементарных частиц и даже структуру пространства-времени.</td>
+</tr>
+<tr class="even" data-align="right">
+<td><em>А.И. Кострикин, Ю.И. Манин. Линейная алгебра и геометрия</em></td>
+</tr>
+</tbody>
+</table></td>
+</tr>
+</tbody>
+</table>
 
-##### 6.1  ¯-Билинейные формы
+### 4   Векторные пространства
 
--   Пр.-во билинейных форм:  $ \rm{Bi}(V) $ . Примеры билин. форм:  $ (v,w)\mapsto v^{\scriptscriptstyle\mathsf T}\!\cdot s\cdot w $  ( $ V=K^n $ ,  $ s\in\rm{Mat}(n,K) $ ),  $ (f,g)\mapsto\!\int_\alpha^\beta\!\!sfg $  ( $ V=\rm C^0\!([\alpha;\beta],\mathbb R) $ ,  $ s\in V $ ).
+##### 4.1  Определения и конструкции, связанные с векторными пространствами
 
--   Поля с инволюцией. Пространство  $ \overline V $ :  $ c\overline\cdot v=\overline c\,v $ . Пространство ¯-билинейн. форм (полуторалинейных форм, если  $ \overline{\phantom c}\ne\rm{id}_K $ ):  $ \rm{\overline{Bi}}(V)=\rm{Bi}(V,\overline V,K) $ .
+-   Векторное пространство над полем  $ K $  — абелева группа с «правильным» умножением на скаляры из  $ K $ . Свойства операций в векторных пространствах.
 
--   Матрица Грама формы  $ \sigma $ :  $ {(\sigma_{e,e})}_{j_1,j_2}\!=\sigma(e_{j_1}\!,e_{j_2}) $ . Обобщенная матрица Грама:  $ (\sigma_{(v_1,\ldots,v_m),(w_1,\ldots,w_m)})_{j_1,j_2}\!=\sigma(v_{j_1}\!,w_{j_2}) $ . Теорема о матрице Грама.
+-   Примеры: простр.-ва столбцов  $ K^n $  и строк  $ K_n $ , простр.-ва матриц  $ \rm{Mat}(p,n,K) $ , простр.-ва многочленов  $ K[x] $ , простр.-ва функций и финитных функций.
 
-    **Теорема о матрице Грама.** *Пусть  $ K $  — поле с инволюцией,  $ V $  — векторное простр.-во над  $ K $ ,  $ n=\dim V<\infty $ ,  $ \sigma\in\rm{\overline{Bi}}(V) $  и  $ e\in\rm{OB}(V) $ ; тогда
-    (1) для любых  $ v,w\in V $  выполнено  $ \sigma(v,w)=(v^e)^{\scriptscriptstyle\mathsf T}\!\cdot\sigma_{e,e}\!\cdot\overline{w^e}=\sum_{j_1=1}^n\sum_{j_2=1}^n\sigma_{j_1,j_2}v^{j_1}\overline{w^{j_2}} $  (координаты вычисляются относительно  $ e $ );
-    (2) для любых  $ m\in\mathbb N_0 $  и  $ v_1,\ldots,v_m,w_1,\ldots,w_m\in V $  выполнено  $ \sigma_{(v_1,\ldots,v_m),(w_1,\ldots,w_m)}\!=\bigl(v_1^e\;\ldots\;v_m^e\bigr)^{\scriptscriptstyle\mathsf T}\!\cdot\sigma_{e,e}\!\cdot\overline{\bigl(w_1^e\;\ldots\;w_m^e\bigr)} $ .*
+-   Множ.-во линейных операторов (гомоморфизмов вект. пр.-в):  $ \rm{Hom}(V,Y) $  — вект. простр.-во. Кольцо  $ \rm{End}(V) $ , группа  $ \rm{GL}(V)=\rm{Aut}(V)=\rm{End}(V)^\times $ .
 
--   Изоморфизм вект. пр.-в  $ \biggl(\!\begin{align}\rm{\overline{Bi}}(V)&\to\rm{Mat}(n,K)\\\sigma&\mapsto\sigma_{e,e}\end{align}\!\biggr) $ . Преобразования при замене базиса:  $ \sigma_{\tilde e,\tilde e}=(\rm c_\tilde e^e)^{\scriptscriptstyle\mathsf T}\!\cdot\sigma_{e,e}\!\cdot\overline{\rm c_\tilde e^e} $  и  $ \sigma_{\tilde{j_1},\tilde{j_2}}\!=\sum_{l_1=1}^n\sum_{l_2=1}^n(e_\tilde{j_1})^{l_1}\overline{(e_\tilde{j_2})^{l_2}}\,\sigma_{l_1,l_2} $ .
+-   Подпростр.-во:  $ U\le V\,\Leftrightarrow\,U+U\subseteq U\,\land\,0\in U\,\land\,K\,U\subseteq U $ . Подпр.-во, порожд. мн.-вом  $ D $ :  $ \langle D\rangle $  — наименьш. относ.-но  $ \subseteq $  подпр.-во, содержащ.  $ D $ .
 
--   Простр.-ва ¯-симметричных форм и матриц:  $ \rm{\overline{SBi}}(V)=\{\sigma\in\rm{\overline{Bi}}(V)\mid\forall\,v,w\in V\;\bigl(\sigma(w,v)=\overline{\sigma(v,w)}\bigr)\} $  и  $ \rm{\overline S}\rm{Mat}(n,K)=\{s\in\rm{Mat}(n,K)\mid s^{\scriptscriptstyle\mathsf T}\!=\overline s\} $ .
+-   Лин. комбинация эл.-в мн.-ва  $ D $ :  $ f_1\,d_1+\ldots+f_m\,d_m=\sum_{d\in D}f(d)\,d $  ( $ f\in\rm{FinFunc}(D,K) $ ). Утверждение:  $ \langle D\rangle=\bigl\{\sum_{d\in D}f(d)\,d\mid f\in\rm{FinFunc}(D,K)\bigr\} $ .
 
--   Пр.-ва ¯-антисимметр. форм и матриц:  $ \rm{\overline{ABi}}(V)=\{\sigma\in\rm{\overline{Bi}}(V)\mid\forall\,v,w\in V\;\bigl(\sigma(w,v)=-\overline{\sigma(v,w)}\bigr)\} $  и  $ \rm{\overline A}\rm{Mat}(n,K)=\{s\in\rm{Mat}(n,K)\mid s^{\scriptscriptstyle\mathsf T}\!=-\overline s\} $ .
+-   Ядро и образ линейного оператора  $ a $ :  $ \rm{Ker}\,a=a^{-1}(0) $  и  $ \rm{Im}\,a $ . Утверждение: * $ \rm{Ker}\,a\le V $  и  $ \,\rm{Im}\,a\le Y $ *. Теорема о слоях и ядре линейного оператора.
 
--   Гомоморфизмы между простр.-вами с ¯-билинейной формой:  $ \rm{Hom}((V,\sigma),(Y,\varphi))=\{a\in\rm{Hom}(V,Y)\mid\forall\,v,w\in V\;\bigl(\sigma(v,w)=\varphi(a(v),a(w))\bigr)\} $ .
+    **Теорема о слоях и ядре линейного оператора.** *Пусть  $ K $  — поле,  $ V,Y $  — векторные пространства над  $ K $  и  $ a\in\rm{Hom}(V,Y) $ ; тогда
+    (1) для любых  $ y\in Y $  и  $ v_0\in a^{-1}(y) $  выполнено  $ a^{-1}(y)=v_0+\rm{Ker}\,a $ ;
+    (2)  $ a $  — инъекция, если и только если  $ \,\rm{Ker}\,a=\{0\} $ .*
 
--   Изоморфизмы между пр.-вами с формой:  $ \rm{Iso}((V,\sigma),(Y,\varphi))=\rm{Hom}((V,\sigma),(Y,\varphi))\cap\rm{Bij}(V,Y) $  и  $ (V,\sigma)\cong(Y,\varphi)\,\Leftrightarrow\,\rm{Iso}((V,\sigma),(Y,\varphi))\ne\varnothing $ .
+-   Матричная запись системы из  $ p $  линейных уравн.-й от  $ n $  переменных:  $ a\cdot v=y $  ( $ a\in\rm{Mat}(p,n,K) $ ,  $ v\in K^n $ ,  $ y\in K^p $ ). Однородная система:  $ a\cdot v=0 $ .
 
-##### 6.2  ¯-Квадратичные формы
+-   Аффинные операторы:  $ v\mapsto a(v)+z $ , где  $ a\in\rm{Hom}(V,Y) $ . Аффинные подпростр.-ва:  $ v+U $ , где  $ U\le V $ ;  $ U $  — направляющее подпр.-во для  $ v+U $ .
 
--   Пространство ¯-квадратичных форм:  $ \overline{\rm{Quad}}(V)=\{\kappa\in\rm{Func}(V,K)\mid\exists\,\sigma\in\overline{\rm{Bi}}(V)\;\forall\,v\in V\;\bigl(\kappa(v)=\sigma(v,v)\bigr)\} $ . Утверждение:  $ \kappa(c\,v)=c\,\overline c\,\kappa(v) $ .
--   ¯-Квадратичная форма  $ \kappa $  в коорд.:  $ \kappa(v)=(v^e)^{\scriptscriptstyle\mathsf T}\!\cdot\sigma_{e,e}\!\cdot\overline{v^e}=\sum_{j_1=1}^n\sum_{j_2=1}^n\sigma_{j_1,j_2}v^{j_1}\overline{v^{j_2}} $ ; если  $ \overline{\phantom c}=\rm{id}_K $ , то  $ \kappa(v) $  — однор. многочлен степени  $ 2 $  от  $ v^1,\ldots,v^n $ .
--   **Теорема о поляризации квадратичных форм.** *Пусть  $ K $  — поле,  $ \rm{char}\,K\ne2 $  и  $ V $  — векторное пространство над  $ K $ ; тогда
-    (1) для любых  $ \kappa\in\rm{Quad}(V) $ , обозначая через  $ \,\rm{pol}_\kappa $  отображение  $ \biggl(\!\begin{align}V\times V&\to K\\(v,w)&\mapsto\bigl(\kappa(v+w)-\kappa(v)-\kappa(w)\bigr)/2\end{align}\!\biggr) $ , имеем следующие факты:
-     $ \rm{pol}_\kappa $  — симметричная билинейная форма (то есть  $ \rm{pol}_\kappa\!\in\rm{SBi}(V) $ ), а также  $ \forall\,v\in V\;\bigl(\rm{pol}_\kappa(v,v)=\kappa(v)\bigr) $ ;
-    (2) линейные операторы  $ \biggl(\!\begin{align}\rm{SBi}(V)&\to\rm{Quad}(V)\\\sigma&\mapsto\bigl(v\mapsto\sigma(v,v)\bigr)\!\end{align}\!\biggr) $  и  $ \biggl(\!\begin{align}\rm{Quad}(V)&\to\rm{SBi}(V)\\\kappa&\mapsto\rm{pol}_\kappa\end{align}\!\biggr) $  — взаимно обратные изоморфизмы векторных пространств.*
--   **Теорема о поляризации ¯-квадратичных форм над полем **C**.** *Пусть  $ V $  — векторное пространство над  $ \,\mathbb C $ ; тогда
-    (1) для любых  $ \kappa\in\rm{\overline{Quad}}(V) $ , обозначая через  $ \,\rm{pol}_\kappa $  отображение  $ \biggl(\!\begin{align}V\times V&\to\mathbb C\\(v,w)&\mapsto\bigl(\kappa(v+w)+\rm i\,\kappa(v+\rm i\,w)-\kappa(v-w)-\rm i\,\kappa(v-\rm i\,w)\bigr)/4\end{align}\!\biggr) $ , имеем
-    следующие факты:  $ \rm{pol}_\kappa $  — полуторалинейная форма (то есть  $ \rm{pol}_\kappa\!\in\rm{\overline{Bi}}(V) $ ), а также  $ \forall\,v\in V\;\bigl(\rm{pol}_\kappa(v,v)=\kappa(v)\bigr) $ ;
-    (2) линейные операторы  $ \biggl(\!\begin{align}\overline{\rm{Bi}}(V)&\to\overline{\rm{Quad}}(V)\\\sigma&\mapsto\bigl(v\mapsto\sigma(v,v)\bigr)\!\end{align}\!\biggr) $  и  $ \biggl(\!\begin{align}\rm{\overline{Quad}}(V)&\to\rm{\overline{Bi}}(V)\\\kappa&\mapsto\rm{pol}_\kappa\end{align}\!\biggr) $  — взаимно обратные изоморфизмы векторных пространств.*
--   Гиперповерхность втор. порядка (аффинная квадрика) в  $ V $ : мн.-во вида  $ \{v\in V\mid\kappa(v)+2\,\lambda(v)+c=0\} $ , где  $ \kappa\in\rm{Quad}(V)\!\setminus\!\{0\} $ ,  $ \lambda\in V^* $  и  $ c\in K $ .
--   Примеры аффинных квадрик. Утверждение: *пусть  $ s\in\rm{Mat}(n,K) $ ,  $ \lambda\in K_n $ ,  $ c\in K $  и  $ v\in K^n $ ; тогда  $ \,v^{\scriptscriptstyle\mathsf T}\!\cdot s\cdot v+2\,\lambda\cdot v+c=\Bigl(\begin{smallmatrix}v\\1\end{smallmatrix}\Bigr)^{\!\scriptscriptstyle\mathsf T}\!\!\cdot\!\Bigl(\begin{smallmatrix}s&\lambda^{\scriptscriptstyle\mathsf T}\\\lambda&c\end{smallmatrix}\Bigr)\!\cdot\!\Bigl(\begin{smallmatrix}v\\1\end{smallmatrix}\Bigr) $ *.
+##### 4.2  Независимые множества, порождающие множества, базисы
 
-##### 6.3  Музыкальные изоморфизмы и невырожденные ¯-билинейные формы
+-    $ C $  — независимое мн.-во:  $ \forall\,f\in\rm{FinFunc}(C,K)\;\bigl(\sum_{c\in C}f(c)\,c=0\,\Rightarrow f=0\bigr) $ .  $ D $  — порождающее мн.-во:  $ V=\langle D\rangle $ . Базис — независ. и порожд. мн.-во.
+-   Стандартные базисы простр.-в  $ K^n $  и  $ K_n $ :  $ \{\mathbf e_1,\ldots,\mathbf e_n\} $  и  $ \{\mathbf e^1,\ldots,\mathbf e^n\} $ . Утверждение: * $ B $  — завис. мн.-во, если и только если  $ \,\exists\,b\in B\;\bigl(b\in\langle B\!\setminus\!\{b\}\rangle\bigr) $ *.
+-   **Теорема о свойствах базиса.** *Пусть  $ K $  — поле,  $ V $  — векторное пространство над  $ K $  и  $ B\subseteq V $ ; тогда следующие утверждения эквивалентны:
+    (у1)  $ B $  — базис пространства  $ V $ ;
+    (у2) отображение  $ \Biggl(\!\begin{align}\,\rm{FinFunc}(B,K)&\to V\\f&\mapsto\sum_{b\in B}f(b)\,b\end{align}\!\Biggr) $  — изоморфизм векторных пространств;
+    (у3) для любого вектора  $ v\in V $  существует единственная такая финитная функция  $ f\in\rm{FinFunc}(B,K) $ , что  $ v=\sum_{b\in B}f(b)\,b $ ;
+    (у4)  $ B $  — максимальное независимое множество (то есть  $ B $  — независимое мн.-во и для любых  $ v\in V\!\setminus\!B $  мн.-во  $ B\cup\{v\} $  не является независимым);
+    (у5)  $ B $  — минимальное порождающее множество (то есть  $ B $  — порождающее мн.-во и для любых  $ b\in B $  мн.-во  $ B\!\setminus\!\{b\} $  не является порождающим).*
+-   **Теорема о порядках независимых и порождающих множеств.** *Пусть  $ K $  — поле,  $ V $  — векторное пространство над  $ K $ ,  $ C,D\subseteq V $  и  $ |D|<\infty $ ; тогда,
+    если  $ C $  — независимое множество и  $ C\subseteq\langle D\rangle $ , то  $ |C|\le|D| $ , и, если  $ C $  и  $ D $  — базисы пространства  $ V $ , то  $ |C|=|D| $ .*
+-   **Теорема о существовании базиса.** *Пусть  $ K $  — поле,  $ V $  — векторное пространство над  $ K $ ,  $ C $  — независимое подмножество в  $ V $  и  $ D $  — порождающее
+    подмножество в  $ V $ , а также в  $ V $  существует конечное порождающее подмножество; тогда
+    (1) существует такой базис  $ B $  пространства  $ V $ , что  $ C\subseteq B $  (и, значит, дополняя до базиса множество  $ \,\varnothing $ , получаем, что в  $ V $  существует базис);
+    (2) существует такой базис  $ B $  пространства  $ V $ , что  $ B\subseteq D $  (и, значит, выделяя базис из множества  $ V $ , получаем, что в  $ V $  существует базис).*
+-   **Теорема об универсальности базиса.** *Пусть  $ K $  — поле,  $ V,Y $  — вект. простр.-ва над  $ K $  и  $ B $  — базис простр.-ва  $ V $ ; тогда для любых  $ \alpha\in\rm{Func}(B,Y) $ 
+    существует единственный такой  $ a\in\rm{Hom}(V,Y) $ , что  $ a|_B=\alpha $  (и, значит,  $ \biggl(\!\begin{align}\rm{Hom}(V,Y)&\to\rm{Func}(B,Y)\\a&\mapsto a|_B\end{align}\!\biggr) $  — изоморфизм вект. пространств).*
+-   **Теорема о базисах и линейных операторах.** *Пусть  $ K $  — поле,  $ V,Y $  — вект. пространства над  $ K $ ,  $ B $  — базис простр.-ва  $ V $  и  $ a\in\rm{Hom}(V,Y) $ ; тогда
+    (1)  $ a $  — инъекция, если и только если все  $ a(b) $ , где  $ b\in B $ , попарно различны и  $ a(B) $  — независимое множество;
+    (2)  $ a $  — сюръекция, если и только если  $ a(B) $  — порождающее множество;
+    (3)  $ a $  — изоморфизм, если и только если все  $ a(b) $ , где  $ b\in B $ , попарно различны и  $ a(B) $  — базис.*
 
--   Оператор бемоль (опускание индекса):  $ \biggl(\!\begin{align}\flat_\sigma\colon V&\to\overline V^*\\v&\mapsto\bigl(w\mapsto\sigma(v,w)\bigr)\!\end{align}\!\biggr) $ . Опускание индекса в координатах:  $ (\flat_\sigma v)_e=(v^e)^{\scriptscriptstyle\mathsf T}\!\cdot\sigma_{e,e} $  и  $ (\flat_\sigma v)_j=\sum_{i=1}^nv^i\,\sigma_{i,j} $ .
--   Случай  $ \dim V<\infty $ :  $ \bigl( $  $ \sigma $  невырождена $ \bigr) $  $ \;\Leftrightarrow\; $  $ \bigl( $  $ \flat_\sigma $  — биекция $ \bigr) $  $ \;\Leftrightarrow\; $  $ \rm{Ker}\,\flat_\sigma\!=\{0\} $ . Ранг формы  $ \sigma $ :  $ \rm{rk}(\sigma)=\dim\rm{Im}\,\flat_\sigma $ . Утверждение:  $ \rm{rk}(\sigma)=\rm{rk}(\sigma_{e,e}) $ .
--   Топологическая невырожденность ( $ K=\mathbb R $  или  $ K=\mathbb C $ ,  $ V $  — нормир. пр.-во,  $ \sigma\in\overline{\rm{Bi}}(V)\cap\rm C^0\!(V\times V,K) $ ):  $ \biggl(\!\begin{align}\flat_\sigma\colon V&\to\overline V^*\!\!\cap\rm C^0\!(V,K)\\v&\mapsto\bigl(w\mapsto\sigma(v,w)\bigr)\!\end{align}\!\biggr) $  — биекция.
--   Пример:  $ K=\mathbb R $  или  $ K=\mathbb C $ ,  $ V=\ell^2_K=\bigl\{f\in\rm{Func}(\mathbb N,K)\mid\sum_{n=1}^\infty|f_i|^2\!<\infty\bigr\} $  и  $ \sigma\,\colon(f,g)\mapsto\sum_{i=1}^\infty f_i\overline{g_i} $ ; тогда  $ \sigma $  топологически невырожд. (без док.-ва).
--   Оператор диез (подъем индекса):  $ \sharp^\sigma\!=\flat_\sigma^{-1} $  ( $ \sigma $  невырождена). Подъем индекса в коорд. ( $ \sigma^{e,e}=(\sigma_{e,e}^{-1})^{\scriptscriptstyle\mathsf T} $ ):  $ (\sharp^\sigma\lambda)^e=\sigma^{e,e}\!\cdot(\lambda_e)^{\scriptscriptstyle\mathsf T} $  и  $ (\sharp^\sigma\lambda)^i=\sum_{j=1}^n\sigma^{i,j}\,\lambda_j $ .
--   **Теорема о базисах и невырожденных формах.** *Пусть  $ K $  — поле с инволюцией,  $ V $  — вект. простр.-во над  $ K $ ,  $ \sigma\in\rm{\overline{Bi}}(V) $ ,  $ m\in\mathbb N_0 $ ,  $ v_1,\ldots,v_m\in V $  и
-     $ U=\langle v_1,\ldots,v_m\rangle $ ; тогда  $ \sigma_{(v_1,\ldots,v_m),(v_1,\ldots,v_m)}\!\in\rm{GL}(m,K) $ , если и только если  $ (v_1,\ldots,v_m)\in\rm{OB}(U) $  и форма  $ \sigma|_{U\times U} $  невырождена.*
--   Ортогональные векторы ( $ \sigma\in\rm{\overline{SBi}}(V)\cup\rm{\overline{ABi}}(V) $ ):  $ v\perp w\,\Leftrightarrow\,\sigma(v,w)=0\,\Leftrightarrow\,\sigma(w,v)=0 $ . Ортогональн. дополнение:  $ U^\perp\!=\{v\in V\mid U\perp v\}\le V $ .
--   **Теорема об ортогональном дополнении.** *Пусть  $ K $  — поле с инволюцией,  $ V $  — вект. простр.-во над  $ K $ ,  $ \sigma\in\rm{\overline{SBi}}(V)\cup\rm{\overline{ABi}}(V) $  и  $ U,W\le V $ ; тогда
-    (1)  $ U\subseteq U^{\perp\perp} $ ,  $ U\subseteq W\,\Rightarrow\,W^\perp\!\subseteq U^\perp $ ,  $ (U+W)^\perp\!=U^\perp\!\cap W^\perp $  и  $ \,U^\perp\!+W^\perp\!\subseteq(U\cap W)^\perp $ ;
-    (2) если  $ \dim V<\infty $  и форма  $ \sigma $  невырождена, то  $ \dim U^\perp\!=\dim V-\dim U $ , а также  $ U=U^{\perp\perp} $  и  $ \,U^\perp\!+W^\perp\!=(U\cap W)^\perp $ ;
-    (3)  $ \rm{Ker}\bigl(\flat_{\sigma|_{U\times U}}\!\bigr)\!=U\cap U^\perp $  и, если  $ \dim U<\infty $ , то  $ \bigl( $ форма  $ \sigma|_{U\times U} $  невырождена $ \bigr) $  $ \;\Leftrightarrow\;\, $  $ U\cap U^\perp\!=\{0\} $ ;
-    (4) если форма  $ \sigma|_{U\times U} $  невырождена, то  $ V=U\oplus U^\perp $  (и, значит, определен ортогональный проектор на  $ U $ :  $ \biggl(\!\begin{align}\rm{proj}_U\colon V=U\oplus U^\perp\!&\to V\\v=u+w&\mapsto u\end{align}\!\biggr) $ ).*
+##### 4.3  Размерность, координаты, замена координат
 
-##### 6.4  Диагонализация ¯-симметричных ¯-билинейных форм
+-   Размерность  $ \dim V $  пр.-ва  $ V $  — порядок (мощность) базиса пр.-ва  $ V $ . Примеры:  $ \dim K^n\!=\dim K_n\!=n $ ,  $ \dim\rm{Mat}(p,n,K)=n\,p $  и  $ \dim K[x]=\infty $ .
 
--   Ортогональный базис:  $ e\in\rm{OOB}(V,\sigma) $  $ \;\Leftrightarrow\; $  $ \bigl( $  $ \sigma_{e,e} $  — диагональная матрица $ \bigr) $ . Форма  $ \sigma $  в ортогональн. коорд. ( $ e\in\rm{OOB}(V,\sigma) $ ):  $ \sigma(v,w)=\sum_{i=1}^n\sigma_{i,i}\,v^i\overline{w^i} $ .
+-   **Теорема о свойствах размерности.** *Пусть  $ K $  — поле,  $ V $  — векторное пространство над  $ K $  и  $ \dim V<\infty $ ; тогда
+    (1) для любого независимого подмножества  $ C $  в  $ V $  выполнено  $ |C|\le\dim V $  и, если  $ |C|=\dim V $ , то  $ C $  — базис;
+    (2) для любого порождающего подмножества  $ D $  в  $ V $  выполнено  $ |D|\ge\dim V $  и, если  $ |D|=\dim V $ , то  $ D $  — базис;
+    (3) для любого подпространства  $ U $  в  $ V $  выполнено  $ \dim U\le\dim V $  и, если  $ \dim U=\dim V $ , то  $ U=V $ .*
 
--   Ортонормированный базис ( $ K=\mathbb R $  или  $ K=\mathbb C $ ):  $ e\in\rm{OnOB}(V,\sigma) $  $ \;\Leftrightarrow\; $  $ \bigl( $  $ \sigma_{e,e} $  — диагональная матрица с  $ 1,\ldots,1,-1,\ldots,-1,0,\ldots,0 $  на диагонали $ \bigr) $ .
+-   **Теорема о размерности и линейных операторах.** *Пусть  $ K $  — поле,  $ V,Y $  — векторные пространства над  $ K $  и  $ \dim V,\dim Y<\infty $ ; тогда
+    (1)  $ \rm{Inj}(V,Y)\cap\rm{Hom}(V,Y)\ne\varnothing $ , если и только если  $ \dim V\le\dim Y $ ;
+    (2)  $ \rm{Surj}(V,Y)\cap\rm{Hom}(V,Y)\ne\varnothing $ , если и только если  $ \dim V\ge\dim Y $ ;
+    (3)  $ V\cong Y $ , если и только если  $ \dim V=\dim Y $ ;
+    (4) если  $ \dim V=\dim Y $ , то  $ \,\rm{Inj}(V,Y)\cap\rm{Hom}(V,Y)=\rm{Surj}(V,Y)\cap\rm{Hom}(V,Y)=\rm{Iso}(V,Y) $  (это принцип Дирихле для линейных операторов),
+    а также для любых  $ a\in\rm{Hom}(V,Y){} $  и  $ b\in\rm{Hom}(Y,V) $  выполнено  $ \,b\circ a=\rm{id}_V\Rightarrow\,b=a^{-1} $ .*
 
--   **Лемма о неизотропном векторе.** *Пусть  $ K $  — поле с инволюцией,  $ \rm{char}\,K\ne2 $ ,  $ V $  — вект. пр. над  $ K $  и  $ \sigma\in\rm{\overline{SBi}}(V)\!\setminus\!\{0\} $ ; тогда  $ \exists\,v\in V\;\bigl(\sigma(v,v)\ne0\bigr) $ .*
+-   Множество упорядоченных базисов:  $ \rm{OB}(V) $ . Столбец координат вектора:  $ v^e $ . Утверждение:  $ v=e\cdot v^e $ . Изоморфизм векторных простр.-в  $ \biggl(\!\begin{align}V&\to K^n\\v&\mapsto v^e\end{align}\!\biggr) $ .
 
--   Теорема Лагранжа. Матричная формулировка теоремы Лагранжа. Алгоритм приведения квадратичной формы к сумме квадратов с коэффициентами.
+-   Матрица лин. опер.  $ a $ :  $ a_e^h=\bigl(a(e_1)^h\;\ldots\;a(e_n)^h\bigr) $ . Теорема о матрице линейного оператора. Изоморфизм вект. пр. и колец  $ \biggl(\!\begin{align}\rm{End}(V)&\to\rm{Mat}(n,K)\\a&\mapsto a_e^e\end{align}\!\biggr) $ .
 
-    **Теорема Лагранжа.** *Пусть  $ K $  — поле с инволюцией,  $ \rm{char}\,K\ne2 $ ,  $ V $  — векторное пространство над  $ K $ ,  $ \dim V<\infty $  и  $ \sigma\in\rm{\overline{SBi}}(V) $ ; тогда
-    (1) в пространстве  $ V $  существует ортогональный базис (то есть  $ \rm{OOB}(V,\sigma)\ne\varnothing $ );
-    (2) если  $ K=\mathbb R $  или  $ K=\mathbb C $ , то в пространстве  $ V $  существует ортонормированный базис (то есть  $ \rm{OnOB}(V,\sigma)\ne\varnothing $ ).*
+    **Теорема о матрице линейного оператора.** *Пусть  $ K $  — поле и  $ V,X,Y,Z $  — векторные пространства над  $ K $ ; тогда
+    (1) если  $ n=\dim V<\infty $ ,  $ p=\dim Y<\infty $ ,  $ e\in\rm{OB}(V) $  и  $ h\in\rm{OB}(Y) $ , то  $ \forall\,a\in\rm{Hom}(V,Y),\,v\in V\;\bigl(a(v)^h=a_e^h\cdot v^e\bigr) $ , а также отображение
+     $ \biggl(\!\begin{align}\rm{Hom}(V,Y)&\to\rm{Mat}(p,n,K)\\a&\mapsto a_e^h\end{align}\!\biggr) $  — изоморфизм векторных пространств (и, значит,  $ \dim\rm{Hom}(V,Y)=n\,p $ );
+    (2) если  $ \dim V,\dim X,\dim Z<\infty $ ,  $ e\in\rm{OB}(V) $ ,  $ f\in\rm{OB}(X) $  и  $ g\in\rm{OB}(Z) $ , то  $ \forall\,a\in\rm{Hom}(V,X),\,b\in\rm{Hom}(X,Z)\;\bigl((b\circ a)_e^g=b_f^g\cdot a_e^f\bigr) $ .*
 
-    **Матричная формулировка теоремы Лагранжа.** *Пусть  $ K $  — поле с инволюцией,  $ \rm{char}\,K\ne2 $ ,  $ n\in\mathbb N_0 $  и  $ s\in\rm{\overline S}\rm{Mat}(n,K) $ ; тогда
-    (1) существует такая матрица  $ g\in\rm{GL}(n,K) $ , что  $ g^{\scriptscriptstyle\mathsf T}\!\cdot s\cdot\overline g $  — диагональная матрица;
-    (2) если  $ K=\mathbb R $  или  $ K=\mathbb C $ , то сущ.-т такая матрица  $ g\in\rm{GL}(n,K) $ , что  $ g^{\scriptscriptstyle\mathsf T}\!\cdot s\cdot\overline g $  — диаг. матрица с  $ 1,\ldots,1,-1,\ldots,-1,0,\ldots,0 $  на диагонали.*
+-   Матрица замены коорд. ( $ e,\tilde e\in\rm{OB}(V) $ ):  $ \rm c_e^\tilde e=(\rm{id}_V)_e^\tilde e $ . Пример:  $ \rm c_e^\mathbf e=e $  ( $ e\in\rm{OB}(K^n) $ ,  $ \mathbf e=(\mathbf e_1,\ldots,\mathbf e_n) $ ). Утверждение: * $ \rm c_\tilde e^\tilde{\tilde e}\cdot\rm c_e^\tilde e=\rm c_e^\tilde{\tilde e} $  и  $ \,\rm c_\tilde e^e=(\rm c_e^\tilde e)^{-1} $ *.
 
--   **Лемма об ортогональном проекторе.** *Пусть  $ K $  — поле с инволюцией,  $ V $  — вект. пр.-во над  $ K $ ,  $ \sigma\in\rm{\overline{SBi}}(V) $ ,  $ U\le V $ ,  $ m=\dim U<\infty $ ,  $ e\in\rm{OB}(U) $ ,
-    форма  $ \sigma|_{U\times U} $  невырождена и  $ v\in V $ ; тогда  $ \rm{proj}_U(v)^e=(\sigma|_{U\times U})^{e,e}\!\cdot\!\biggl(\begin{smallmatrix}\sigma(v,e_1)\\\vdots\\\sigma(v,e_m)\end{smallmatrix}\biggr) $  и, если  $ e\in\rm{OOB}(U,\sigma|_{U\times U}) $ , то  $ \rm{proj}_U(v)=\sum_{i=1}^m\frac{\sigma(v,e_i)}{\sigma(e_i,e_i)}\,e_i $ *.
+-   Преобраз.-е столбца коорд. вектора:  $ v^\tilde e=\rm c_e^\tilde e\cdot v^e $ ; покомпонентная запись:  $ v^\tilde i=\sum_{k=1}^n(e_k)^\tilde i\,v^k $ . Преобраз.-е базиса:  $ \tilde e=e\cdot\rm c_\tilde e^e $  ( $ \rm c_\tilde e^e $  — матрица перехода).
 
--   **Лемма об определителе матрицы Грама.** *Пусть  $ K $  — поле с инволюцией,  $ V $  — векторное простр.-во над  $ K $ ,  $ \sigma\in\rm{\overline{SBi}}(V) $ ,  $ m\in\mathbb N $ ,  $ v_1,\ldots,v_m\in V $ ,
-     $ U=\langle v_1,\ldots,v_{m-1}\rangle $ , форма  $ \sigma|_{U\times U} $  невырождена и  $ \hat v_m=v_m-\rm{proj}_U(v_m) $ ; тогда  $ \det\sigma_{(v_1,\ldots,v_m),(v_1,\ldots,v_m)}=\det\sigma_{(v_1,\ldots,v_{m-1}),(v_1,\ldots,v_{m-1})}\cdot\sigma(\hat v_m,\hat v_m) $ .*
+-   Преобраз.-е матрицы лин. оператора:  $ a_\tilde e^\tilde h=\rm c_h^\tilde h\cdot a_e^h\cdot\rm c_\tilde e^e $ ; случай  $ V=Y $ ,  $ e=h $ ,  $ \tilde e=\tilde h $ :  $ a_\tilde e^\tilde e=\rm c_e^\tilde e\cdot a_e^e\cdot\rm c_\tilde e^e $ ; покомпон. запись:  $ a^\tilde i_\tilde j=\sum_{k=1}^n\sum_{l=1}^n(e_k)^\tilde i(e_\tilde j)^l\,a_l^k $ .
 
--   **Процесс ортогонализации Грама--Шмидта.** *Пусть  $ K $  — поле с инволюцией,  $ V $  — векторное пространство над  $ K $ ,  $ n=\dim V<\infty $ ,  $ \sigma\in\rm{\overline{SBi}}(V) $  и
-     $ e\in\rm{OB}(V) $ ; для любых  $ i\in\{0,\ldots,n\} $  обозначим через  $ V_i $  пространство  $ \langle e_1,\ldots,e_i\rangle $  и обозначим через  $ cm_i $   $ i $ -й угловой минор матрицы  $ \sigma_{e,e} $  (то
-    есть  $ cm_i=\det\sigma_{(e_1,\ldots,e_i),(e_1,\ldots,e_i)} $ ). Пусть для любых  $ i\in\{1,\ldots,n-1\} $  форма  $ \sigma|_{V_i\times V_i} $  невырождена (это эквивалентно тому, что  $ cm_i\ne0 $ ); для
-    любых  $ i\in\{1,\ldots,n\} $  обозначим через  $ \hat e_i $  вектор  $ e_i-\rm{proj}_{V_{i-1}}(e_i) $ . Тогда для любых  $ i\in\{1,\ldots,n\} $  выполнено  $ (\hat e_1,\dots,\hat e_i)\in\rm{OOB}(V_i,\sigma|_{V_i\times V_i}) $  и
-     $ \sigma(\hat e_i,\hat e_i)=\frac{cm_i}{cm_{i-1}} $ , а также  $ \hat e_i=e_i-\sum_{j=1}^{i-1}\frac{\sigma(e_i,\hat e_j)}{\sigma(\hat e_j,\hat e_j)}\,\hat e_j $  (это индуктивная формула для нахождения векторов  $ \hat e_1,\ldots,\hat e_n $ ).*
+##### 4.4  Факторпространства, прямая сумма векторных пространств, двойственное пространство
 
--   Ортогонал. системы функций:  $ \cos(nx) $  и  $ \sin(nx) $  ( $ n\in\mathbb N $ ),  $ \rm e^{nx\,\rm i} $  ( $ n\in\mathbb Z $ ), многочлены Лежандра, Чебышёва, Эрмита (см. пункты 5--10 в § 4 части 2 в \[5\]).
+-   Факторпространство:  $ V/U $  с фактороперациями ( $ U\le V $ ). Корректность определ.-я. Теорема о гомоморфизме. Коразмерность:  $ \rm{codim}_VU=\dim V/U $ .
 
-### 7   Геометрия в векторных пространствах над  $ \mathbb R $  или  $ \mathbb C $ 
+    **Теорема о гомоморфизме.** *Пусть  $ K $  — поле,  $ V,Y $  — векторные пространства над  $ K $  и  $ a\in\rm{Hom}(V,Y) $ ; тогда  $ V/\,\rm{Ker}\,a\cong\rm{Im}\,a $ .*
 
-##### 7.1  Положительно и отрицательно определенные формы и сигнатура формы
+-   **Теорема о факторпространстве.** *Пусть  $ K $  — поле,  $ V $  — векторное пространство над  $ K $  и  $ U\le V $ ; тогда
+    (1) если  $ A $  — базис пр.-ва  $ U $ ,  $ B $  — базис пр.-ва  $ V $  и  $ A\subseteq B $ , то все  $ b+U $ , где  $ b\in B\!\setminus\!A $ , попарно различны и  $ \{b+U\mid b\in B\!\setminus\!A\} $  — базис пр.-ва  $ V/U $ ;
+    (1\') если  $ \dim V<\infty $ , то  $ \dim V/U=\dim V-\dim U $ ;
+    (2) если  $ \dim V<\infty $ ,  $ Y $  — вект. пр.-во над  $ K $  и  $ a\in\rm{Hom}(V,Y) $ , то  $ \dim\rm{Ker}\,a+\dim\rm{Im}\,a=\dim V $  (это теорема о размерностях ядра и образа).*
 
--   Мн.-ва положительно и отрицательно определенных форм:  $ \rm{\overline{SBi}}_{>0}(V)=\{\sigma\in\rm{\overline{SBi}}(V)\mid\forall\,v\in V\!\setminus\!\{0\}\;\bigl(\sigma(v,v)>0\bigr)\} $  и  $ \rm{\overline{SBi}}_{<0}(V)=-\rm{\overline{SBi}}_{>0}(V) $ .
--   Мн.-ва полож. и отриц. опред. матриц:  $ \rm{\overline S}\rm{Mat}_{>0}(n,K)=\{s\in\rm{\overline S}\rm{Mat}(n,K)\mid\forall\,v\in K^n\!\setminus\!\{0\}\;\bigl(v^{\scriptscriptstyle\mathsf T}\!\cdot s\cdot\overline v>0\bigr)\} $  и  $ \rm{\overline S}\rm{Mat}_{<0}(n,K)=-\rm{\overline S}\rm{Mat}_{>0}(n,K){} $ .
--   **Следствия из теоремы об ортогональном дополнении и теоремы Лагранжа.** *Пусть  $ K=\mathbb R $  или  $ K=\mathbb C $ ,  $ V $  — вект. пр.-во над  $ K $  и  $ \sigma\in\rm{\overline{Bi}}(V) $ ; тогда
-    (1) если  $ \sigma\in\rm{\overline{SBi}}_{>0}(V) $  и  $ U\le V $ , то  $ U\cap U^\perp\!=\{0\} $  и, если  $ \dim U<\infty $ , то форма  $ \sigma|_{U\times U} $  невырождена и  $ V=U\oplus U^\perp $ ;
-    (2) если  $ n=\dim V<\infty $ , то  $ \sigma\in\rm{\overline{SBi}}_{>0}(V) $ , если и только если  $ \exists\,e\in\rm{OB}(V)\;\bigl(\sigma_{e,e}=\rm{id}_n\bigr) $ ;
-    (3) если  $ n=\dim V<\infty $  и  $ e\in\rm{OB}(V) $ , то  $ \sigma\in\rm{\overline{SBi}}_{>0}(V) $ , если и только если  $ \exists\,g\in\rm{GL}(n,K)\;\bigl(\sigma_{e,e}=g^{\scriptscriptstyle\mathsf T}\!\cdot\overline g\bigr) $ .*
--   **Критерий Сильвестра.** *Пусть  $ K=\mathbb R $  или  $ K=\mathbb C $ ,  $ V $  — векторное пространство над  $ K $ ,  $ n=\dim V<\infty $ ,  $ \sigma\in\rm{\overline{SBi}}(V) $  и  $ e\in\rm{OB}(V) $ ; для любых
-     $ i\in\{1,\ldots,n\} $  обозначим через  $ cm_i $   $ i $ -й угловой минор матрицы  $ \sigma_{e,e} $  (то есть  $ cm_i=\det\sigma_{(e_1,\ldots,e_i),(e_1,\ldots,e_i)} $ ); тогда
-    (1)  $ \sigma\in\rm{\overline{SBi}}_{>0}(V) $ , если и только если  $ \forall\,i\in\{1,\ldots,n\}\;\bigl(cm_i>0\bigr) $ ;
-    (2)  $ \sigma\in\rm{\overline{SBi}}_{<0}(V) $ , если и только если  $ \forall\,i\in\{1,\ldots,n\}\;\bigl((-1)^i\,cm_i>0\bigr) $ .*
--   Индексы инерции формы  $ \sigma $ :  $ \rm{ind}_{>0}(\sigma)=\max\{\dim U\mid U\le V\,\land\,\sigma|_{U\times U}\!\in\overline{\rm{SBi}}_{>0}(U)\} $  и  $ \rm{ind}_{<0}(\sigma)=\max\{\dim U\mid U\le V\,\land\,\sigma|_{U\times U}\!\in\overline{\rm{SBi}}_{<0}(U)\} $ .
--   **Закон инерции Сильвестра.** *Пусть  $ K=\mathbb R $  или  $ K=\mathbb C $ ,  $ V $  — векторное простр.-во над  $ K $ ,  $ n=\dim V<\infty $ ,  $ \sigma\in\rm{\overline{SBi}}(V) $  и  $ e\in\rm{OOB}(V,\sigma) $ ; тогда
-    (1)  $ \rm{ind}_{>0}(\sigma)=|\{i\in\{1,\ldots,n\}\mid\sigma(e_i,e_i)>0\}| $  (и, значит, число  $ |\{i\in\{1,\ldots,n\}\mid\sigma(e_i,e_i)>0\}| $  не зависит от  $ e $ );
-    (2)  $ \rm{ind}_{<0}(\sigma)=|\{i\in\{1,\ldots,n\}\mid\sigma(e_i,e_i)<0\}| $  (и, значит, число  $ |\{i\in\{1,\ldots,n\}\mid\sigma(e_i,e_i)<0\}| $  не зависит от  $ e $ );
-    (3)  $ \rm{ind}_{>0}(\sigma)+\rm{ind}_{<0}(\sigma)=\rm{rk}(\sigma) $ .*
--   **Теорема о классификации пространств с формой.** *Пусть  $ K=\mathbb R $  или  $ K=\mathbb C $ ,  $ V,Y $  — вект. простр.-ва над  $ K $ ,  $ \dim V,\dim Y<\infty $ ,  $ \sigma\in\rm{\overline{SBi}}(V) $  и
-     $ \varphi\in\rm{\overline{SBi}}(Y) $ ; тогда  $ (V,\sigma)\cong(Y,\varphi) $ , если и только если  $ \dim V=\dim Y $ ,  $ \rm{ind}_{>0}(\sigma)=\rm{ind}_{>0}(\varphi) $  и  $ \rm{ind}_{<0}(\sigma)=\rm{ind}_{<0}(\varphi) $ .*
--   Сигнатура формы  $ \sigma $ :  $ (\rm{ind}_{>0}(\sigma),\rm{ind}_{<0}(\sigma)) $  (или  $ \rm{ind}_{>0}(\sigma)-\rm{ind}_{<0}(\sigma) $ ). Исследование кривых и поверхностей второго порядка (см. § 2 главы VIII в \[1\]).
+-   Прямая сумма  $ U\oplus W $ :  $ U\times W $  с покомпон. операциями. Операторы вложения и проекции:  $ \biggl(\!\begin{align}V_i&\to V_1\oplus\ldots\oplus V_k\\v_i&\mapsto(0,\ldots,0,v_i,0,\ldots,0)\end{align}\!\biggr) $  и  $ \biggl(\!\begin{align}V_1\oplus\ldots\oplus V_k&\to V_i\\(v_1,\ldots,v_k)&\mapsto v_i\end{align}\!\biggr) $ .
 
-##### 7.2  Предгильбертовы пространства
+-   **Теорема о прямой сумме.** *Пусть  $ K $  — поле,  $ V $  — векторное пространство над  $ K $ ,  $ k\in\mathbb N_0 $  и  $ V_1,\ldots,V_k\le V $ ; обозначим через  $ \rm{add} $  отображение
+     $ \biggl(\!\begin{align}V_1\oplus\ldots\oplus V_k&\to V\\(v_1,\ldots,v_k)&\mapsto v_1+\ldots+v_k\end{align}\!\biggr) $  (ясно, что  $ \rm{add} $  — линейный оператор); тогда
+    (1) если  $ B_1,\ldots,B_k $  — базисы пространств  $ V_1,\ldots,V_k $  соответственно, то  $ \{(b_1,0,\ldots,0)\mid b_1\in B_1\}\cup\ldots\cup\{(0,\ldots,0,b_k)\mid b_k\in B_k\} $  — базис
+    пространства  $ V_1\oplus\ldots\oplus V_k $  (и, значит, если дополнительно  $ \rm{add} $  — изоморфизм, то  $ B_1\cup\ldots\cup B_k $  — базис пространства  $ V $ );
+    (1\') если  $ \dim V_1,\ldots,\dim V_k<\infty $ , то  $ \dim(V_1\oplus\ldots\oplus V_k)=\dim V_1+\ldots+\dim V_k $ ;
+    (2) следующие утверждения эквивалентны: (у1)  $ \rm{add}\in\rm{Iso}(V_1\oplus\ldots\oplus V_k,V) $ , (у2)  $ \forall\,v\in V\;\exists!\,v_1\in V_1,\ldots,v_k\in V_k\;\bigl(v=v_1+\ldots+v_k\bigr) $ ,
+    (у3)  $ \forall\,i\in\{1,\ldots,k\}\;\bigl(V_i\cap(V_1+\ldots+V_{i-1}+V_{i+1}+\ldots+V_k)=\{0\}\bigr)\,\land\,V=V_1+\ldots+V_k $ ;
+    (3) если  $ \dim V<\infty $ , то в пункте (2) условие « $ V=V_1+\ldots+V_k $ » можно заменить на условие « $ \dim V=\dim V_1+\ldots+\dim V_k $ »;
+    (4) если  $ U,W\le V $  и  $ \dim U,\dim W<\infty $ , то  $ \dim(U\cap W)+\dim(U+W)=\dim U+\dim W $  (это формула Грассмана).*
 
--   Предгильбертово пространство — вект. пр.-во над  $ \mathbb R $  или  $ \mathbb C $  с полож. опред. формой. Обозн.-е формы:  $ (\,\mid\,) $ . Примеры:  $ (v\!\mid\!w)=v^{\scriptscriptstyle\mathsf T}\!\cdot\overline w $ ,  $ (f\!\mid\!g)=\!\int_\alpha^\beta\!\!f\,\overline g $ .
+-   Внутренняя прямая сумма:  $ V=V_1\oplus\ldots\oplus V_k\,\Leftrightarrow\,\rm{add}\in\rm{Iso}(V_1\oplus\ldots\oplus V_k,V) $ . Лемма об инвариантном подпространстве. Прямая сумма матриц.
 
--   Евклидово $ \,/\, $ унитарное пр.-во — конечномерн. вект. пр.-во над  $ \mathbb R $  $ \,/\, $  $ \mathbb C $  с полож. опред. формой, то есть конечномерн. предгильбертово пр.-во над  $ \mathbb R $  $ \,/\, $  $ \mathbb C $ .
+    **Лемма об инвариантном подпространстве.** *Пусть  $ K $  — поле,  $ V $  — векторное простр.-во над  $ K $ ,  $ n=\dim V<\infty $ ,  $ a\in\rm{End}(V) $ ,  $ U\le V $  и  $ a(U)\subseteq U $ 
+    (то есть  $ U $  —  $ a $ -инвариантное подпространство в  $ V $ ), а также  $ n'=\dim U $  и  $ n''\!=n-n' $ ; тогда
+    (1) существуют такие  $ e\in\rm{OB}(V) $ ,  $ a'\!\in\rm{Mat}(n',K) $ ,  $ a''\!\in\rm{Mat}(n'',K) $  и  $ b\in\rm{Mat}(n',n'',K) $ , что  $ a_e^e=\Bigl(\begin{smallmatrix}a'&b\\0&a''\!\end{smallmatrix}\Bigr) $ ;
+    (2) если  $ W\le V $ ,  $ V=U\oplus W $  и  $ a(W)\subseteq W $ , то существуют такие  $ e\in\rm{OB}(V) $ ,  $ a'\!\in\rm{Mat}(n',K) $  и  $ a''\!\in\rm{Mat}(n'',K) $ , что  $ a_e^e=\Bigl(\begin{smallmatrix}a'&0\\0&a''\!\end{smallmatrix}\Bigr) $ .*
 
--   Норма:  $ \|v\|=\sqrt{(v\!\mid\!v)} $ . Утверждение: * $ v\ne0\,\Rightarrow\,\|v\|>0 $  и  $ \|c\,v\|=|c|\,\|v\| $ *. Гильбертово пространство — полное предгильбертово пр.-во. Пример:  $ \ell^2 $ .
+-   Двойственное пр.-во:  $ V^*\!=\rm{Hom}(V,K) $ . Двойств. базис ( $ n=\dim V<\infty $ ,  $ e\in\rm{OB}(V) $ ):  $ e^*\!=\biggl(\begin{smallmatrix}e^1\\\vdots\\e^n\end{smallmatrix}\biggr)=\Biggl(\begin{smallmatrix}v\,\mapsto(v^e)^1\\\vdots\\v\,\mapsto(v^e)^n\end{smallmatrix}\!\Biggr) $ . Строка координат ковектора:  $ \lambda_e $ .
 
--   **Теорема о свойствах нормы.** *Пусть  $ V $  — предгильбертово пространство; тогда
-    (1) для любых  $ v,w\in V $  выполнено  $ |(v\!\mid\!w)|\le\|v\|\,\|w\| $  (это неравенство Коши--Буняковского--Шварца);
-    (2) для любых  $ v,w\in V $  выполнено  $ \|v+w\|\le\|v\|+\|w\| $  (это неравенство треугольника);
-    (3) если  $ \dim V<\infty $ , то для любых  $ e\in\rm{OnOB}(V) $  и  $ v\in V $  выполнено  $ v=\!\sum_{i=1}^{\dim V}\!(v\!\mid\!e_i)\,e_i $  и  $ \|v\|^2=\!\sum_{i=1}^{\dim V}\!|(v\!\mid\!e_i)|^2 $  (это равенство Парсеваля).*
+-   Утверждение: * $ \lambda=\lambda_e\cdot e^*\! $  и  $ \lambda(v)=\lambda_e\cdot v^e $ *. Изоморфизм  $ \biggl(\!\begin{align}V^*\!&\to K_n\!\\\lambda&\mapsto\lambda_e\end{align}\!\biggr) $ . Преобраз.-я при замене базиса:  $ \lambda_\tilde e=\lambda_e\cdot\rm c_\tilde e^e $ ,  $ \lambda_\tilde j=\sum_{l=1}^n(e_\tilde j)^l\,\lambda_l $  и  $ \,\tilde e^*\!=\rm c_e^\tilde e\cdot e^* $ .
 
--   Метрика:  $ \rm{dist}(v,w)=\|v-w\| $ . Расстояние между подмн.-вами:  $ \rm{dist}(X,Y)=\inf\,\{\rm{dist}(x,y)\mid x\in X,\,y\in Y\} $ . Теорема о расстояниях и проекциях.
+-   Двойственный оператор ( $ a\in\rm{Hom}(V,Y) $ ):  $ \biggl(\!\begin{align}a^*\colon Y^*\!&\to V^*\\\theta&\mapsto\theta\circ a\end{align}\!\biggr) $ . Утверждение: *если  $ \dim V<\infty $ , то  $ \biggl(\!\begin{align}V&\to V^{**}\\v&\mapsto\bigl(\lambda\mapsto\lambda(v)\bigr)\!\end{align}\!\biggr) $  — изоморфизм вект. пр.-в*.
 
-    **Теорема о расстояниях и проекциях.** *Пусть  $ V $  — предгильбертово пространство и  $ U,U'\!\le V $ ; тогда
-    (1) для любых  $ v,v'\!\in V $  выполнено  $ \rm{dist}(v+U,v'+U')=\rm{dist}(v-v',U+U') $ ;
-    (2) если  $ \dim U<\infty $ , то для любых  $ v\in V $  выполнено  $ \rm{dist}(v,U)=\rm{dist}(v,\rm{proj}_U(v)) $ ;
-    (3) если  $ \dim V<\infty $ , то  $ \rm{proj}_U\!+\rm{proj}_{U^\perp}\!=\rm{id}_V $  и для любых  $ v\in V $  выполнено  $ \rm{dist}(v,U)=\|\rm{proj}_{U^\perp}\!(v)\| $ ;
-    (4) если  $ \dim U<\infty $ , то для любых  $ e\in\rm{OnOB}(U) $  и  $ v\in V $  выполнено  $ \rm{proj}_U(v)=\!\sum_{i=1}^{\dim U}\!(v\!\mid\!e_i)\,e_i $  и  $ \|v\|^2\ge\!\sum_{i=1}^{\dim U}\!|(v\!\mid\!e_i)|^2 $  (это неравенство Бесселя).*
+‍
 
--   Метод наименьших квадратов: замена системы  $ a\cdot v=y $ , где  $ a\in\rm{Mat}(p,n,\mathbb R) $  и  $ \rm{rk}(a)=n $ , на систему  $ a\cdot v=\rm{proj}_X(y) $ , где  $ X=\{a\cdot v\mid v\in\mathbb R^n\} $ .
++———————————————————————————————————————+———————————————————————————+————————————————————————————————————————————+—————————————+
+| ТАБЛИЦА О КООРДИНАТАХ                                                                                               |                                                                                 |                                                                                                                                    |                                       |
+| (в таблице  $ K $  — поле,  $ V $  — векторное пространство над  $ K $ ,  $ n=\dim V<\infty $  и  $ e,\tilde e\in\rm{OB}(V) $ ) |                                                                                 |                                                                                                                                    |                                       |
++=====================================================================================================================+=================================================================================+====================================================================================================================================+=======================================+
+| Инвариантный объект                                                                                                 | Координаты                                                                      | Преобразование координат                                                                                                           | Пример использования                  |
+|                                                                                                                     | относительно базиса                                                             | при замене базиса                                                                                                                  | в непрерывной математике              |
++———————————————————————————————————————+———————————————————————————+————————————————————————————————————————————+—————————————+
+| вектор  $ v $  —                                                                                                      |  $ \begin{align}V&\to K^n\\v&\mapsto v^e\end{align} $                               |   —————————————————————————————                                          | скорость в точке                      |
+| элемент пространства  $ V $                                                                                             | (это изоморфизм                                                                 |   матричная запись:  $ v^\tilde e=\rm c_e^\tilde e\cdot v^e $                                                                      | гладкой кривой                        |
+| (тензор типа  $ (1,0) $  над  $ V $ )                                                                                       | векторных пространств)                                                          |                                                                                                                                    | в нормированном пространстве          |
+|                                                                                                                     |                                                                                 |   покомпонентная запись:                                                                                                           |                                       |
+|                                                                                                                     |                                                                                 |    $ \forall\,i\in\{1,\ldots,n\}\;\Bigl(v^\tilde i=\sum_{k=1}^n(e_k)^\tilde i\,v^k\Bigr) $                                             |                                       |
+|                                                                                                                     |                                                                                 |                                                                                                                                    |                                       |
+|                                                                                                                     |                                                                                 |   преобразование базиса:  $ \tilde e=e\cdot\rm c_\tilde e^e $                                                                      |                                       |
+|                                                                                                                     |                                                                                 |   —————————————————————————————                                          |                                       |
++———————————————————————————————————————+———————————————————————————+————————————————————————————————————————————+—————————————+
+| ковектор  $ \lambda $  —                                                                                              |  $ \begin{align}V^*\!&\to K_n\\\lambda&\mapsto\lambda_e\end{align} $                |   —————————————————————————————————                              | дифференциал в точке                  |
+| элемент пространства  $ V^* $                                                                                           | (это изоморфизм                                                                 |   матричная запись:  $ \lambda_\tilde e=\lambda_e\cdot\rm c_\tilde e^e $                                                           | гладкой функции (скалярного поля)     |
+| (тензор типа  $ (0,1) $  над  $ V $ )                                                                                       | векторных пространств)                                                          |                                                                                                                                    | на нормированном пространстве         |
+|                                                                                                                     |                                                                                 |   покомпонентная запись:                                                                                                           |                                       |
+|                                                                                                                     |                                                                                 |    $ \forall\,j\in\{1,\ldots,n\}\;\Bigl(\lambda_\tilde j=\sum_{l=1}^n(e_\tilde j)^l\,\lambda_l\Bigr) $                                 |                                       |
+|                                                                                                                     |                                                                                 |                                                                                                                                    |                                       |
+|                                                                                                                     |                                                                                 |   преобразование базиса:  $ \tilde e^*\!=\rm c_e^\tilde e\cdot e^* $                                                               |                                       |
+|                                                                                                                     |                                                                                 |   —————————————————————————————————                              |                                       |
++———————————————————————————————————————+———————————————————————————+————————————————————————————————————————————+—————————————+
+| эндоморфизм  $ a $  —                                                                                                 |  $ \begin{align}\rm{End}(V)&\to\rm{Mat}(n,K)\\a&\mapsto a_e^e\end{align} $  |   ——————————————————————————————————————————-- | дифференциал в точке                  |
+| элемент пространства  $ \rm{End}(V) $                                                                               | (это изоморфизм векторных                                                       |   матричная запись:  $ a_\tilde e^\tilde e=\rm c_e^\tilde e\cdot a_e^e\cdot\rm c_\tilde e^e $                                  | гладкого отображения, действующего    |
+| (тензор типа  $ (1,1) $  над  $ V $ )                                                                                       | пространств и колец)                                                            |                                                                                                                                    | из нормированного пространства в себя |
+|                                                                                                                     |                                                                                 |   покомпонентная запись:                                                                                                           |                                       |
+|                                                                                                                     |                                                                                 |    $ \forall\,i,j\in\{1,\ldots,n\}\;\Bigl(a^\tilde i_\tilde j=\sum_{k=1}^n\sum_{l=1}^n(e_k)^\tilde i(e_\tilde j)^l\,a_l^k\Bigr)\! $    |                                       |
+|                                                                                                                     |                                                                                 |   ——————————————————————————————————————————-- |                                       |
++———————————————————————————————————————+———————————————————————————+————————————————————————————————————————————+—————————————+
 
--   Угол между векторами и между вектором и подпр.-вом ( $ K=\mathbb R $ ,  $ v\ne0 $ ,  $ w\ne0 $ ,  $ U\ne\{0\} $ ):  $ \angle(v,w)=\arccos\frac{(v\!\mid\!w)}{\|v\|\,\|w\|}{} $  и  $ \angle(v,U)=\arccos\frac{\|\rm{proj}_U(v)\|}{\|v\|} $ .
+‍
 
--   Псевдоевклидово $ \,/\, $ псевдоунитарное пр.-во сигнатуры  $ (p,q) $  — кон.-мерн. вект. пр.-во над  $ \mathbb R $  $ \,/\, $  $ \mathbb C $  с невыр. ¯-симметр. ¯-билин. формой сигнатуры  $ (p,q) $ .
+### 5   Линейные операторы
 
-##### 7.3  Ориентация, объем, векторное произведение
+##### 5.1  Ранг линейного оператора, элементарные преобразования, метод Гаусса
 
--   Отн.-е одинак. ориентированности ( $ V $  — кон.-мерн. в. пр. над  $ \mathbb R $ ,  $ e,\tilde e\in\rm{OB}(V) $ ):  $ e\overset{\scriptscriptstyle\rm{or}}\sim\tilde e\,\Leftrightarrow\,\det\rm c_e^\tilde e\!>0 $ . Утверждение:  $ V\ne\{0\}\,\Rightarrow\,|\rm{OB}(V)/{\overset{\scriptscriptstyle\rm{or}}\sim}|=2 $ .
+-   Ранг линейного оператора  $ a $ :  $ \rm{rk}(a)=\dim\rm{Im}\,a $ . Ранги матрицы  $ a $  по столбцам и по строкам:  $ \rm{rk}(a)=\dim\,\langle a^\bullet_1,\ldots,a^\bullet_n\rangle{} $  и  $ \rm{rk}(a^{\scriptscriptstyle\mathsf T})=\dim\,\langle a^1_\bullet,\ldots,a^p_\bullet\rangle $ .
 
--   Ориентация пр.-ва  $ V $  — выбор эл.-та  $ \rm{OB}_{>0}(V) $  мн.-ва  $ \rm{OB}(V)/\overset{\scriptscriptstyle\rm{or}}\sim $ . Знак набора векторов:  $ \rm{sign}(v_1,\ldots,v_n) $ . Теорема о знаке базиса и формах объема.
+-   Утверждение: * $ \rm{rk}(a)=\rm{rk}(a_e^h){} $ ,  $ \rm{rk}(a^*)=\rm{rk}((a_e^h)^{\scriptscriptstyle\mathsf T}) $  и  $ \rm{rk}(a+b)\le\rm{rk}(a)+\rm{rk}(b) $ *. Тензорное произв.-е вектора  $ y $  и ковектора  $ \lambda $ :  $ (y\otimes\lambda)(v)=\lambda(v)\,y $ .
 
-    **Теорема о знаке базиса и формах объема.** *Пусть  $ V $  — векторное простр.-во с ориентацией и  $ e\in\rm{OB}(V) $ ; тогда для любых  $ \tilde e\in\rm{OB}(V) $  выполнено
-     $ \rm{sign}(\tilde e)\,\rm{vol}^\tilde e\!=|\det\rm c_e^\tilde e|\,\rm{sign}(e)\,\rm{vol}^e $ , а также множество  $ \rm{VF}_{>0}(V) $ , равное  $ \,\mathbb R_{>0}\,\rm{sign}(e)\,\rm{vol}^e $ , не зависит от выбора упорядоченного базиса  $ e $ .*
+-   Утверждение: * $ y\otimes\lambda\in\rm{Hom}(V,Y) $ ,  $ \rm{rk}(y\otimes\lambda)\le1 $  и  $ (y\otimes\lambda)_e^h=y^h\cdot\lambda_e $ *. Теорема о свойствах ранга. Утверждение: * $ \rm{rk}(b\circ a)\le\min(\rm{rk}(a),\rm{rk}(b)) $ *.
 
--   Каноническая форма объема в псевдоевкл. пр.-ве с ориентацией ( $ e\in\rm{OB}(V) $ ):  $ \rm{vol}=\rm{sign}(e)\sqrt{|\det\sigma_{e,e}|}\,\rm{vol}^e $ ; если  $ e\in\rm{OnOB}_{>0}(V) $ , то  $ \rm{vol}=\rm{vol}^e $ .
+    **Теорема о свойствах ранга.** *Пусть  $ K $  — поле,  $ V,Y $  — векторные пространства над  $ K $ ,  $ \dim V,\dim Y<\infty $  и  $ a\in\rm{Hom}(V,Y) $ ; тогда
+    (1)  $ \rm{rk}(a)=\dim V-\dim\rm{Ker}\,a $  и  $ \rm{rk}(a)\le\min(\dim V,\dim Y) $ ;
+    (2)  $ \rm{rk}(a)=\min\,\{m\in\mathbb N_0\!\mid\exists\,y_1,\ldots,y_m\in Y,\,\lambda_1,\ldots,\lambda_m\in V^*\,\bigl(a=y_1\otimes\lambda_1+\ldots+y_m\otimes\lambda_m\bigr)\} $ ;
+    (3) сущ.-т такие  $ e\in\rm{OB}(V) $  и  $ h\in\rm{OB}(Y) $ , что  $ a_e^h=\mathbf e_1^1+\ldots+\mathbf e_{\rm{rk}(a)}^{\rm{rk}(a)} $  (это теорема о приведении матрицы оператора к почти единичному виду)
+    (матричн. формулировка: для любых  $ n,p\in\mathbb N_0 $  и  $ a\in\rm{Mat}(p,n,K) $  сущ.-т такие  $ g\in\rm{GL}(p,K) $  и  $ g'\!\in\rm{GL}(n,K) $ , что  $ g\cdot a\cdot g'=\mathbf e_1^1+\ldots+\mathbf e_{\rm{rk}(a)}^{\rm{rk}(a)} $ );
+    (4)  $ \rm{rk}(a^*)=\rm{rk}(a) $  (матричная формулировка: для любых  $ n,p\in\mathbb N_0 $  и  $ a\in\rm{Mat}(p,n,K) $  выполнено  $ \rm{rk}(a^{\scriptscriptstyle\mathsf T})=\rm{rk}(a) $ ).*
 
--   Корректность опр.-я объема. Объем в коорд.:  $ \rm{vol}(v_1,\ldots,v_n)=\rm{sign}(e)\sqrt{|\det\sigma_{e,e}|}\!\!\!\sum_{1\le j_1,\ldots,j_n\le n}\!\!\!\varepsilon_{j_1,\ldots,j_n}v_1^{j_1}\!\cdot\ldots\cdot v_n^{j_n} $ . Лемма об объеме и матрице Грама.
+-   Элементарные матрицы 1-го типа (трансвекции):  $ \rm{id}_n+c\,\mathbf e_i^j $  ( $ c\in K $ ,  $ i\ne j $ ). Элементарные матрицы 2-го типа (дилатации):  $ \rm{id}_n-\mathbf e_i^i+c\,\mathbf e_i^i $  ( $ c\in K^\times $ ).
 
-    **Лемма об объеме и матрице Грама.** *Пусть  $ V $  — псевдоевклидово пространство сигнатуры  $ (p,q) $  с ориентацией,  $ n=p+q $  и  $ v_1,\ldots,v_n\in V $ ; тогда
-    (1)  $ \rm{vol}(v_1,\ldots,v_n)=\rm{sign}(v_1,\ldots,v_n)\sqrt{|\det\sigma_{(v_1,\ldots,v_n),(v_1,\ldots,v_n)}|} $ ;
-    (2) для любых  $ w_1,\ldots,w_n\in V $  выполнено  $ \rm{vol}(v_1,\ldots,v_n)\cdot\rm{vol}(w_1,\ldots,w_n)=(-1)^q\det\sigma_{(v_1,\ldots,v_n),(w_1,\ldots,w_n)} $ .*
+-   Элементарные преобр.-я над строками 1-го типа и 2-го типа:  $ a\mapsto(\rm{id}_p+c\,\mathbf e_i^j)\cdot a $  и  $ a\mapsto(\rm{id}_p-\mathbf e_i^i+c\,\mathbf e_i^i)\cdot a $ . Элементарные преобр.-я над столбцами.
 
--   Неотриц. объем в евкл. пр.-ве:  $ |\rm{vol}|_m(v_1,\ldots,v_m)=|\rm{vol}(v_1,\ldots,v_m)| $  в  $ \langle v_1,\ldots,v_m\rangle $ , если  $ v_1,\ldots,v_m $  независимы; иначе  $ |\rm{vol}|_m(v_1,\ldots,v_m)=0 $ .
+-   Ступенчатые матрицы. Теорема о приведении матрицы к ступенчатому виду. Строго ступенчатые матрицы. Приведение матрицы к строго ступенч. виду.
 
--   **Теорема о неотрицательном объеме в евклидовом пространстве.** *Пусть  $ V $  — евклидово пространство,  $ m\in\mathbb N_0 $  и  $ v_1,\ldots,v_m\in V $ ; тогда
-    (1)  $ |\rm{vol}|_m(v_1,\ldots,v_m)=\sqrt{\det\sigma_{(v_1,\ldots,v_m),(v_1,\ldots,v_m)}} $ ;
-    (2) если  $ m\ge1 $  и  $ \hat v_m=v_m-\rm{proj}_{\langle v_1,\ldots,v_{m-1}\rangle}(v_m) $ , то  $ |\rm{vol}|_m(v_1,\ldots,v_m)=|\rm{vol}|_{m-1}(v_1,\ldots,v_{m-1})\cdot\|\hat v_m\| $ .*
+    **Теорема о приведении матрицы к ступенчатому виду.** *Пусть  $ K $  — поле,  $ n,p\in\mathbb N_0 $  и  $ a\in\rm{Mat}(p,n,K) $ ; тогда
+    (1) существуют такие  $ l\in\mathbb N_0 $  и элементарные матрицы  $ g_1,\ldots,g_l $  размера  $ p $  на  $ p $  над  $ K $ , что  $ g_l\cdot\ldots\cdot g_1\cdot a $  — ступенчатая матрица;
+    (2) множество ненулевых строк ступенчатой матрицы из пункта (1) — базис пространства  $ \langle a^1_\bullet,\ldots,a^p_\bullet\rangle $  (и, значит, их количество равно  $ \rm{rk}(a) $ ).*
 
--   Вект. произв. в псевдоевкл. пр.-ве с ориент.:  $ v_1\times\ldots\times v_{n-1}=\sharp\,\bigl(v_n\!\mapsto\rm{vol}(v_1,\ldots,v_n)\bigr) $  ( $ \Leftrightarrow\,\forall\,v_n\in V\;\bigl((v_1\times\ldots\times v_{n-1}\!\mid\!v_n)=\rm{vol}(v_1,\ldots,v_n)\bigr) $ ).
+-   Метод Гаусса для реш.-я системы  $ a\cdot v=y $ . Главные и свободные перем.-е. Нахождение базиса (фундамент. системы решений) в  $ \{v\in K^n\!\mid a\cdot v=0\} $ .
 
--   Векторное произведение в коорд.:  $ (v_1\times\ldots\times v_{n-1})^i=\rm{sign}(e)\sqrt{|\det\sigma_{e,e}|}\!\!\!\sum_{1\le j_1,\ldots,j_n\le n}\!\!\!\sigma^{i,j_n}\varepsilon_{j_1,\ldots,j_n}v_1^{j_1}\!\cdot\ldots\cdot v_{n-1}^{j_{n-1}} $ . Теорема о векторном произведении.
+-   **Теорема Кронекера--Капелли.** *Пусть  $ K $  — поле,  $ n,p\in\mathbb N_0 $ ,  $ a\in\rm{Mat}(p,n,K) $  и  $ y\in K^p $ ; тогда
+    (1)  $ \dim\,\{v\in K^n\!\mid a\cdot v=0\}=n-\rm{rk}(a) $  и, если  $ n>p $ , то  $ \{v\in K^n\!\mid a\cdot v=0\}\ne\{0\} $ ;
+    (2)  $ \rm{rk}(a)\le\rm{rk}\bigl(\!\bigl(a^\bullet_1\;\ldots\;a^\bullet_n\;\,y\bigr)\!\bigr) $ , а также, если  $ \rm{rk}(a)<\rm{rk}\bigl(\!\bigl(a^\bullet_1\;\ldots\;a^\bullet_n\;\,y\bigr)\!\bigr) $ , то  $ \{v\in K^n\!\mid a\cdot v=y\}=\varnothing $ , и, если  $ \rm{rk}(a)=\rm{rk}\bigl(\!\bigl(a^\bullet_1\;\ldots\;a^\bullet_n\;\,y\bigr)\!\bigr) $ , то
+     $ \{v\in K^n\!\mid a\cdot v=y\} $  — аффинное подпространство в  $ K^n $  с направляющим подпространством  $ \{v\in K^n\!\mid a\cdot v=0\} $ .*
 
-    **Теорема о векторном произведении.** *Пусть  $ V $  — псевдоевклидово пр.-во сигнатуры  $ (p,q) $  с ориентацией,  $ n=p+q\ge1 $  и  $ v_1,\ldots,v_{n-1}\in V $ ; тогда
-    (1)  $ v_1\times\ldots\times v_{n-1}\in\langle v_1,\ldots,v_{n-1}\rangle^\perp $ , а также  $ v_1\times\ldots\times v_{n-1}\ne0 $ , если и только если векторы  $ v_1,\ldots,v_{n-1} $  независимы;
-    (2) если  $ q=0 $ , то  $ \|v_1\times\ldots\times v_{n-1}\|=|\rm{vol}|_{n-1}(v_1,\ldots,v_{n-1}) $  и, если  $ v_1,\ldots,v_{n-1} $  независимы, то  $ (v_1,\ldots,v_{n-1},v_1\times\ldots\times v_{n-1})\in\rm{OB}_{>0}(V) $ ;
-    (3) для любых  $ w_1,\ldots,w_{n-1}\in V $  выполнено  $ (v_1\times\ldots\times v_{n-1}\!\mid\!w_1\times\ldots\times w_{n-1})=(-1)^q\det\sigma_{(v_1,\ldots,v_{n-1}),(w_1,\ldots,w_{n-1})} $ ;
-    (4) если  $ n=3 $  и  $ q=0 $ , то для любых  $ u,v,w\in V $  выполнено  $ (u\times v)\times w=(u\!\mid\!w)\,v-(v\!\mid\!w)\,u\, $  и  $ \,(u\times v)\times w+(v\times w)\times u+(w\times u)\times v=0 $ .*
+##### 5.2  Полилинейные операторы, полилинейные формы, формы объема
 
-##### 7.4  Автоморфизмы пространств с формой, ортогональные и унитарные операторы и матрицы
+-   Пространства полилинейных операторов  $ \rm{Multi}(V_1,\ldots,V_k,Y) $  и  $ \rm{Multi}_k(V,Y) $ . Пространства полилинейных форм  $ \rm{Multi}(V_1,\ldots,V_k,K) $  и  $ \rm{Multi}_kV $ .
+-   Простр.-ва билинейн. операторов  $ \rm{Bi}(V_1,V_2,Y) $  и  $ \rm{Bi}(V,Y) $ . Простр.-ва билинейн. форм  $ \rm{Bi}(V_1,V_2,K) $  и  $ \rm{Bi}(V) $ . Примеры полилин. операторов и форм.
+-   Перестановка аргументов форм:  $ \biggl(\!\begin{align}\rm{paf}_u\colon\rm{Multi}_kV&\to\rm{Multi}_kV\\\omega&\mapsto\bigl((v_1,\ldots,v_k)\mapsto\omega(v_{u(1)},\ldots,v_{u(k)})\bigr)\!\end{align}\!\biggr) $ . Действие  $ \rm{paf} $  группы  $ \rm S_k $ :  $ \biggl(\!\begin{align}\rm{paf}\,\colon\rm S_k\!&\to\rm{GL}(\rm{Multi}_kV)\\u&\mapsto\rm{paf}_u\end{align}\!\biggr) $ .
+-   Пространство симметричных полилинейных форм:  $ \rm{SMulti}_kV=\{\omega\in\rm{Multi}_kV\mid\forall\,i,j\in\{1,\ldots,k\}\;\bigl(i\ne j\,\Rightarrow\,\rm{paf}_{(i\;j)}(\omega)=\omega\bigr)\}\le\rm{Multi}_kV $ .
+-   Пр.-во антисимм. полилин. форм:  $ \rm{AMulti}_kV=\{\omega\in\rm{Multi}_kV\mid\forall\,v_1,\ldots,v_k\in V\;\bigl(\exists\,i,j\in\{1,\ldots,k\}\;(i\ne j\,\land\,v_i=v_j)\,\Rightarrow\,\omega(v_1,\ldots,v_k)=0\bigr)\} $ .
+-   **Лемма о симметричных и антисимметричных полилинейных формах.** *Пусть  $ K $  — поле,  $ V $  — векторное пространство над  $ K $  и  $ k\in\mathbb N_0 $ ; тогда
+    (1)  $ \rm{SMulti}_kV=\{\omega\in\rm{Multi}_kV\mid\forall\,u\in\rm S_k\,\bigl(\rm{paf}_u(\omega)=\omega\bigr)\} $ ;
+    (2)  $ \rm{AMulti}_kV\subseteq\{\omega\in\rm{Multi}_kV\mid\forall\,i,j\in\{1,\ldots,k\}\;\bigl(i\ne j\,\Rightarrow\,\rm{paf}_{(i\;j)}(\omega)=-\omega\bigr)\}=\{\omega\in\rm{Multi}_kV\mid\forall\,u\in\rm S_k\,\bigl(\rm{paf}_u(\omega)=\rm{sgn}(u)\,\omega\bigr)\} $  и, если
+     $ \rm{char}\,K\ne2 $ , то « $ \subseteq $ » можно заменить на « $ {=} $ ».*
+-   Простр.-во форм объема:  $ \rm{VF}(V)=\rm{AMulti}_nV $ , где  $ n=\dim V $ . Форма объема, связанная с упорядоч. базисом  $ e $ :  $ \rm{vol}^e(v_1,\ldots,v_n)=\det\!\bigl(v_1^e\;\ldots\;v_n^e\bigr) $ .
+-   **Теорема о формах объема.** *Пусть  $ K $  — поле,  $ V $  — векторное пространство над  $ K $ ,  $ n=\dim V<\infty $  и  $ e\in\rm{OB}(V) $ ; тогда
+    (1)  $ \rm{vol}^e\!\in\rm{VF}(V)\!\setminus\!\{0\} $ ,  $ \rm{vol}^e(e_1,\ldots,e_n)=1 $  и для любых  $ \omega\in\rm{VF}(V) $  выполнено  $ \omega=\omega(e_1,\ldots,e_n)\,\rm{vol}^e $ ;
+    (2) множество  $ \{\rm{vol}^e\} $  — базис пространства  $ \,\rm{VF}(V) $  (и, значит,  $ \dim\rm{VF}(V)=1 $ ) и для любых  $ \tilde e\in\rm{OB}(V) $  выполнено  $ \rm{vol}^\tilde e\!=\det\rm c_e^\tilde e\,\rm{vol}^e $ ;
+    (3) для любых  $ \omega\in\rm{VF}(V)\!\setminus\!\{0\} $  и  $ v_1,\ldots,v_n\in V $  выполнено  $ (v_1,\ldots,v_n)\in\rm{OB}(V)\,\Leftrightarrow\,\omega(v_1,\ldots,v_n)\ne0 $ .*
 
--   Группа автоморфизмов пр.-ва с ¯-билинейной формой:  $ \rm{Aut}(V,\sigma)=\rm{Iso}((V,\sigma),(V,\sigma))=\{a\in\rm{GL}(V)\mid\forall\,v,w\in V\;\bigl(\sigma(a(v),a(w))=\sigma(v,w)\bigr)\} $ .
--   Утверждение: *пусть  $ \rm{char}\,K\ne2 $  и  $ \sigma\in\rm{SBi}(V) $ , или  $ K=\mathbb C $  и  $ \sigma\in\rm{\overline{Bi}}(V) $ ; тогда  $ \,\rm{Aut}(V,\sigma)=\{a\in\rm{GL}(V)\mid\forall\,v\in V\;\bigl(\sigma(a(v),a(v))=\sigma(v,v)\bigr)\} $ *.
--   Ортогональная группа ( $ V $  — в. пр. над  $ \mathbb R $ ,  $ \sigma\in\rm{SBi}(V) $ ):  $ \rm O(V)=\rm{Aut}(V,\sigma) $ . Унитарная группа ( $ V $  — в. пр. над  $ \mathbb C $ ,  $ \sigma\in\rm{\overline{SBi}}(V) $ ):  $ \rm U(V)=\rm{Aut}(V,\sigma) $ .
--   **Лемма об автоморфизмах пространств с формой и матрицах.**
-    *(1) Пусть  $ K $  — поле с инволюцией,  $ V $  — векторное пространство над  $ K $ ,  $ n=\dim V<\infty $ ,  $ \sigma\in\rm{\overline{Bi}}(V) $ ,  $ a\in\rm{End}(V) $  и  $ e\in\rm{OB}(V) $ ; тогда
-     $ a\in\rm{Aut}(V,\sigma)\,\Leftrightarrow\,a_e^e\in\rm{GL}(n,K)\,\land\,(a_e^e)^{\scriptscriptstyle\mathsf T}\!\cdot\sigma_{e,e}\!\cdot\overline{a_e^e}=\sigma_{e,e} $  и, если форма  $ \sigma $  невырождена, то условие « $ \,a_e^e\in\rm{GL}(n,K) $ » можно убрать.
-    (2) Пусть  $ V $  — псевдоевклидово пространство сигнатуры  $ (p,q) $  и  $ e,\tilde e\in\rm{OnOB}(V) $ ; тогда  $ (\rm c_\tilde e^e)^{\scriptscriptstyle\mathsf T}\!\cdot\!\Bigl(\begin{smallmatrix}\rm{id}_p&0\\0&-\rm{id}_q\end{smallmatrix}\Bigr)\!\cdot\rm c_\tilde e^e=\!\Bigl(\begin{smallmatrix}\rm{id}_p&0\\0&-\rm{id}_q\end{smallmatrix}\Bigr) $ .
-    (3) Пусть  $ V $  — псевдоунитарное пространство сигнатуры  $ (p,q) $  и  $ e,\tilde e\in\rm{OnOB}(V) $ ; тогда  $ (\rm c_\tilde e^e)^{\scriptscriptstyle\mathsf T}\!\cdot\!\Bigl(\begin{smallmatrix}\rm{id}_p&0\\0&-\rm{id}_q\end{smallmatrix}\Bigr)\!\cdot\overline{\rm c_\tilde e^e}=\!\Bigl(\begin{smallmatrix}\rm{id}_p&0\\0&-\rm{id}_q\end{smallmatrix}\Bigr) $ .*
--   Матричные ортогонал. группы:  $ \rm O(p,q)=\{a\in\rm{Mat}(p+q,\mathbb R)\mid a^{\scriptscriptstyle\mathsf T}\!\cdot\!\Bigl(\begin{smallmatrix}\rm{id}_p&0\\0&-\rm{id}_q\end{smallmatrix}\Bigr)\!\cdot a=\!\Bigl(\begin{smallmatrix}\rm{id}_p&0\\0&-\rm{id}_q\end{smallmatrix}\Bigr)\} $ ,  $ \rm{SO}(p,q)=\rm{SL}(p+q,\mathbb R)\cap\rm O(p,q) $  и  $ \rm O(n) $ ,  $ \rm{SO}(n) $ .
--   Матричные унитарные группы:  $ \rm U(p,q)=\{a\in\rm{Mat}(p+q,\mathbb C)\mid a^{\scriptscriptstyle\mathsf T}\!\cdot\!\Bigl(\begin{smallmatrix}\rm{id}_p&0\\0&-\rm{id}_q\end{smallmatrix}\Bigr)\!\cdot\overline a=\!\Bigl(\begin{smallmatrix}\rm{id}_p&0\\0&-\rm{id}_q\end{smallmatrix}\Bigr)\} $ ,  $ \rm{SU}(p,q)=\rm{SL}(p+q,\mathbb C)\cap\rm U(p,q) $  и  $ \rm U(n) $ ,  $ \rm{SU}(n) $ .
--   Примеры:  $ \rm{SO}(2)=\bigl\{\Bigl(\begin{smallmatrix}\cos\varphi&-{\sin\varphi}\\\sin\varphi&\cos\varphi\end{smallmatrix}\Bigr)\!\mid\varphi\in[0;2\pi)\bigr\} $ ,  $ \rm O(2)=\rm{SO}(2)\cup\bigl\{\Bigl(\begin{smallmatrix}\cos\varphi&\sin\varphi\\\sin\varphi&-{\cos\varphi}\end{smallmatrix}\Bigr)\!\mid\varphi\in[0;2\pi)\bigr\} $  и  $ \rm{SU}(2)=\bigl\{\Bigl(\begin{smallmatrix}c&d\\-\overline d&\overline c\end{smallmatrix}\Bigr)\!\mid c,d\in\mathbb C,\,|c|^2\!+|d|^2\!=1\bigr\} $ .
--   **Теорема Эйлера о вращениях.** *Пусть  $ V $  — евклидово пр.-во с ориентацией,  $ \dim V=3 $  и  $ a\in\rm{SO}(V) $ ; тогда существуют такие  $ e\in\rm{OnOB}_{>0}(V) $  и
-     $ \varphi\in[0;2\pi) $ , что  $ a_e^e=\biggl(\begin{smallmatrix}1&0&0\\0&\cos\varphi&-{\sin\varphi}\\0&\sin\varphi&\cos\varphi\end{smallmatrix}\biggr) $  (и, значит,  $ a $  — оператор поворота в  $ V $  на угол  $ \varphi $  против часовой стрелки вокруг оси с напр. вектором  $ e_1 $ ).*
--   Группа изометрий предгильбертова пр.-ва (как метрического пространства):  $ \rm{Isom}(V)=\{a\in\rm{Bij}(V)\mid\forall\,v,w\in V\;\bigl(\rm{dist}(a(v),a(w))=\rm{dist}(v,w)\bigr)\} $ .
--   **Теорема об описании изометрий.** *Пусть  $ V $  — предгильбертово пространство над  $ \,\mathbb R $ ; тогда  $ \{a\in\rm{Isom}(V)\mid a(0)=0\}=\rm O(V) $ , а также, обозначая
-    через  $ G $ ,  $ F $  и  $ H $  группу  $ \,\rm{Isom}(V) $  и ее подгруппы  $ \{\bigl(v\mapsto v+z\bigr)\!\mid z\in V\} $  и  $ \{a\in\rm{Isom}(V)\mid a(0)=0\} $  соответственно, имеем следующие факты:
-     $ F\cap H=\{\rm{id}_V\} $ ,  $ G=F\circ H $ ,  $ \forall\,h\in H\;\bigl(h\circ F\circ h^{-1}\!\subseteq F\bigr) $  и  $ F\cong V^+\! $  (и, значит,  $ \rm{Isom}(V)=\{\bigl(v\mapsto a(v)+z\bigr)\!\mid a\in\rm O(V),\,z\in V\}\cong V^+\!\leftthreetimes\rm O(V) $ ).*
+##### 5.3  Определитель линейного оператора, миноры матрицы, спектр линейного оператора
 
-##### 7.5  Тело кватернионов
+-   Определитель лин. оператора  $ a $  ( $ a\in\rm{End}(V) $ ):  $ \det a=\frac{\omega(a(v_1),\ldots,a(v_n))}{\omega(v_1,\ldots,v_n)} $ , где  $ \omega\in\rm{VF}(V)\!\setminus\!\{0\} $  и  $ (v_1,\ldots,v_n)\in\rm{OB}(V) $ . Корректность опред.-я.
 
--   Кольцо кватернионов:  $ \mathbb H=\{\alpha+\beta\,\rm i+\gamma\,\rm j+\delta\,\rm k\mid\alpha,\beta,\gamma,\delta\in\mathbb R\} $ , где  $ \rm i^2=\rm j^2=\rm k^2=-1 $ , а также  $ \rm i\,\rm j=-\rm j\,\rm i=\rm k $ ,  $ \rm j\,\rm k=-\rm k\,\rm j=\rm i $  и  $ \rm k\,\rm i=-\rm i\,\rm k=\rm j $ .
+-   Утверждение:  $ \det a=\rm{vol}^e(a(e_1),\ldots,a(e_n))=\det a_e^e $ . Теорема о свойствах определителя. Спец. лин. группа:  $ \rm{SL}(V)=\{a\in\rm{GL}(V)\mid\det a=1\} $ .
 
--   Скалярная (вещественная) часть и векторная (мнимая) часть кватерниона:  $ \rm{Re}(\alpha+\beta\,\rm i+\gamma\,\rm j+\delta\,\rm k)=\alpha $  и  $ \rm{Im}(\alpha+\beta\,\rm i+\gamma\,\rm j+\delta\,\rm k)=\beta\,\rm i+\gamma\,\rm j+\delta\,\rm k $ .
+    **Теорема о свойствах определителя.** *Пусть  $ K $  — поле,  $ V $  — векторное простр.-во над  $ K $  и  $ \dim V<\infty $ ; тогда отображение  $ \biggl(\!\begin{align}\rm{End}(V)&\to K\\a&\mapsto\det a\end{align}\!\biggr) $  —
+    гомоморфизм моноидов по умножению, а также  $ \,\rm{GL}(V)=\{a\in\rm{End}(V)\mid\det a\ne0\} $ .*
 
--   Пр.-во чистых кватернионов:  $ \mathbb H_\rm{vect}\!=\{v\in\mathbb H\mid\rm{Re}(v)=0\} $ . Скалярное произв.-е, векторное произв.-е, норма в  $ \mathbb H_\rm{vect} $ :  $ (v\!\mid\!w) $ ,  $ v\times w $ ,  $ \|v\|=\sqrt{(v\!\mid\!v)} $ .
+-   Миноры — определители квадр. подматриц. Дополнит. миноры. Присоедин. матрица:  $ \rm{adj}(a)^j_i=(-1)^{i+j} $  $ \bigl( $ дополнит. минор матрицы  $ a $  в позиции  $ (i,j) $  $ \bigr) $ .
 
--   Утверждение:  $ \forall\,v,w\in\mathbb H_\rm{vect}\,\bigl(v\,w=-(v\!\mid\!w)+v\times w\;\land\;v^2=-\|v\|^2\bigr) $ . Сопряжение:  $ \overline a=\rm{Re}(a)-\rm{Im}(a) $ . Модуль:  $ |a|=\sqrt{\rm{Re}(a)^2+\|\rm{Im}(a)\|^2} $ .
+-   Теорема о присоединенной матрице. Правило Крамера. Сравнение эффективности явных формул для нахождения  $ \det a $ ,  $ a^{-1} $ ,  $ a^{-1}\!\cdot y\, $  и метода Гаусса.
 
--   **Теорема о свойствах кватернионов.**
-    *(1) Для любых  $ a\in\mathbb H $  выполнено  $ a\,\overline a=\overline a\,a=|a|^2 $  и, если  $ a\ne0 $ , то  $ a^{-1}\!=\!\frac{\overline a}{|a|^2} $  (и, значит,  $ \mathbb H $  — тело).
-    (2) Для любых  $ a,b\in\mathbb H $  выполнено  $ \overline{a+b}=\overline a+\overline b $  и  $ \overline{a\,b}=\overline b\,\overline a $  (и, значит, отображение  $ \biggl(\!\begin{align}\mathbb H&\to\mathbb H\\a&\mapsto\overline a\end{align}\!\biggr) $  — антиавтоморфизм тела  $ \,\mathbb H $ ).
-    (3) Для любых  $ a,b\in\mathbb H $  выполнено  $ |a\,b|=|a|\,|b| $  (и, значит, отображение  $ \biggl(\!\begin{align}\mathbb H^\times\!\!&\to\mathbb R_{>0}\!\\a&\mapsto|a|\end{align}\!\biggr) $  — гомоморфизм групп).*
+    **Теорема о присоединенной матрице.** *Пусть  $ R $  — коммутативное кольцо,  $ n\in\mathbb N_0 $  и  $ a\in\rm{Mat}(n,R) $ ; тогда
+    (1) для любых  $ i,j,k,l\in\{1,\ldots,n\} $  выполнено  $ \sum_{j=1}^na^i_j\,\rm{adj}(a)^j_k=\det a\cdot\delta^i_k $  и  $ \sum_{i=1}^n\rm{adj}(a)^l_i\,a^i_j=\det a\cdot\delta^l_j $  (в частности, для любых  $ i,j\in\{1,\ldots,n\} $ 
+    выполнено  $ \sum_{j=1}^na^i_j\,\rm{adj}(a)^j_i=\det a $  и  $ \sum_{i=1}^n\rm{adj}(a)^j_i\,a^i_j=\det a $ ; это формулы разложения определителя матрицы  $ a $  по строкам и по столбцам);
+    (2)  $ a\cdot\rm{adj}(a)=\rm{adj}(a)\cdot a=\det a\cdot\rm{id_n} $  и, если  $ \det a\in R^\times $ , то  $ \,a^{-1}\!=\frac1{\det a}\,\rm{adj}(a) $  (и, значит,  $ \rm{GL}(n,R)=\{a\in\rm{Mat}(n,R)\mid\det a\in R^\times\} $ ).*
 
--   Группа  $ \rm S^3 $ :  $ \rm S^3\!=\{g\in\mathbb H\mid|g|=1\} $ . Утверждение:  $ \mathbb H^\times\!\cong\mathbb R_{>0}\!\times\rm S^3 $ . Экспонента от кватерниона  $ a $ :  $ \rm e^a\!=\sum_{k=0}^\infty\frac1{k!}\,a^k $ . Теорема о свойствах экспоненты.
+    **Правило Крамера.** *Пусть  $ K $  — поле,  $ n\in\mathbb N_0 $ ,  $ a\in\rm{GL}(n,K) $ ,  $ y\in K^n $  и  $ j\in\{1,\ldots,n\} $ ; тогда  $ (a^{-1}\!\cdot y)^j=\frac1{\det a}\det\bigl(a^\bullet_1\;\ldots\;a^\bullet_{j-1}\;\,y\;\;a^\bullet_{j+1}\;\ldots\;a^\bullet_n\bigr) $ .*
+
+-   **Теорема о базисном миноре.** *Пусть  $ K $  — поле,  $ n,p\in\mathbb N_0 $  и  $ a\in\rm{Mat}(p,n,K) $ ; тогда  $ \rm{rk}(a) $  равен максимальному среди всех таких чисел  $ m\in\mathbb N_0 $ ,
+    что в матрице  $ a $  существует такая подматрица  $ a' $  размера  $ m $  на  $ m $ , что  $ \det a'\ne0 $  (то есть  $ a'\!\in\rm{GL}(m,K) $ ).*
+
+-   Собственные число и вектор лин. операт.  $ a $ :  $ a(v)=c\,v\,\land\,v\ne0 $ . Спектр лин. опер.  $ a $ :  $ \rm{Spec}(a)=\{c\in K\mid(a-c\cdot\rm{id}_V)\notin\rm{GL}(V)\} $ . Лемма о спектре.
+
+    **Лемма о спектре.** *Пусть  $ K $  — поле,  $ V $  — векторное пространство над  $ K $  и  $ a\in\rm{End}(V) $ ; тогда  $ \{c\in K\mid\exists\,v\in V\!\setminus\!\{0\}\;\bigl(a(v)=c\,v\bigr)\}\subseteq\rm{Spec}(a) $  и,
+    если  $ \dim V<\infty $ , то « $ \subseteq $ » можно заменить на « $ {=} $ ».*
+
+-   Характеристический многочлен матрицы  $ a $ :  $ \chi_a=\det(x\cdot\rm{id}_n-a) $ . Характеристический многочлен лин. оператора  $ a $ :  $ \chi_a=\chi_{a_e^e} $ . Корректность опред.-я.
+
+-   Утверждение:  $ \rm{Spec}(a)=\{c\in K\mid\chi_a(c)=0\} $ . След лин. оператора  $ a $ :  $ \rm{tr}\,a=\rm{tr}\,a_e^e $ . Корректность опр.-я. Теорема о характеристическом многочлене.
+
+    **Теорема о характеристическом многочлене.** *Пусть  $ K $  — поле,  $ V $  — векторное пространство над  $ K $ ,  $ n=\dim V<\infty $  и  $ a\in\rm{End}(V) $ ; тогда
+     $ \chi_a=x^n-\rm{tr}\,a\cdot x^{n-1}+\ldots+(-1)^n\det a $  и, если  $ c_1,\ldots,c_n\in K $  и  $ \chi_a=(x-c_1)\cdot\ldots\cdot(x-c_n) $ , то  $ \det a=c_1\cdot\ldots\cdot c_n $  и  $ \rm{tr}\,a=c_1+\ldots+c_n $ .*
+
+##### 5.4  Многочлены и ряды от линейных операторов
+
+-   Эвалюация  $ \biggl(\!\begin{align}\rm{eval}_a\colon K[x]&\to\rm{End}(V)\\f&\mapsto f(a)\end{align}\!\biggr) $  — гомоморфизм. Кольцо, порожденное лин. оператором  $ a $ :  $ K[a]=\{f(a)\mid f\in K[x]\}=\rm{Im}\,\rm{eval}_a\le\rm{End}(V) $ .
+
+-   Минимальный многочлен лин. операт.  $ a $ :  $ \mu_a(a)=0 $ ,  $ \mu_a $  нормирован,  $ \deg\mu_a=\min\{\deg f\mid f\in K[x]\!\setminus\!\{0\}\,\land\,f(a)=0\} $ ;  $ (\mu_a)=\rm{Ker}\,\rm{eval}_a\trianglelefteq K[x] $ .
+
+-   Теорема Гамильтона--Кэли. Нильпотентный лин. оператор:  $ \exists\,m\in\mathbb N_0\,\bigl(a^m=0\bigr) $ . Утверждение: *пусть  $ a $  — нильпот. лин. оператор; тогда  $ \chi_a=x^{\dim V} $ *.
+
+    **Теорема Гамильтона--Кэли.** *Пусть  $ K $  — поле,  $ V $  — векторное пространство над  $ K $ ,  $ \dim V<\infty $  и  $ a\in\rm{End}(V) $ ; тогда  $ \chi_a(a)=0 $ .*
+
+-   Алгебраическая и безымянная кратности:  $ \alpha(a,c) $ ,  $ \beta(a,c) $  — кратности  $ c $  как корня многочлена  $ \chi_a $  и многочлена  $ \mu_a $ . Теорема о минимальном многочлене.
+
+    **Теорема о минимальном многочлене.** *Пусть  $ K $  — поле,  $ V $  — векторное простр.-во над  $ K $ ,  $ \dim V<\infty $  и  $ a\in\rm{End}(V) $ ; тогда  $ \mu_a $  делит  $ \chi_a $  (и, значит,
+    для любых  $ c\in K $  выполнено  $ \beta(a,c)\le\alpha(a,c) $ ), а также  $ \,\rm{Spec}(a)=\{c\in K\mid\mu_a(c)=0\} $ .*
+
+-   **Теорема о ядрах многочленов от линейного оператора.** *Пусть  $ K $  — поле,  $ V $  — векторное пространство над  $ K $  и  $ a\in\rm{End}(V) $ ; тогда
+    (1) если  $ f\in K[x] $ , то  $ a\bigl(\rm{Ker}\,f(a)\bigr)\subseteq\rm{Ker}\,f(a) $  (то есть  $ \rm{Ker}\,f(a) $  —  $ a $ -инвариантное подпространство в  $ V $ );
+    (2) если  $ f,g\in K[x] $  и  $ f $  делит  $ g $ , то  $ \,\rm{Ker}\,f(a)\subseteq\rm{Ker}\,g(a) $ ;
+    (3) если  $ k\in\mathbb N_0 $ ,  $ f_1,\ldots,f_k\in K[x] $  и многочлены  $ f_1,\ldots,f_k $  попарно взаимно просты, то  $ \,\rm{Ker}\,(f_1\cdot\ldots\cdot f_k)(a)=\rm{Ker}\,f_1(a)\oplus\ldots\oplus\rm{Ker}\,f_k(a) $ 
+    (и, значит,  $ (f_1\cdot\ldots\cdot f_k)(a)=0\;\Leftrightarrow\,V=\rm{Ker}\,f_1(a)\oplus\ldots\oplus\rm{Ker}\,f_k(a) $ ).*
+
+-   Проектор (идемпотент):  $ a^2=a $  ( $ \Leftrightarrow\,V=\rm{Ker}\,(a-\rm{id}_V)\oplus\rm{Ker}\,a $ ). Отражение:  $ a^2=\rm{id}_V $  ( $ \Leftrightarrow\,V=\rm{Ker}\,(a-\rm{id}_V)\oplus\rm{Ker}\,(a+\rm{id}_V) $ , если  $ \rm{char}\,K\ne2 $ ).
+
+-   Ряд от лин. оператора  $ a $  ( $ V $  — нормир. пр.-во):  $ \sum_{k=0}^\infty f_ka^k $ . Достат. условие сходимости ( $ V $  — банах. пр.-во,  $ a\in\rm{End}(V)\cap\rm C^0\!(V,V) $ ):  $ \sum_{k=0}^\infty|f_k|\|a\|^k<\infty $ .
+
+-   Экспонента от непрер. лин. операт.  $ a $  в банах. пр.-ве $ \,/\, $ матрицы  $ a $ :  $ \rm e^a\!=\sum_{k=0}^\infty\frac1{k!}\,a^k $ . Пример:  $ \rm e^{\bigl(\begin{smallmatrix}0&-\varphi\\\varphi&0\end{smallmatrix}\bigr)}\!=\Bigl(\begin{smallmatrix}\cos\varphi&-{\sin\varphi}\\\sin\varphi&\cos\varphi\end{smallmatrix}\Bigr) $ . Теорема о свойствах экспоненты.
 
     **Теорема о свойствах экспоненты.**
-    *(1) Для любых  $ a,b\in\mathbb H $  выполнено  $ a\,b=b\,a\,\Rightarrow\,\rm e^{a+b}\!=\rm e^a\!\cdot\rm e^b $ , а также  $ \rm e^0\!=1 $  и  $ \rm e^{-a}\!=(\rm e^a)^{-1} $ .
-    (2) Для любых  $ \varphi\in\mathbb R $  и таких  $ u\in\mathbb H_\rm{vect} $ , что  $ \|u\|=1 $ , выполнено  $ \rm e^{\varphi\,u}\!=\cos\varphi+\sin\varphi\;u $  (и, значит,  $ \rm S^3\!=\{\rm e^{\varphi\,u}\!\mid\varphi\in[0;\pi],\,u\in\mathbb H_\rm{vect},\,\|u\|=1\} $ ).*
+    *Пусть  $ V $  — банахово пр.-во; тогда для любых  $ a,b\in\rm{End}(V)\cap\rm C^0\!(V,V) $  выполн.  $ a\circ b=b\circ a\,\Rightarrow\,\rm e^{a+b}\!=\rm e^a\!\circ\rm e^b $ , а также  $ \rm e^0\!=\rm{id}_V\! $  и  $ \rm e^{-a}\!=(\rm e^a)^{-1} $ .*
 
--   **Теорема об описании поворотов при помощи кватернионов.** *(1) Пусть  $ \varphi\in\mathbb R $ ,  $ u\in\mathbb H_\rm{vect} $  и  $ \|u\|=1 $ ; тогда  $ \biggl(\!\begin{align}\mathbb H_\rm{vect}\!&\to\mathbb H_\rm{vect}\\v&\mapsto\rm e^{\varphi\,u}\,v\,\rm e^{-\varphi\,u}\!\end{align}\!\biggr) $  — оператор
-    поворота в пространстве  $ \,\mathbb H_\rm{vect} $  на угол  $ 2\varphi $  против часовой стрелки вокруг оси с направляющим вектором  $ u $ .
-    (2) Отображение  $ \biggl(\!\begin{align}\rm S^3\!/\{1,-1\}&\to\rm{SO}(\mathbb H_\rm{vect})\\\{g,-g\}&\mapsto\bigl(v\mapsto g\,v\,g^{-1}\bigr)\!\end{align}\!\biggr) $  определено корректно и является изоморфизмом групп (и, значит,  $ \rm S^3\!/\{1,-1\}\cong\rm{SO}(3) $ ).*
+##### 5.5  Собственные, обобщенные собственные и корневые подпространства линейного оператора
 
-### 8   Алгебры
+-   Собственные подпростр.-ва:  $ V_1(a,c)=\rm{Ker}\,(a-c\cdot\rm{id}_V) $ ; геометрическая кратность:  $ \gamma(a,c)=\dim V_1(a,c) $ . Лемма о собственных подпространствах.
 
-##### 8.1  Определения и конструкции, связанные с алгебрами
+    **Лемма о собственных подпространствах.** *Пусть  $ K $  — поле,  $ V $  — в. пр. над  $ K $ ,  $ a\in\rm{End}(V) $ ,  $ k\in\mathbb N_0 $ ,  $ c_1,\ldots,c_k\in K $  и  $ c_1,\ldots,c_k $  попарно разл.; тогда
+    (1)  $ \rm{Ker}\,((x-c_1)\cdot\ldots\cdot(x-c_k))(a)=V_1(a,c_1)\oplus\ldots\oplus V_1(a,c_k) $ ;
+    (2) если  $ C_1\subseteq V_1(a,c_1),\ldots,C_k\subseteq V_1(a,c_k) $  и  $ C_1,\ldots,C_k $  — независимые множества, то  $ C_1\cup\ldots\cup C_k $  — независимое множество;
+    (3) если  $ \dim V<\infty $ , то для любых  $ c\in K $  выполнено  $ \gamma(a,c)\le\alpha(a,c) $ .*
 
--    $ K $ -Алгебра — вект. пространство над  $ K $  с билинейным умножением — кольцо в широком смысле слова с «правильным» умножением на скаляры из  $ K $ .
+-   **Теорема о диагонализации линейных операторов.** *Пусть  $ K $  — поле,  $ V $  — вект. пр.-во над  $ K $ ,  $ \dim V<\infty $  и  $ a\in\rm{End}(V) $ ; тогда след. утверждения
+    эквивалентны: (у1)  $ \exists\,e\in\rm{OB}(V)\; $  $ \bigl( $  $ a_e^e $  — диагональная матрица $ \bigr) $ , (у2)  $ \mu_a=\!\!\!\prod_{c\in\rm{Spec}(a)}\!\!\!(x-c) $ , (у3)  $ V=\!\!\!\bigoplus_{c\in\rm{Spec}(a)}\!\!\!V_1(a,c) $ , (у4)  $ \dim V=\!\!\!\sum_{c\in\rm{Spec}(a)}\!\!\!\gamma(a,c) $ .*
 
--   Примеры:  $ \rm{Func}(X,K) $ ,  $ K[x] $ ,  $ K(x) $ ,  $ \rm{Mat}(n,K) $ ,  $ \rm{End}(V) $ ;  $ \mathbb R $ -алгебры  $ \mathbb C $ ,  $ \mathbb H $ ,  $ \rm C^0\!(X,\mathbb R) $ ,  $ \rm C^\infty\!(M,\mathbb R) $ . Структурн. константы алгебры:  $ m^i_{j_1,j_2}\!\!=(e_{j_1}e_{j_2})^i $ .
+-   Обобщенные собственные подпростр.-ва:  $ V_j(a,c)=\rm{Ker}\,(a-c\cdot\rm{id}_V)^j $ ; относительные геометр. кратности:  $ \gamma_j(a,c)=\dim V_j(a,c)-\dim V_{j-1}(a,c) $ .
 
--   Теорема Кэли для ассоциативных алгебр с  $ 1 $ . Инъект. гомоморфизмы  $ \mathbb R $ -алгебр:  $ \biggl(\!\begin{align}\mathbb C&\to\rm{Mat}(2,\mathbb R)\,\\\alpha+\beta\,\rm i&\mapsto\!\Bigl(\begin{smallmatrix}\alpha&-\beta\\\beta&\alpha\end{smallmatrix}\Bigr)\end{align}\!\biggr) $  и  $ \biggl(\!\begin{align}\mathbb H&\to\rm{Mat}(2,\mathbb C)\\\alpha+\beta\,\rm i+\gamma\,\rm j+\delta\,\rm k&\mapsto\!\Bigl(\begin{smallmatrix}\alpha+\beta\,\rm i&\gamma+\delta\,\rm i\\-\gamma+\delta\,\rm i&\alpha-\beta\,\rm i\end{smallmatrix}\Bigr)\end{align}\!\biggr) $ .
+-   **Теорема об обобщенных собственных подпространствах.** *Пусть  $ K $  — поле,  $ V $  — вект. простр.-во над  $ K $ ,  $ \dim V<\infty $ ,  $ a\in\rm{End}(V) $  и  $ c\in K $ ; тогда
+    (1) для любых  $ j\in\mathbb N_0 $  выполнено  $ V_j(a,c)\subseteq V_{j+1}(a,c) $  и, если  $ V_j(a,c)=V_{j+1}(a,c) $ , то  $ V_{j+1}(a,c)=V_{j+2}(a,c) $ ;
+    (2) для любых  $ j\in\mathbb N_0 $  выполнено  $ \beta(a,c)\le j\;\Leftrightarrow\,V_{\beta(a,c)}(a,c)=V_j(a,c) $ ;
+    (3)  $ \{0\}\subset V_1(a,c)\subset\ldots\subset V_{\beta(a,c)-1}(a,c)\subset V_{\beta(a,c)}(a,c) $  и  $ V_{\beta(a,c)}(a,c)=V_{\beta(a,c)+1}(a,c)=\ldots=V_{\alpha(a,c)}(a,c)=\ldots $ .*
 
-    **Теорема Кэли для ассоциативных алгебр с 1.** *Пусть  $ K $  — поле и  $ A $  — ассоциативная  $ K $ -алгебра с  $ 1 $ ; обозначим через  $ {}_K\!A $  векторное пространство
-    над  $ K $ , получающееся из  $ A $  при «забывании» умножения в этой алгебре, и для любых  $ a\in A $  обозначим через  $ \rm{lm}_a $  отображение  $ \biggl(\!\begin{align}A&\to A\\b&\mapsto a\,b\end{align}\!\biggr) $ ; тогда
-    отобр.  $ \biggl(\!\begin{align}A&\to\rm{End}({}_K\!A)\\a&\mapsto\rm{lm}_a\end{align}\!\biggr) $  определено корректно и является инъективным гомоморфизмом алгебр с  $ 1 $  (и, значит,  $ A\cong\{\rm{lm}_a\!\mid a\in A\}\le\rm{End}({}_K\!A) $ ).*
+-   Корневые подпространства:  $ V(a,c)=\bigcup_{j\in\mathbb N_0}V_j(a,c)=V_{\beta(a,c)}(a,c) $ . Нильпотентные части линейн. оператора  $ a $ :  $ \rm{nil}(a,c)=a|_{V(a,c)\to V(a,c)}\!-c\cdot\rm{id}_{V(a,c)} $ .
 
--   Алгебра с делением:  $ \forall\,a\in A\!\setminus\!\{0\}\;\bigl(\rm{lm}_a,\rm{rm}_a\!\in\rm{Bij}(A)\bigr) $  и  $ A\ne\{0\} $ . Примеры:  $ K $ ,  $ K(x) $ ;  $ \mathbb R $ -алгебры с делением  $ \mathbb C $ ,  $ \mathbb H $ , алгебра октонионов (октав)  $ \mathbb O $ .
+-   **Теорема о прямой сумме корневых подпространств.** *Пусть  $ K $  — поле,  $ V $  — вект. пр.-во над  $ K $ ,  $ \dim V<\infty $ ,  $ a\in\rm{End}(V) $  и многочлен  $ \chi_a $  расклад.-ся
+    в произвед.-е многочленов степени  $ 1 $  в  $ K[x] $  (если  $ K=\mathbb C $ , то это условие выполнено для любых  $ a\in\rm{End}(V) $  в силу алгебр. замкнутости поля  $ \,\mathbb C $ );
+    тогда  $ V=\!\!\!\bigoplus_{c\in\rm{Spec}(a)}\!\!\!V(a,c) $ , для любых  $ c\in K $  выполнено  $ \rm{nil}(a,c)^{\beta(a,c)}\!=0 $  (и, значит,  $ \rm{nil}(a,c) $  — нильпот. лин. оператор) и  $ \dim V(a,c)=\alpha(a,c) $ .*
 
--   Моноидная алгебра ( $ M $  — моноид):  $ K[M]=\rm{FinFunc}(M,K) $ ; общий вид эл.-та:  $ \sum_{m\in M}p_mm $  ( $ |\{m\in M\mid p_m\ne0\}|<\infty $ ); умнож.-е в  $ K[M] $ : свертка.
+-   Жорданова клетка:  $ \rm{jc}_n(c)=c\cdot\rm{id}_n+\mathbf e_1^2+\ldots+\mathbf e_{n-1}^n $ . Пример: если  $ a=\rm{jc}_n(c) $  и  $ j\in\{0,\ldots,n\} $ , то  $ \chi_a=\mu_a=(x-c)^n $  и  $ V_j(a,c)=\langle\mathbf e_1,\ldots,\mathbf e_j\rangle $ .
 
--   Алгебра многочленов от свободных (некоммутирующих) перем.:  $ K\langle x_1,\ldots,x_n\rangle=K[\rm W(x_1,\ldots,x_n)] $ . Степень многочлена. Однородные многочлены.
+##### 5.6  Жорданова нормальная форма линейного оператора
 
--   Алгебра многочленов от коммутирующих переменных:  $ K[x_1,\ldots,x_n]=K[\rm W(x_1,\ldots,x_n)^\mathsf{ab}]\cong K\langle x_1,\ldots,x_n\rangle/\bigl(\{x_ix_j-x_jx_i\!\mid i,j\in\{1,\ldots,n\}\}\bigr) $ .
+-    $ C $  — независимое мн.-во относит.-но  $ U $ :  $ \forall\,f\in\rm{FinFunc}(C,K)\;\bigl(\sum_{c\in C}f(c)\,c\in U\,\Rightarrow f=0\bigr) $ .  $ D $  — порождающее мн.-во относит.-но  $ U $ :  $ V=U+\langle D\rangle $ .
 
--   Алгебра многочленов от антикоммут. (грассмановых) перем.:  $ K_\wedge[x_1,\ldots,x_n]=K\langle x_1,\ldots,x_n\rangle/\bigl(\{x_ix_j+x_jx_i\!\mid i,j\in\{1,\ldots,n\}\}\cup\{x_1^2,\ldots,x_n^2\}\bigr) $ .
+-   Базис относительно  $ U $  — независимое и порождающее мн.-во относительно  $ U $ . Две теоремы об относительных базисах (без подробных доказательств).
 
-##### 8.2  Алгебры Ли (основные определения и примеры)
+    **Первая теорема об относительных базисах.** *Пусть  $ K $  — поле,  $ V $  — вект. пр.-во над  $ K $ ,  $ U\le V $  и  $ E\subseteq V $ ; тогда следующие утвержд.-я эквивалентны:
+    (у1)  $ E $  — базис пространства  $ V $  относительно  $ U $ ;
+    (у2)  $ E $  — независимое множество и  $ V=U\oplus\langle E\rangle $  (и, значит, если  $ \dim V<\infty $ , то  $ |E|=\dim V-\dim U $ );
+    (у3) для любого вектора  $ v\in V $  существуют единственные такие  $ u\in U $  и  $ f\in\rm{FinFunc}(E,K) $ , что  $ v=u+\sum_{e\in E}f(e)\,e $ ;
+    (у4)  $ E $  — максимальное независимое множество относительно  $ U $ ;
+    (у5)  $ E $  — минимальное порождающее множество относительно  $ U $ .*
 
--    $ K $ -Алгебра Ли —  $ K $ -алгебра, умножение в которой антисимметрично ( $ [a,a]=0 $ ) и удовлетв.-т тождеству Якоби ( $ [[a,b],c]+[[b,c],a]+[[c,a],b]=0 $ ).
+    **Вторая теорема об относительных базисах.** *Пусть  $ K $  — поле,  $ V $  — векторное пространство над  $ K $ ,  $ \dim V<\infty $  и  $ U\le V $ ; тогда
+    (1) любое независимое подмножество в  $ V $  относительно  $ U $  можно дополнить до базиса в  $ V $  относительно  $ U $ ;
+    (2) из любого порождающего подмножества в  $ V $  относительно  $ U $  можно выделить базис в  $ V $  относительно  $ U $ .*
 
--   Коммутатор эл.-тов ассоциативной алгебры:  $ [a,b]=a\,b-b\,a $ . Алгебра  $ A^{(-)} $ : вект. простр.-во  $ {}_K\!A $  с операцией  $ [\,,] $ . Утверждение: * $ A^{(-)} $  — алгебра Ли*.
+-   **Теорема об относительных независимых подмножествах в ядрах степеней линейного оператора.** *Пусть  $ K $  — поле,  $ V $  — векторное простр.-во над  $ K $  и
+     $ a\in\rm{End}(V) $ , а также  $ j\in\mathbb N $ ,  $ V_{j-1}=\rm{Ker}\,a^{j-1} $ ,  $ V_j=\rm{Ker}\,a^j $  и  $ V_{j+1}=\rm{Ker}\,a^{j+1} $ ; тогда
+    (1) если  $ C $  — независимое подмн.-во в  $ V_{j+1} $  относ.-но  $ V_j $ , то все  $ a(c) $ , где  $ c\in C $ , попарно разл. и  $ a(C) $  — независимое подмн.-во в  $ V_j $  относ.-но  $ V_{j-1} $ ;
+    (2) если  $ \dim V<\infty $ , то  $ \dim V_j-\dim V_{j-1}\ge\dim V_{j+1}-\dim V_j $ .*
 
--   Примеры:  $ \mathfrak{gl}(V)=\rm{End}(V)^{(-)} $ ,  $ \mathfrak{sl}(V)=\{a\in\mathfrak{gl}(V)\mid\rm{tr}\,a=0\} $ , трехмерное евклид. пр.-во с ориент. относ.-но  $ \times $ ,  $ \mathbb H_\rm{vect} $  — подалгебра алгебры  $ \mathbb H^{(-)} $ .
+-   Диаграммы Юнга. Жорданов блок:  $ \,\rm{jb}_\Delta(c) $  — прямая сумма жордановых клеток  $ \,\rm{jc}_{n_1}\!(c),\ldots,\rm{jc}_{n_r}\!(c) $ , где  $ n_1,\ldots,n_r $  — длины строк диаграммы Юнга  $ \Delta $ .
 
--   Матричные алгебры Ли:  $ \mathfrak{gl}(n,K) $ ,  $ \mathfrak{sl}(n,K) $ ,  $ \mathfrak o(n)=\mathfrak{so}(n)=\{a\in\mathfrak{gl}(n,\mathbb R)\mid a^{\scriptscriptstyle\mathsf T}\!=-a\} $ ,  $ \mathfrak u(n)=\{a\in\mathfrak{gl}(n,\mathbb C)\mid a^{\scriptscriptstyle\mathsf T}\!=-\overline a\} $ ,  $ \mathfrak{su}(n)=\mathfrak{sl}(n,\mathbb C)\cap\mathfrak u(n){} $ .
+-   Диаграмма Юнга  $ \Delta(a,c) $ : высоты столбцов диаграммы  $ \Delta(a,c) $  — относительные геометр. кратности  $ \gamma_1(a,c),\ldots,\gamma_{\beta(a,c)}(a,c) $ . Корректность опред.-я.
 
--   **Теорема о группах матриц и матричных алгебрах Ли.** *Пусть  $ K=\mathbb R $  или  $ K=\mathbb C $  и  $ n\in\mathbb N_0 $ ; для любых  $ G\le\rm{GL}(n,K) $  обозначим через  $ \,\rm T_{\rm{id}_n}G $  мн.-во
-     $ \{\dot\gamma(0)\mid\alpha\in[-\infty;0),\,\beta\in(0;\infty],\,\gamma\in\rm C^\infty\!((\alpha;\beta),\rm{Mat}(n,K)),\,\rm{Im}\,\gamma\subseteq G,\,\gamma(0)=\rm{id}_n\} $  (это касательное пр.-во к группе  $ G $  в точке  $ \,\rm{id}_n $ ); тогда
-     $ \rm T_{\rm{id}_n}\rm{GL}(n,K)=\mathfrak{gl}(n,K) $  и  $ \,\rm T_{\rm{id}_n}\rm{SL}(n,K)=\mathfrak{sl}(n,K) $ , а также  $ \,\rm T_{\rm{id}_n}\rm O(n)=\rm T_{\rm{id}_n}\rm{SO}(n)=\mathfrak{so}(n) $ ,  $ \rm T_{\rm{id}_n}\rm U(n)=\mathfrak u(n) $  и  $ \,\rm T_{\rm{id}_n}\rm{SU}(n)=\mathfrak{su}(n) $ .*
+-   **Теорема о жордановой нормальной форме.** *Пусть  $ K $  — поле,  $ V $  — вект. пр.-во над  $ K $ ,  $ \dim V<\infty $ ,  $ a\in\rm{End}(V) $  и многочлен  $ \chi_a $  раскладывается в
+    произведение многочленов степени  $ 1 $  в  $ K[x] $  (если  $ K=\mathbb C $ , то это условие выполнено для любых  $ a\in\rm{End}(V) $  в силу алгебр. замкнутости поля  $ \,\mathbb C $ );
+    тогда существует такой упорядоченный базис  $ e\in\rm{OB}(V) $ , что  $ a_e^e $  — прямая сумма жордановых блоков  $ \,\rm{jb}_{\Delta(a,c)}(c) $  по всем  $ c\in\rm{Spec}(a) $ .*
 
--   Теорема Кэли для алгебр Ли. Изоморфизмы  $ \mathbb R $ -алгебр Ли:  $ \Biggl(\!\begin{align}\mathbb R^3\!&\to\mathfrak{so}(3)\\\biggl(\begin{smallmatrix}\beta\\\gamma\\\delta\end{smallmatrix}\biggr)\!&\mapsto\!\biggl(\begin{smallmatrix}0&-\delta&\gamma\\\delta&0&-\beta\\-\gamma&\beta&0\end{smallmatrix}\biggr)\end{align}\!\Biggr) $ ,  $ \Biggl(\!\begin{align}\mathbb R^3\!&\to\mathbb H_\rm{vect}\\\biggl(\begin{smallmatrix}\beta\\\gamma\\\delta\end{smallmatrix}\biggr)\!&\mapsto{\textstyle\frac12}(\beta\,\rm i+\gamma\,\rm j+\delta\,\rm k)\end{align}\!\Biggr) $  и  $ \Biggl(\!\begin{align}\mathbb R^3\!&\to\mathfrak{su}(2)\\\biggl(\begin{smallmatrix}\beta\\\gamma\\\delta\end{smallmatrix}\biggr)\!&\mapsto{\textstyle\frac12}\Bigl(\begin{smallmatrix}\beta\,\rm i&\gamma+\delta\,\rm i\\-\gamma+\delta\,\rm i&-\beta\,\rm i\end{smallmatrix}\Bigr)\end{align}\!\Biggr) $ .
+-   Вычисл.-е рядов от лин. операторов при помощи жордановой нормальной формы. Утверждение:  $ \sum_{k=0}^\infty f_k\,\rm{jc}_n(c)^k=\sum_{l=0}^{n-1}\frac1{l!}\Bigl(\sum_{k=l}^\infty\frac{k!}{(k-l)!}f_kc^{k-l}\Bigr)\,\rm{jc}_n(0)^l $ .
 
-    **Теорема Кэли для алгебр Ли.** *Пусть  $ K $  — поле и  $ \mathfrak g $  —  $ K $ -алгебра Ли; обозначим через  $ {}_K\mathfrak g $  векторное пространство над  $ K $ , получающееся из  $ \mathfrak g $  при
-    «забывании» умножения в этой алгебре, и для любых  $ a\in\mathfrak g $  обозначим через  $ \rm{ad}_a $  отображение  $ \biggl(\!\begin{align}\mathfrak g&\to\mathfrak g\\b&\mapsto[a,b]\end{align}\!\biggr) $ ; тогда отображение  $ \biggl(\!\begin{align}\mathfrak g&\to\mathfrak{gl}({}_K\mathfrak g)\\a&\mapsto\rm{ad}_a\end{align}\!\biggr) $ 
-    определено корректно и является гомоморфизмом алгебр Ли.*
-
--   Алгебра Ли дифференцирований  $ K $ -алгебры  $ A $ :  $ \rm{Der}(A)=\{d\in\mathfrak{gl}({}_K\!A)\mid\forall\,a,b\in A\;\bigl(d(a\,b)=d(a)\,b+a\,d(b)\bigr)\} $  — подалгебра алгебры  $ \mathfrak{gl}({}_K\!A) $ .
-
--   Дифференциров.-е (производная Ли) по вект. полю ( $ M $  — откр. мн.-во в  $ \mathbb R^n $ ,  $ A=\rm C^\infty\!(M,\mathbb R) $ ,  $ v\in\rm C^\infty\!(M,\mathbb R^n) $ ):  $ \biggl(\begin{align}\mathcal L_v\colon A&\to A\\f&\mapsto\textstyle\sum_{i=1}^nv^i\frac{\partial f}{\partial x^i}\end{align}\!\biggr)\!\in\rm{Der}(A) $ .
+-   Вычисл.-е  $ \rm e^{\,t\,\rm{jc}_n(c)} $ . Утверждение: *если  $ K=\mathbb R $  или  $ K=\mathbb C $  и  $ a\in\rm{Mat}(n,K) $ , то  $ \det\rm e^a\!=\rm e^{\rm{tr}\,a} $ ,  $ \rm e^{a^{\scriptscriptstyle\mathsf T}}\!\!=(\rm e^a)^{\scriptscriptstyle\mathsf T} $  и  $ \,\rm e^{\overline a^{\scriptscriptstyle\mathsf T}}\!\!=\bigl(\overline{\rm e^a}\bigr)^{\scriptscriptstyle\mathsf T} $ , а также  $ \frac{\rm d}{\rm dt}(\rm e^{t\,a})=a\cdot\rm e^{t\,a} $ *.
