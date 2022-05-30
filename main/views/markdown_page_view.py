@@ -22,7 +22,8 @@ def create_page(request):
 
 
 def view_page(request, id):
-    return render(request, 'main/view_markdown_page.html', {'page': get_object_or_404(MarkdownPage, id=id)})
+    return render(request, 'main/view_markdown_page.html',
+                  {'page': get_object_or_404(MarkdownPage, id=id), 'enable_mathjax': True})
 
 
 def edit_page(request, id):

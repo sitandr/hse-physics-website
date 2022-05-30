@@ -63,7 +63,7 @@ def show_announcements(request, edit=False):
     return render(request, 'main/announcements.html', {'user': user,
                                                        'edit': edit,
                                                        'viewed_ann': viewed_ann,
-                                                       'form': form})
+                                                       'form': form, 'enable_mathjax': True})
 
 
 def remove_announcement(request, ann_id):
