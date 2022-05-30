@@ -14,7 +14,7 @@ class Material(models.Model):
     name = models.CharField(max_length=30)
     description = models.TextField(blank=True)
     objects = MaterialMaster()
-    parent = models.ForeignKey(Block, on_delete=models.CASCADE, null=True)
+    parent = models.ForeignKey(Block, on_delete=models.CASCADE, null=True, related_name='materials')
 
     # master = models.ForeignKey(MaterialMaster)
 
