@@ -125,7 +125,8 @@ def course_page(request, slug, edit_general_info=False):
 
     return render(request, 'main/course_page.html', {'page': page,
                                                      'edit_general_info': edit_general_info,
-                                                     'edit_material_form': edit_material_form})
+                                                     'edit_material_form': edit_material_form,
+                                                     'enable_mathjax': True})
 
 
 def remove_material(request, slug, id):
