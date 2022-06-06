@@ -39,8 +39,7 @@ class Url(Material):
 
     @property
     def view(self):
-        return Template(f"""
-    <a href="{self.address}">{self.text}</a>""").render(Context({}))
+        return f'<a href="{self.address}">{self.text}</a>'
 
 
 class File(Material):
@@ -50,8 +49,7 @@ class File(Material):
 
     @property
     def view(self):
-        return Template(f"""
-    <a href="{self.file_material.url}" download>{self.name}</a>""").render(Context({}))
+        return f'<a href="{self.file_material.url}" download>{self.name}</a>'
 
 
 class Video(Material):
@@ -78,7 +76,7 @@ class MarkdownMat(Material):
 
     @property
     def view(self):
-        return Template(generate_html(self.text))
+        return generate_html(self.text)
 
 
 class MaterialContainer(Material):
@@ -88,8 +86,8 @@ class MaterialContainer(Material):
 
     @property
     def view(self):
-        return ''.join({'<div>' + str(m.concretize().view) + '</div>'
-                        for m in [self.markdown] + list(self.urls.all()) + list(self.videos.all())})
+        return '═══════<div>' + ''.join(['<div>' + str(m.concretize().view) + '</div>'
+                        for m in [self.markdown] + list(self.urls.all()) + list(self.videos.all())]) + '</div>═══════'
 
 
 class Task(models.Model):

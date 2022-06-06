@@ -10,7 +10,7 @@ from ..models import MaterialContainer, MarkdownMat, File, Video, Url
 def index(request):
     print(request.user)
     tasks = Task.objects.all()
-    materials = Material.objects.all()
+    materials = MaterialContainer.objects.all()
     courses = CoursePage.objects.all()
     concr_materials = []
     for material in materials:
@@ -42,7 +42,8 @@ def add_material(request):
                 c.save()
 
                 u = Url()
-                u.adress = u_m
+                u.address = u_m
+                u.text = u_m
                 u.save()
 
                 c.urls.add(u)
