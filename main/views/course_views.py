@@ -3,7 +3,7 @@ from ..models import Task, CoursePage, Material
 from ..forms import TaskForm, CreateCourseForm, EditCourseGeneralInfo
 from ..forms import ContainerForm
 from django.contrib.auth.decorators import login_required
-from ..models import MaterialContainer, MarkdownMat, File, Video, Url
+from ..models import MaterialContainer, MarkdownMat, File, Video, Url, Profile
 
 
 @login_required
@@ -27,46 +27,47 @@ def about(request):
     return render(request, 'main/about.html')
 
 
-@login_required
 def add_material(request):
+    "quite 'clear' method that is capable of suistaining form and creating proper containers"
     if request.method == 'POST':
         form = ContainerForm(request.POST, request.FILES)
         if form.is_valid():
             m_text, u_m, v_m, f_m = (form.cleaned_data["markdown_text"], form.cleaned_data["url_material"],
                                      form.cleaned_data["video_material"], form.cleaned_data["file_material"])
-            if any([m_text, u_m, v_m]):
+            if any([m_text, u_m, v_m, f_m]):
+
                 t = MarkdownMat()
                 t.text = m_text
                 t.save()
+
                 c = MaterialContainer(markdown=t)
                 c.save()
+                if u_m:
+                    u = Url()
+                    u.address = u_m
+                    u.text = u_m
+                    u.save()
 
-                u = Url()
-                u.address = u_m
-                u.text = u_m
-                u.save()
-
-                c.urls.add(u)
-
-                v = Video()
-                v.video_material = v_m
-                v.save()
-                c.videos.add(v)
-
-                f = File()
-                v.file_material = f_m
-                f.save()
-                c.files.add(v)
+                    c.urls.add(u)
+                if v_m:
+                    v = Video()
+                    v.video_material = v_m
+                    v.save()
+                    c.videos.add(v)
+                if f_m:
+                    f = File()
+                    f.file_material = f_m
+                    f.name = f_m.name
+                    f.save()
+                    c.files.add(f)
 
                 c.save()
 
-                return redirect(request.build_absolute_uri())
+                return {'posted': True, 'file': c}
     else:
         form = ContainerForm()
 
-    return render(request, 'main/add_material.html', {
-        'form': form,
-    })
+    return {'posted': False, 'form': form}
 
 
 @login_required
@@ -96,7 +97,6 @@ def create_task(request, course_id=None):
 
 def course_page(request, slug, edit_general_info=False):
     page = get_object_or_404(CoursePage, slug=slug)
-    print(edit_general_info)
     if edit_general_info:
         edit_general_info = EditCourseGeneralInfo(instance=page)
 
@@ -108,8 +108,24 @@ def course_page(request, slug, edit_general_info=False):
                 post.save()
                 return redirect('pages', slug)
 
+    response = add_material(request)
+
+    if response['posted']:
+        container = response['file']
+        if request.user.concretize().role == Profile.STUD_ROLE:
+            container.parent = page.student_block
+        else:
+            container.parent = page.lecturer_block
+
+        container.save()
+
+        return redirect(request.build_absolute_uri())
+
+    edit_material_form = response['form']
+
     return render(request, 'main/course_page.html', {'page': page,
-                                                     'edit_general_info': edit_general_info})
+                                                     'edit_general_info': edit_general_info,
+                                                     'edit_material_form': edit_material_form})
 
 
 @login_required

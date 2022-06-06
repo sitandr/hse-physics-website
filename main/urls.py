@@ -9,7 +9,6 @@ urlpatterns = [
     path('create_task?<int:course_id>',
          views.course_views.create_task, name='create_course_task'),
 
-    path('add_material', views.course_views.add_material, name='add_material'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/', include('accounts.urls')),
     path('pages/<slug:slug>', views.course_views.course_page, name='pages'),

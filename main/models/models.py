@@ -87,8 +87,10 @@ class MaterialContainer(Material):
 
     @property
     def view(self):
-        return '═══════<div>' + ''.join(['<div>' + str(m.concretize().view) + '</div>'
-                        for m in [self.markdown] + list(self.urls.all()) + list(self.videos.all())]) + '</div>═══════'
+        return ('═══════<div>' + ''.join(['<div>' + str(m.concretize().view) + '</div>'
+                                          for m in [self.markdown] + list(self.urls.all())
+                                          + list(self.videos.all()) + list(self.files.all())])
+                + '</div>……………')
 
 
 class Task(models.Model):
