@@ -28,13 +28,16 @@
 		</div>
 	</div>
 
+	<div>
 	{% csrf_token %}
 	<form enctype="multipart/form-data" method="post">
 		  {% csrf_token %}
-		  {{ edit_material_form }}
+		  <table>
+		  {{ edit_material_form.as_table }}
+		  </table>
 		  <button type="submit">Добавить</button>
-		</form>
-	
+	</form>
+	</div>
 
 	<a href="{% url 'create_course_task' page.id %}" class="nav-link">Добавить задание</a>
 {% endblock %}

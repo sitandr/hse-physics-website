@@ -37,6 +37,13 @@ class Block(models.Model):
     def __str__(self):
         return self.type_() + ' ' + ''.join(map(str, list(self.pages_as_st.all()) + list(self.pages_as_lect.all())))
 
+    @property
+    def related_page(self):
+        if self.pages_as_st.count():
+            return self.pages_as_st.get()
+        else:
+            return self.pages_as_lect.get()
+
 
 def new_block():
     return Block()

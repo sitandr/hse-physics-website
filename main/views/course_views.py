@@ -128,6 +128,11 @@ def course_page(request, slug, edit_general_info=False):
                                                      'edit_material_form': edit_material_form})
 
 
+def remove_material(request, slug, id):
+    Material.objects.get(id=id).delete()
+    return redirect('pages', slug)
+
+
 @login_required
 def create_course(request):
 

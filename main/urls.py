@@ -25,4 +25,7 @@ urlpatterns = [
     path('pages/markdown/create', views.markdown_page_view.create_page, name='create_markdown_page'),
     path('pages/markdown/<int:id>', views.markdown_page_view.view_page, name='view_markdown_page'),
     path('pages/markdown/<int:id>/edit', views.markdown_page_view.edit_page, name='edit_markdown_page'),
+
+    path('pages/<slug:slug>/remove?<int:id>', views.course_views.remove_material, name='remove_material'),
+
 ]

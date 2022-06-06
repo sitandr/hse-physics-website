@@ -90,6 +90,8 @@ class MaterialContainer(Material):
         return ('═══════<div>' + ''.join(['<div>' + str(m.concretize().view) + '</div>'
                                           for m in [self.markdown] + list(self.urls.all())
                                           + list(self.videos.all()) + list(self.files.all())])
+                + Template(f'''<a href="{{% url 'remove_material' slug id %}}">×</a>''').render(Context({'id': self.id,
+                                                                                                         'slug': self.parent.related_page.slug}))
                 + '</div>……………')
 
 
