@@ -32,8 +32,8 @@ def add_material(request):
     if request.method == 'POST':
         form = ContainerForm(request.POST, request.FILES)
         if form.is_valid():
-            m_text, u_m, v_m = (form.cleaned_data["markdown_text"], form.cleaned_data["url_material"],
-                                form.cleaned_data["video_material"])
+            m_text, u_m, v_m, f_m = (form.cleaned_data["markdown_text"], form.cleaned_data["url_material"],
+                                     form.cleaned_data["video_material"], form.cleaned_data["file_material"])
             if any([m_text, u_m, v_m]):
                 t = MarkdownMat()
                 t.text = m_text
@@ -52,6 +52,11 @@ def add_material(request):
                 v.video_material = v_m
                 v.save()
                 c.videos.add(v)
+
+                f = File()
+                v.file_material = f_m
+                f.save()
+                c.files.add(v)
 
                 c.save()
 

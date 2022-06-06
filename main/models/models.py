@@ -83,6 +83,7 @@ class MaterialContainer(Material):
     markdown = models.ForeignKey(MarkdownMat, on_delete=models.CASCADE)
     urls = models.ManyToManyField(Url)
     videos = models.ManyToManyField(Video)
+    files = models.ManyToManyField(File)
 
     @property
     def view(self):
