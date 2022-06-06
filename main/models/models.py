@@ -11,8 +11,6 @@ class MaterialMaster(InheritanceManager):
 
 
 class Material(models.Model):
-    name = models.CharField(max_length=30)
-    description = models.TextField()
     objects = MaterialMaster()
     parent = models.ForeignKey('Block', on_delete=models.CASCADE, null=True, related_name='materials')
 
@@ -27,7 +25,7 @@ class Material(models.Model):
         return Material.objects.get_subclass(id=self.id)
 
     def __str__(self):
-        return self.name
+        return str(self.id)
 
     class Meta:
         verbose_name = 'Материал'
@@ -37,32 +35,34 @@ class Material(models.Model):
 
 class Url(Material):
     address = models.URLField(max_length=200)
+    text = models.TextField()
 
     @property
     def view(self):
-        return Template(f"""<h2>{self.name}:</h2>
-    <a href="{self.address}">{self.description}</a>""").render(Context({}))
+        return Template(f"""
+    <a href="{self.address}">{self.text}</a>""").render(Context({}))
 
 
 class File(Material):
     file_material = models.FileField(null=True, upload_to='documents')
-    is_published = models.BooleanField(default=True)
-    uploaded_at=models.DateTimeField(auto_now_add=True)
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+    name = models.CharField(max_length=30)
 
     @property
     def view(self):
-        return Template(f"""<h2>{self.name}</h2>
-    <h2>DOWNLOAD FROM HERE<a href="{self.file_material.url}" download>{self.name}</a></h2>""").render(Context({}))
+        return Template(f"""
+    <a href="{self.file_material.url}" download>{self.name}</a>""").render(Context({}))
 
 
 class Video(Material):
     video_material = EmbedVideoField()
+    name = models.CharField(max_length=30)
 
     # class Meta:
     #     verbose_name_plural = "Video"
 
     def __str__(self):
-        return str(self.name) if self.name else " "
+        return str(self.video_material)
 
     @property
     def view(self):
@@ -79,6 +79,17 @@ class MarkdownMat(Material):
     @property
     def view(self):
         return Template(generate_html(self.text))
+
+
+class MaterialContainer(Material):
+    markdown = models.ForeignKey(MarkdownMat, on_delete=models.CASCADE)
+    urls = models.ManyToManyField(Url)
+    videos = models.ManyToManyField(Video)
+
+    @property
+    def view(self):
+        return ''.join({'<div>' + str(m.concretize().view) + '</div>'
+                        for m in [self.markdown] + list(self.urls.all()) + list(self.videos.all())})
 
 
 class Task(models.Model):

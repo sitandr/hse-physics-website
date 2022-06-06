@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from ..models import Task, CoursePage, Material
-from ..forms import TaskForm, CreateCourseForm, MaterialForm, EditCourseGeneralInfo, FileForm, VideoForm, MarkdownMatForm
+from ..forms import TaskForm, CreateCourseForm, EditCourseGeneralInfo
+from ..forms import ContainerForm
 from django.contrib.auth.decorators import login_required
+from ..models import MaterialContainer, MarkdownMat, File, Video, Url
 
 
 @login_required
@@ -28,30 +30,36 @@ def about(request):
 @login_required
 def add_material(request):
     if request.method == 'POST':
-        form_1 = MaterialForm(request.POST, request.FILES)
-        form_2 = FileForm(request.POST, request.FILES)
-        form_3 = VideoForm(request.POST, request.FILES)
-        form_4 = MarkdownMatForm(request.POST, request.FILES)
-        print(form_3.fields['video_material'].validators)
-        if True: #all([form_1.is_valid(), form_2.is_valid(), form_3.is_valid(), form_4.is_valid()]):
-            if form_2.data['file_material']:
-                form_2.save()
-            form_1.save()
-            form_3.save()
-            form_4.save()
-            return redirect('home')
+        form = ContainerForm(request.POST, request.FILES)
+        if form.is_valid():
+            m_text, u_m, v_m = (form.cleaned_data["markdown_text"], form.cleaned_data["url_material"],
+                                form.cleaned_data["video_material"])
+            if any([m_text, u_m, v_m]):
+                t = MarkdownMat()
+                t.text = m_text
+                t.save()
+                c = MaterialContainer(markdown=t)
+                c.save()
+
+                u = Url()
+                u.adress = u_m
+                u.save()
+
+                c.urls.add(u)
+
+                v = Video()
+                v.video_material = v_m
+                v.save()
+                c.videos.add(v)
+
+                c.save()
+
+                return redirect(request.build_absolute_uri())
     else:
-        form_1 = MaterialForm()
-        form_2 = FileForm()
-        form_3 = VideoForm()
-        form_4 = MarkdownMatForm()
+        form = ContainerForm()
+
     return render(request, 'main/add_material.html', {
-        'form_1': form_1,
-        'form_2': form_2,
-        'form_3': form_3,
-        'form_4': form_4
-
-
+        'form': form,
     })
 
 

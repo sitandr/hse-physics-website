@@ -6,16 +6,7 @@
     <h1>Форма добавления материала к курсу</h1>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form_1.as_p }}
-        {% if form_2 %}
-        {{ form_2.as_p }}
-        {% endif %}
-        {% if form_3 %}
-        {{ form_3.as_p }}
-        {% endif %}
-        {% if form_4 %}
-        {{ form_4.as_p }}
-        {% endif %}
+        {{ form.as_p }}
 
         <button class="btn btn-success" type="submit">Добавить материал</button>
     </form>
