@@ -12,7 +12,7 @@ class MaterialMaster(InheritanceManager):
 
 class Material(models.Model):
     name = models.CharField(max_length=30)
-    description = models.TextField(blank=True)
+    description = models.TextField()
     objects = MaterialMaster()
     parent = models.ForeignKey('Block', on_delete=models.CASCADE, null=True, related_name='materials')
 
@@ -45,7 +45,7 @@ class Url(Material):
 
 
 class File(Material):
-    file_material = models.FileField(blank=True, null=True, upload_to='documents')
+    file_material = models.FileField(null=True, upload_to='documents')
     is_published = models.BooleanField(default=True)
     uploaded_at=models.DateTimeField(auto_now_add=True)
 
@@ -74,7 +74,7 @@ class Video(Material):
 
 
 class MarkdownMat(Material):
-    text = models.TextField()
+    text = models.TextField(blank=True)
 
     @property
     def view(self):
