@@ -3,6 +3,7 @@ from embed_video.fields import EmbedVideoFormField
 from ..models import File, Url, Video, MarkdownMat, MaterialContainer, IFrame, CoursePage, Block
 from django.forms import ModelForm, TextInput, Textarea, FileField
 from django import forms
+from ..models import LecturerUser
 
 
 class MarkdownMatForm(ModelForm):
@@ -98,4 +99,4 @@ class CreateCourseForm(ModelForm):
 class EditCourseGeneralInfo(ModelForm):
     class Meta:
         model = CoursePage
-        fields = ['general_info']
+        fields = ['general_info', 'main_lecturer']

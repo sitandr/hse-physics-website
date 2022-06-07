@@ -5,15 +5,21 @@
 
 {% block body %}
 	<h1>{{page.name}}</h1>
+
 	{% if edit_general_info %}
 		<form enctype="multipart/form-data" method="post">
 		  {% csrf_token %}
-		  {{ edit_general_info.general_info }}
+		  {{ edit_general_info.as_p }}
 		  <button name="edit_general_info" type="submit">Изменить</button>
 		</form>
 	{% else %}
+		<div>
+			<img src="{{page.main_lecturer.profile.photo.url}}" height=100></img>
+			{{page.main_lecturer}}<br>
+			Связь: <a href="{{page.main_lecturer.profile.link}}">{{page.main_lecturer.profile.link}}</a>
+		</div>
 		<div>{{page.general_info}}</div>
-		<a href="{% url 'pages_edit_general_info' slug=page.slug %}">Edit</a>
+		<a href="{% url 'pages_edit_general_info' slug=page.slug %}">Изменить</a>
 	{% endif%}
 	<div id="block-double-wrapper">
 		<div id="block-wrapper">

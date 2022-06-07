@@ -42,6 +42,8 @@ def course_page(request, slug, edit_general_info=False):
 
     if request.method == 'POST' and 'edit_material_submit' in request.POST:
         edit_material_form = ContainerForm(request.POST, request.FILES)
+        # there I'm using same name for bool of state (editing/not) and form, because bool(form) == True
+
         if edit_material_form.is_valid():
             role = request.user.concretize().role
             edit_material_form.save(parent=(page.student_block if role == Profile.STUD_ROLE else page.lecturer_block))
