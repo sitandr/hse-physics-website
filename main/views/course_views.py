@@ -8,13 +8,12 @@ from ..models import MaterialContainer, MarkdownMat, File, Video, Url, Profile, 
 
 @login_required
 def index(request):
-    print(request.user)
     materials = MaterialContainer.objects.all()
     courses = CoursePage.objects.all()
     concr_materials = []
     for material in materials:
         concr_materials.append(material.concretize())
-    print(concr_materials)
+
     return render(request, 'main/index.html',
                   {'title': 'Главная страница сайта',
                    'courses': courses,
@@ -30,11 +29,12 @@ def add_material(request):
     if request.method == 'POST':
         form = ContainerForm(request.POST, request.FILES)
         if form.is_valid():
+
+            # this code is terrible, it would be wonderful to rewrite it
             m_text, u_m, v_m, file_m, frame_m = (form.cleaned_data["markdown_text"], form.cleaned_data["url_material"],
                                                  form.cleaned_data["video_material"], form.cleaned_data["file_material"],
                                                  form.cleaned_data["frame_url"])
             if any([m_text, u_m, v_m, file_m, frame_m]):
-                print('anied')
 
                 t = MarkdownMat()
                 t.text = m_text

@@ -32,6 +32,7 @@
             <img src="{% static 'main/img/plus-blue.png' %}" height="26" alt="plus">
             <ul class="dropdown-menu">
                 <li><a href="{% url 'create_course' %}">Новый курс</a></li>
+                <li><a href="{% url 'create_markdown_page' %}">Новая текстовая страница</a></li>
                 <li><a href="{% url 'announce' %}">Новое объявление</a></li>
             </ul>
         </li>
@@ -47,7 +48,7 @@
         <li class="dropdown-button">
             <img src="{% static 'main/img/user-head-blue.png' %}" height="26" alt="user">
             <ul class="dropdown-menu">
-                <li>ФИО</li>
+                <li>{{request.user}}</li>
                 <li><a href="{% url 'profile' user.id %}">Профиль</a></li>
                 <li><a href="{% url 'edit_profile' user.id %}">Редактировать</a></li>
                 <li><a href="{% url 'logout' %}">Выйти</a></li>

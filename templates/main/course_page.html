@@ -9,7 +9,7 @@
 		<form enctype="multipart/form-data" method="post">
 		  {% csrf_token %}
 		  {{ edit_general_info.general_info }}
-		  <button type="submit">Изменить</button>
+		  <button name="edit_general_info" type="submit">Изменить</button>
 		</form>
 	{% else %}
 		<div>{{page.general_info}}</div>
@@ -35,7 +35,7 @@
 		  <table>
 		  {{ edit_material_form.as_table }}
 		  </table>
-		  <button type="submit">Добавить</button>
+		  <button name="edit_material_submit" type="submit">Добавить</button>
 	</form>
 	</div>
 {% endblock %}
