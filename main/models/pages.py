@@ -2,8 +2,8 @@ from django.db import models
 from unidecode import unidecode
 from django.urls import reverse
 from ..other.markdown import generate_html
-from django.template import Template, Context
 from .profiles import Profile
+from .user import LecturerUser
 
 
 class Block(models.Model):
@@ -45,10 +45,6 @@ class Block(models.Model):
             return self.pages_as_lect.get()
 
 
-def new_block():
-    return Block()
-
-
 class CoursePage(models.Model):
 
     name = models.CharField('Название курса', max_length=50)
@@ -59,6 +55,7 @@ class CoursePage(models.Model):
                                        related_name='pages_as_lect')
 
     general_info = models.TextField('Общая информация')
+    main_lecturer = models.ForeignKey(LecturerUser, null=True, on_delete=models.SET_NULL, related_name='pages_as_lect')
 
     def create_slug(self):  # self-written function for better generating slugs
         self.slug = unidecode(self.name).replace(' ', '_')
