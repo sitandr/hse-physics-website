@@ -4,7 +4,7 @@ from ..forms import CreateCourseForm, EditCourseGeneralInfo
 from ..forms import ContainerForm
 from django.contrib.auth.decorators import login_required
 
-from ..models import MaterialContainer, MarkdownMat, File, Video, Url, IFrame
+from ..models import MaterialContainer
 from ..models import Profile, MarkdownPage
 
 
@@ -27,63 +27,12 @@ def about(request):
     return render(request, 'main/about.html')
 
 
-def add_material(request):
-    "quite 'clear' method that is capable of suistaining form and creating proper containers"
-    if request.method == 'POST':
-        form = ContainerForm(request.POST, request.FILES)
-        if form.is_valid():
-
-            # this code is terrible, it would be wonderful to rewrite it
-            m_text, u_m, v_m, file_m, frame_m = (form.cleaned_data["markdown_text"], form.cleaned_data["url_material"],
-                                                 form.cleaned_data["video_material"], form.cleaned_data["file_material"],
-                                                 form.cleaned_data["frame_url"])
-            if any([m_text, u_m, v_m, file_m, frame_m]):
-
-                t = MarkdownMat()
-                t.text = m_text
-                t.save()
-
-                c = MaterialContainer(markdown=t)
-                c.save()
-                if u_m:
-                    u = Url()
-                    u.address = u_m
-                    u.text = u_m
-                    u.save()
-
-                    c.urls.add(u)
-                if v_m:
-                    v = Video()
-                    v.video_material = v_m
-                    v.save()
-                    c.videos.add(v)
-                if file_m:
-                    f = File()
-                    f.file_material = file_m
-                    f.name = file_m.name
-                    f.save()
-                    c.files.add(f)
-                if frame_m:
-                    frame = IFrame()
-                    frame.frame_url = frame_m
-                    frame.save()
-                    c.frames.add(frame)
-
-                c.save()
-
-                return {'posted': True, 'file': c}
-    else:
-        form = ContainerForm()
-
-    return {'posted': False, 'form': form}
-
-
 def course_page(request, slug, edit_general_info=False):
     page = get_object_or_404(CoursePage, slug=slug)
     if edit_general_info:
         edit_general_info = EditCourseGeneralInfo(instance=page)
 
-        if request.method == "POST":
+        if request.method == "POST" and 'edit_general_info' in request.POST:
             form = EditCourseGeneralInfo(request.POST, request.FILES, instance=page)
 
             if form.is_valid():
@@ -91,20 +40,14 @@ def course_page(request, slug, edit_general_info=False):
                 post.save()
                 return redirect('pages', slug)
 
-    response = add_material(request)
-
-    if response['posted']:
-        container = response['file']
-        if request.user.concretize().role == Profile.STUD_ROLE:
-            container.parent = page.student_block
-        else:
-            container.parent = page.lecturer_block
-
-        container.save()
-
-        return redirect(request.build_absolute_uri())
-
-    edit_material_form = response['form']
+    if request.method == 'POST' and 'edit_material_submit' in request.POST:
+        edit_material_form = ContainerForm(request.POST, request.FILES)
+        if edit_material_form.is_valid():
+            role = request.user.concretize().role
+            edit_material_form.save(parent=(page.student_block if role == Profile.STUD_ROLE else page.lecturer_block))
+            return redirect(request.build_absolute_uri())
+    else:
+        edit_material_form = ContainerForm()
 
     return render(request, 'main/course_page.html', {'page': page,
                                                      'edit_general_info': edit_general_info,
