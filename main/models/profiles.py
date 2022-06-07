@@ -1,5 +1,4 @@
 from django.db import models
-from .models import Group
 from django.core.validators import MaxValueValidator, MinValueValidator
 
 
@@ -16,7 +15,6 @@ class Profile(models.Model):
     patronymic = models.CharField(max_length=30, blank=True)
 
     photo = models.ImageField(upload_to='profiles', blank=True)
-    groups = models.ManyToManyField(Group, blank=True)
 
     @property
     def role(self):

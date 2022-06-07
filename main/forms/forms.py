@@ -1,6 +1,6 @@
 from embed_video.fields import EmbedVideoFormField
 
-from ..models import Task, CoursePage, Block, File, Url, Video, MarkdownMat, Material
+from ..models import CoursePage, Block, File, Url, Video, MarkdownMat, Material
 from django.forms import ModelForm, TextInput, Textarea, FileField
 from django import forms
 
@@ -17,21 +17,6 @@ class ContainerForm(forms.Form):
     video_material = EmbedVideoFormField(required=False)
     file_material = FileField(required=False)
     frame_url = forms.URLField(required=False)
-
-
-class TaskForm(ModelForm):
-    class Meta:
-        model = Task
-        fields = ["title", "description"]
-        widgets = {"title": TextInput(attrs={
-            'class': 'form-control',
-            'placeholder': 'Введите название'
-        }),
-            'description': Textarea(attrs={
-                'class': 'form-control',
-                'placeholder': 'Введите описание'
-            })
-        }
 
 
 class CreateCourseForm(ModelForm):

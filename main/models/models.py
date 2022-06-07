@@ -105,23 +105,3 @@ class MaterialContainer(Material):
                 + Template(f'''<a href="{{% url 'remove_material' slug id %}}">×</a>''').render(Context({'id': self.id,
                                                                                                          'slug': self.parent.related_page.slug}))
                 + '</div>……………')
-
-
-class Task(models.Model):
-    title = models.CharField('Название', max_length=50)
-    description = models.TextField('Описание')
-    course = models.ForeignKey('CoursePage', on_delete=models.CASCADE, null=True)
-
-    def __str__(self):
-        return ((str(self.course) + ': ') if self.course else '') + self.title
-
-    class Meta:
-        verbose_name = 'Задача'
-        verbose_name_plural = 'Задачи'
-
-
-class Group(models.Model):
-    name = models.CharField(max_length=30)
-    subgroups = models.ManyToManyField('self')
-    parent_grop = models.ForeignKey('self', on_delete=models.CASCADE)
-    courses = models.ManyToManyField('CoursePage')

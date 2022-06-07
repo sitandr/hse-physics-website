@@ -4,10 +4,6 @@ from . import views
 urlpatterns = [
     path('', views.course_views.index, name='home'),
     path('about-us', views.course_views.about, name='about'),
-    path('create_task',
-         views.course_views.create_task, name='create_task'),
-    path('create_task?<int:course_id>',
-         views.course_views.create_task, name='create_course_task'),
 
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/', include('accounts.urls')),

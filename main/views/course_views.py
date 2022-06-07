@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from ..models import Task, CoursePage, Material
-from ..forms import TaskForm, CreateCourseForm, EditCourseGeneralInfo
+from ..models import CoursePage, Material
+from ..forms import CreateCourseForm, EditCourseGeneralInfo
 from ..forms import ContainerForm
 from django.contrib.auth.decorators import login_required
 from ..models import MaterialContainer, MarkdownMat, File, Video, Url, Profile, IFrame
@@ -9,7 +9,6 @@ from ..models import MaterialContainer, MarkdownMat, File, Video, Url, Profile, 
 @login_required
 def index(request):
     print(request.user)
-    tasks = Task.objects.all()
     materials = MaterialContainer.objects.all()
     courses = CoursePage.objects.all()
     concr_materials = []
@@ -18,7 +17,6 @@ def index(request):
     print(concr_materials)
     return render(request, 'main/index.html',
                   {'title': 'Главная страница сайта',
-                   'tasks': tasks,
                    'courses': courses,
                    'materials': concr_materials})
 
@@ -75,31 +73,6 @@ def add_material(request):
         form = ContainerForm()
 
     return {'posted': False, 'form': form}
-
-
-@login_required
-def create_task(request, course_id=None):
-
-    error = ''
-    if request.method == 'POST':
-        form = TaskForm(request.POST)
-
-        if form.is_valid():
-            inst = form.save(commit=False)
-            if course_id:
-                inst.course = CoursePage.objects.filter(id=course_id).first()
-            inst.save()
-
-            return redirect('home')
-        else:
-            error = 'Ошибка'
-
-    form_1 = TaskForm()
-    context = {
-        'form_1': form_1,
-        'error': error
-    }
-    return render(request, 'main/create_task.html', context)
 
 
 def course_page(request, slug, edit_general_info=False):

@@ -32,7 +32,6 @@
             <img src="{% static 'main/img/plus-blue.png' %}" height="26" alt="plus">
             <ul class="dropdown-menu">
                 <li><a href="{% url 'create_course' %}">Новый курс</a></li>
-                <li><a href="{% url 'create_task' %}">Новый материал</a></li>
                 <li><a href="{% url 'announce' %}">Новое объявление</a></li>
             </ul>
         </li>
@@ -69,7 +68,6 @@
                 <li class="nav-item"><a href="{% url 'home' %}" class="nav-link active" aria-current="page">Home</a>
                 </li>
                 <li class="nav-item"><a href="{% url 'profile' user.id %}" class="nav-link">Profile</a></li>
-                <li class="nav-item"><a href="{% url 'create_task' %}" class="nav-link">Create task</a></li>
                 <li class="nav-item"><a href="{% url 'create_course' %}" class="nav-link">Create course</a></li>
                 <li class="nav-item"><a href="{% url 'announce' %}" class="nav-link">Announcements</a></li>
                 <li class="nav-item"><a href="{% url 'logout' %}" class="nav-link">Log out</a></li>
