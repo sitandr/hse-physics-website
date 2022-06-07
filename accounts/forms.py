@@ -8,6 +8,7 @@ from django.contrib.auth.forms import UserCreationForm
 
 
 class BasicRegistrationForm(UserCreationForm):
+    required_css_class = 'required'
 
     # this string is important because it allows to edit username
     first_name = forms.CharField(label='Имя',
