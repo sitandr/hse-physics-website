@@ -1,4 +1,6 @@
 {% extends 'main/base.html' %}
+{% load static %}
+
 {% block title %}
     {{page.name}}
 {% endblock %}
@@ -15,7 +17,7 @@
 	{% else %}
 		<div>
 			<img src="{{page.main_lecturer.profile.photo.url}}" height=100></img>
-			{{page.main_lecturer}}<br>
+			<a href="{% url 'profile' page.main_lecturer.id %}">{{page.main_lecturer}}</a><br>
 			Связь: <a href="{{page.main_lecturer.profile.link}}">{{page.main_lecturer.profile.link}}</a>
 		</div>
 		<div>{{page.general_info}}</div>
