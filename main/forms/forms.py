@@ -3,7 +3,6 @@ from embed_video.fields import EmbedVideoFormField
 from ..models import File, Url, Video, MarkdownMat, MaterialContainer, IFrame, CoursePage, Block
 from django.forms import ModelForm, TextInput, Textarea, FileField
 from django import forms
-from ..models import LecturerUser
 
 
 class MarkdownMatForm(ModelForm):

@@ -69,7 +69,6 @@ class StudentForm(BasicRegistrationForm):
         fields = BasicRegistrationForm.Meta.fields + ('course', 'program_level', 'course_number')
 
     def save(self, commit=True):
-        # print(super())
         user = super().save(StudentUser, commit=False)
         user.profile.course = self.cleaned_data["course"]
         user.profile.program_level = self.cleaned_data["program_level"]
@@ -78,8 +77,6 @@ class StudentForm(BasicRegistrationForm):
         if commit:
             user.save()
             user.profile.save()
-
-        print(user)
         return user
 
 
@@ -91,7 +88,6 @@ class LecturerForm(BasicRegistrationForm):
         fields = BasicRegistrationForm.Meta.fields + ('link',)
 
     def save(self, commit=True):
-        # print(super())
         user = super().save(LecturerUser, commit=False)
         user.profile.link = self.cleaned_data["link"]
 

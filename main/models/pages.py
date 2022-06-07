@@ -19,7 +19,6 @@ class Block(models.Model):
 
     @property
     def html(self):
-        print('htmling…')
         return ''.join(['<div>' + str(m.concretize().view) + '</div>' for m in self.materials.all()])
 
     def type_(self):

@@ -33,13 +33,13 @@
             <ul class="dropdown-menu">
                 <li><a href="{% url 'create_course' %}">Новый курс</a></li>
                 <li><a href="{% url 'create_markdown_page' %}">Новая текстовая страница</a></li>
-                <li><a href="{% url 'announce' %}">Новое объявление</a></li>
+                <li><a href="{% url 'write_announce' %}">Новое объявление</a></li>
             </ul>
         </li>
         <li class="dropdown-button">
             <img src="{% static 'main/img/notification-bell-blue.png' %}" height="26" alt="bell">
             <ul class="dropdown-menu">
-                <li><a href="{% url 'announce' %}">Уведомления</a></li>
+                <li><a href="{% url 'announce' %}">Объявления</a></li>
                 {% for ann in user.recieved_announcements.all %}
                     <li>{{ann.name}}</li>
                 {% endfor %}
