@@ -77,7 +77,15 @@ class CoursePage(models.Model):
 class MarkdownPage(models.Model):
 
     text = models.TextField()
+    name = models.CharField('Название страницы', max_length=50)
 
     @property
     def html(self):
         return generate_html(self.text)
+
+    def __str__(self):
+        return self.name
+
+    @property
+    def absolute_url(self):
+        return reverse('view_markdown_page', kwargs={"id": self.id})

@@ -3,7 +3,9 @@ from ..models import CoursePage, Material
 from ..forms import CreateCourseForm, EditCourseGeneralInfo
 from ..forms import ContainerForm
 from django.contrib.auth.decorators import login_required
-from ..models import MaterialContainer, MarkdownMat, File, Video, Url, Profile, IFrame
+
+from ..models import MaterialContainer, MarkdownMat, File, Video, Url, IFrame
+from ..models import Profile, MarkdownPage
 
 
 @login_required
@@ -17,6 +19,7 @@ def index(request):
     return render(request, 'main/index.html',
                   {'title': 'Главная страница сайта',
                    'courses': courses,
+                   'markdown_pages': MarkdownPage.objects.all(),
                    'materials': concr_materials})
 
 

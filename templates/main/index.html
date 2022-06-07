@@ -14,25 +14,18 @@
     <h2>Курсы</h2>
 
     {% for el in courses %}
-    <div class="alert alert-warning mt-2">
-         <a href="{{ el.absolute_url }}" class="course-link">{{ el.name }}</a>
-    </div>
+        <div class="alert alert-warning mt-2">
+             <a href="{{ el.absolute_url }}" class="course-link">{{ el.name }}</a>
+        </div>
     {% endfor %}
 
+    <h2>Текстовые страницы</h2>
 
-{#    <h2>Файлы</h2>#}
-{##}
-{#    {% if files %}#}
-{#        <ol>#}
-{#        {% for el in files %}#}
-{#             <p>{{ el.file_material }}</p>#}
-{##}
-{#        {% endfor %}#}
-{#        </ol>#}
-{#    {% else %}#}
-{#        <p>Файлы не добавлены!</p>#}
-{#    {% endif %}#}
-
+    {% for el in markdown_pages %}
+        <div class="alert alert-warning mt-2">
+             <a href="{{ el.absolute_url }}" class="course-link">{{ el.name }}</a>
+        </div>
+    {% endfor %}
 
 
 <h2>Расписание</h2>

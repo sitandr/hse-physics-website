@@ -18,4 +18,4 @@ class WriteLectorsForm(WriteAnnounceForm):
 class CreateMarkdownPageForm(forms.ModelForm):
     class Meta:
         model = MarkdownPage
-        fields = ['text']
+        exclude = []
