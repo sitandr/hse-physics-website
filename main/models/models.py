@@ -79,17 +79,29 @@ class MarkdownMat(Material):
         return generate_html(self.text)
 
 
+class IFrame(Material):
+    frame_url = models.URLField(max_length=200)
+
+    @property
+    def view(self):
+        return f'<iframe src="{self.frame_url}" style="height: 500px;width: 80%;allow=fullscreen;border:none"></iframe>'
+
+
 class MaterialContainer(Material):
     markdown = models.ForeignKey(MarkdownMat, on_delete=models.CASCADE)
     urls = models.ManyToManyField(Url)
     videos = models.ManyToManyField(Video)
     files = models.ManyToManyField(File)
+    frames = models.ManyToManyField(IFrame)
 
     @property
     def view(self):
         return ('═══════<div>' + ''.join(['<div>' + str(m.concretize().view) + '</div>'
-                                          for m in [self.markdown] + list(self.urls.all())
-                                          + list(self.videos.all()) + list(self.files.all())])
+                                          for m in [self.markdown]
+                                          + list(self.urls.all())
+                                          + list(self.videos.all())
+                                          + list(self.files.all())
+                                          + list(self.frames.all())])
                 + Template(f'''<a href="{{% url 'remove_material' slug id %}}">×</a>''').render(Context({'id': self.id,
                                                                                                          'slug': self.parent.related_page.slug}))
                 + '</div>……………')

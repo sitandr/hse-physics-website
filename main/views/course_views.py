@@ -3,7 +3,7 @@ from ..models import Task, CoursePage, Material
 from ..forms import TaskForm, CreateCourseForm, EditCourseGeneralInfo
 from ..forms import ContainerForm
 from django.contrib.auth.decorators import login_required
-from ..models import MaterialContainer, MarkdownMat, File, Video, Url, Profile
+from ..models import MaterialContainer, MarkdownMat, File, Video, Url, Profile, IFrame
 
 
 @login_required
@@ -32,9 +32,11 @@ def add_material(request):
     if request.method == 'POST':
         form = ContainerForm(request.POST, request.FILES)
         if form.is_valid():
-            m_text, u_m, v_m, f_m = (form.cleaned_data["markdown_text"], form.cleaned_data["url_material"],
-                                     form.cleaned_data["video_material"], form.cleaned_data["file_material"])
-            if any([m_text, u_m, v_m, f_m]):
+            m_text, u_m, v_m, file_m, frame_m = (form.cleaned_data["markdown_text"], form.cleaned_data["url_material"],
+                                                 form.cleaned_data["video_material"], form.cleaned_data["file_material"],
+                                                 form.cleaned_data["frame_url"])
+            if any([m_text, u_m, v_m, file_m, frame_m]):
+                print('anied')
 
                 t = MarkdownMat()
                 t.text = m_text
@@ -54,12 +56,17 @@ def add_material(request):
                     v.video_material = v_m
                     v.save()
                     c.videos.add(v)
-                if f_m:
+                if file_m:
                     f = File()
-                    f.file_material = f_m
-                    f.name = f_m.name
+                    f.file_material = file_m
+                    f.name = file_m.name
                     f.save()
                     c.files.add(f)
+                if frame_m:
+                    frame = IFrame()
+                    frame.frame_url = frame_m
+                    frame.save()
+                    c.frames.add(frame)
 
                 c.save()
 

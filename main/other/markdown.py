@@ -32,7 +32,5 @@ def generate_html(md_text):
     md_text = re.sub(DOLLAR, replace_linear_math, md_text)
     md_text = re.sub(DOUBLE_DOLLAR, replace_block_math, md_text)
 
-    print(md_text)
     md_text = markdown.markdown(md_text, extensions=markdown_extensions)
-    print(md_text)
     return Template(md_text).render(Context({}))

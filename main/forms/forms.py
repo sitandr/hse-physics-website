@@ -16,6 +16,7 @@ class ContainerForm(forms.Form):
     url_material = forms.URLField(required=False)
     video_material = EmbedVideoFormField(required=False)
     file_material = FileField(required=False)
+    frame_url = forms.URLField(required=False)
 
 
 class TaskForm(ModelForm):
