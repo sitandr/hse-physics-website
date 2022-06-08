@@ -6,8 +6,27 @@ from django.core.exceptions import PermissionDenied
 from ..forms import WriteAnnounceForm, WriteLectorsForm
 
 
+def header_handler(request):
+    "makes 'close' buttons on header announcements work"
+    if request.method != "POST":
+        return
+
+    keys = request.POST.keys()
+    keys = next(filter(lambda t: t.startswith('delete_announcement_'), keys))
+    if not len(keys):
+        return
+    id = int(keys[len('delete_announcement_'):])
+    a = Announcement.objects.get(id=id)
+    if a.sender.id != request.user.id:
+        remove_announcement(a.id, request.user)  # person can't delete (doesn't own), so just removes
+    else:
+        delete_announcement(a.id)
+
+
 def show_announcements(request, edit=False):
     "display any user profile's, probably trying to edit"
+
+    header_handler(request)
 
     user = request.user.concretize()
     viewed_ann = []
@@ -66,17 +85,28 @@ def show_announcements(request, edit=False):
                                                        'form': form, 'enable_mathjax': True})
 
 
-def remove_announcement(request, ann_id):
+def remove_announcement(ann_id, user):
     "removes user from recievers"
-    # Announcement.objects.filter(id=ann_id).delete()
-    Announcement.objects.get(id=ann_id).receivers.remove(request.user)
+    Announcement.objects.get(id=ann_id).receivers.remove(user)
 
     if Announcement.objects.get(id=ann_id).receivers.count() == 0:
         Announcement.objects.get(id=ann_id).delete()
 
+
+def delete_announcement(ann_id):
+    Announcement.objects.get(id=ann_id).delete()
+
+
+def remove_announcement_view(request, ann_id):
+    header_handler(request)
+    remove_announcement(ann_id, request.user)
+
     return redirect('announce')
 
 
-def delete_announcement(request, ann_id):
-    Announcement.objects.get(id=ann_id).delete()
+def delete_announcement_view(request, ann_id):
+    "completely deletes announcement"
+    header_handler(request)
+    delete_announcement(ann_id)
+
     return redirect('announce')

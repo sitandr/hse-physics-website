@@ -41,7 +41,12 @@
             <ul class="dropdown-menu">
                 <li><a href="{% url 'announce' %}">Объявления</a></li>
                 {% for ann in user.recieved_announcements.all %}
-                    <li>{{ann.name}}</li>
+                    <li>{{ann.name}}
+                        <form enctype="multipart/form-data" method="post">
+                            {% csrf_token %}
+                            <button name="delete_announcement_{{ann.id}}" type="submit">×</button>
+                        </form>
+                    </li>
                 {% endfor %}
             </ul>
         </li>

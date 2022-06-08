@@ -7,9 +7,13 @@ from django.contrib.auth.decorators import login_required
 from ..models import MaterialContainer
 from ..models import Profile, MarkdownPage
 
+from .announcement_view import header_handler
+
 
 @login_required
 def index(request):
+    header_handler(request)
+
     materials = MaterialContainer.objects.all()
     courses = CoursePage.objects.all()
     concr_materials = []
@@ -24,10 +28,12 @@ def index(request):
 
 
 def about(request):
+    header_handler(request)
     return render(request, 'main/about.html')
 
 
 def course_page(request, slug, edit_general_info=False):
+    header_handler(request)
     page = get_object_or_404(CoursePage, slug=slug)
     if edit_general_info:
         edit_general_info = EditCourseGeneralInfo(instance=page)
@@ -64,6 +70,7 @@ def remove_material(request, slug, id):
 
 @login_required
 def create_course(request):
+    header_handler(request)
 
     error = ''
     if request.method == 'POST':

@@ -3,10 +3,13 @@ from django.core.exceptions import PermissionDenied
 from ..forms import EditUserForm, EditLecturerForm, EditStudentForm
 from ..models import EmailUser
 from django.shortcuts import render, redirect, get_object_or_404
+from .announcement_view import header_handler
 
 
 def show_profile(request, user_id, edit=False):
     "display any user profile's, probably trying to edit"
+
+    header_handler(request)
 
     shown_user = get_object_or_404(EmailUser, id=user_id)
     profile = shown_user.profile
