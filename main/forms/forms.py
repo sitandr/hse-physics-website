@@ -1,6 +1,7 @@
 from embed_video.fields import EmbedVideoFormField
 
 from ..models import File, Url, Video, MarkdownMat, MaterialContainer, IFrame, CoursePage, Block
+from ..models import LecturerUser
 from django.forms import ModelForm, TextInput, Textarea, FileField
 from django import forms
 
@@ -96,6 +97,7 @@ class CreateCourseForm(ModelForm):
 
 
 class EditCourseGeneralInfo(ModelForm):
+    main_lecturer = forms.ModelChoiceField(queryset=LecturerUser.objects.all(), required=False)
     class Meta:
         model = CoursePage
         fields = ['general_info', 'main_lecturer']
