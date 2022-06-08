@@ -12,10 +12,11 @@ def header_handler(request):
         return
 
     keys = request.POST.keys()
-    keys = next(filter(lambda t: t.startswith('delete_announcement_'), keys))
+    keys = list(filter(lambda t: t.startswith('delete_announcement_'), keys))
     if not len(keys):
         return
-    id = int(keys[len('delete_announcement_'):])
+    key = keys[0]
+    id = int(key[len('delete_announcement_'):])
     a = Announcement.objects.get(id=id)
     if a.sender.id != request.user.id:
         remove_announcement(a.id, request.user)  # person can't delete (doesn't own), so just removes

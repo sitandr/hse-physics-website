@@ -8,6 +8,7 @@ from ..models import MaterialContainer
 from ..models import Profile, MarkdownPage
 
 from .announcement_view import header_handler
+from ..other.markdown import generate_html
 
 
 @login_required
