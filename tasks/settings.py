@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-_=8@0+tt%gu7&h5zy68mdlkhy)ldk&j5m#bx8ow)ku0k$ra4mk
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -88,12 +88,49 @@ WSGI_APPLICATION = 'tasks.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+# [START db_setup]
+if os.getenv('GAE_APPLICATION', None):
+    # Running on production App Engine, so connect to Google Cloud SQL using
+    # the unix socket at /cloudsql/<your-cloudsql-connection string>
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'HOST': '/cloudsql/hse-physics:us-central1:hse-physics',
+            'USER': 'hse-physics',
+            'PASSWORD': 'hse-physics-2022',
+            'NAME': 'hse-physics',
+        }
     }
-}
+else:
+    # Running locally so connect to either a local MySQL instance or connect
+    # to Cloud SQL via the proxy.  To start the proxy via command line:
+    #    $ cloud_sql_proxy -instances=hse-physics:us-central1:hse-physics=tcp:5432
+    # See https://cloud.google.com/sql/docs/mysql-connect-proxy
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'HOST': '127.0.0.1',
+            'PORT': '5432',
+            'USER': 'hse-physics',
+            'PASSWORD': 'hse-physics-2022',
+            'NAME': 'hse-physics',
+
+        }
+        # 'default': {
+        #     'ENGINE': 'django.db.backends.sqlite3',
+        #     'HOST': '127.0.0.1',
+        #     'PORT': '5432',
+        #     'NAME': BASE_DIR / 'db.sqlite3',
+        # }
+    }
+# [END db_setup]
 
 
 # Password validation
@@ -130,12 +167,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
-
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-    '/var/www/static/',
-]
+STATIC_URL = '/static/'
+STATIC_ROOT = 'static'
+#
+# STATICFILES_DIRS = [
+#     BASE_DIR / "static",
+#     '/var/www/static/',
+# ]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
