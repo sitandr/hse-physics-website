@@ -15,3 +15,8 @@ password: hardpassword
 
 email: admin@mail.ru
 password: 123
+
+Администратор для удаленного сервера:
+
+email: superuser@mail.ru
+password: 123
