@@ -18,7 +18,9 @@
 	{% else %}
 		<div>
 			{% if page.main_lecturer %}
-				<img src="{{page.main_lecturer.profile.photo.url}}" height=100></img>
+				{% if page.main_lecturer.profile.photo %}
+					<img src="{{page.main_lecturer.profile.photo.url}}" height=100></img>
+				{% endif %}
 				<a href="{% url 'profile' page.main_lecturer.id %}">{{page.main_lecturer}}</a><br>
 				Связь: <a href="{{page.main_lecturer.profile.link}}">{{page.main_lecturer.profile.link}}</a>
 			{% else %}
