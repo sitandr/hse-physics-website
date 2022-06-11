@@ -446,18 +446,7 @@ All forms classes
         margin: 2px;
 }
 
-.close-mat {
-    text-decoration: none;
-    color: hsl(10, 80%, 40%);
-    border-radius: 5px;
-    border: 1px solid black;
-    width: 18px;
-    height: 18px;
-    font-weight: bolder;
-    float: right;
-    position: relative;
-    text-align: center;
-}
+
 
 .portrait-img {
     border-radius: 50px;
@@ -469,4 +458,17 @@ All forms classes
 
 .general-info{
     clear: both;
+}
+
+.main .close-mat {
+    border-bottom: none;
+    transition: none;
+    text-decoration: none;
+    color: hsl(10, 80%, 40%);
+    width: 18px;
+    height: 18px;
+    font-weight: bolder;
+    float: right;
+    position: relative;
+    text-align: center;
 }
