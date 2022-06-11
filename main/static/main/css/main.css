@@ -102,6 +102,7 @@ ul li:hover .dropdown-menu {
 
 #block-double-wrapper{
     display:table;
+    table-layout: fixed;
     width: 100%;
 }
 
@@ -114,3 +115,42 @@ ul li:hover .dropdown-menu {
   display:table-cell
 }
 
+
+.st-block, .lt-block{
+    width: 50%;
+    padding: 2px;
+    padding-right: 3px;
+}
+
+.material-container{
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: hsl(270, 30%, 88%);
+    padding: 2px;
+        margin: 2px;
+}
+
+.close-mat {
+    text-decoration: none;
+    color: hsl(10, 80%, 40%);
+    border-radius: 5px;
+    border: 1px solid black;
+    width: 18px;
+    height: 18px;
+    font-weight: bolder;
+    float: right;
+    position: relative;
+    text-align: center;
+}
+
+.portrait-img {
+    border-radius: 50px;
+    width: 100px;
+    height: 100px;
+    border: 5px solid hsl(300, 40%, 70%);
+    float: left;
+}
+
+.general-info{
+    clear: both;
+}

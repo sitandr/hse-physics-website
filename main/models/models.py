@@ -96,12 +96,16 @@ class MaterialContainer(Material):
 
     @property
     def view(self):
-        return ('═══════<div>' + ''.join(['<div>' + str(m.concretize().view) + '</div>'
+        return ('<div class="material-container">'
+
+                + Template(f'''<a class="close-mat" href="{{% url 'remove_material' slug id %}}">×</a>''').render(Context({'id': self.id,
+                                                                                                         'slug': self.parent.related_page.slug}))
+
+                + ''.join(['<div>' + str(m.concretize().view) + '</div>'
                                           for m in [self.markdown]
                                           + list(self.urls.all())
                                           + list(self.videos.all())
                                           + list(self.files.all())
                                           + list(self.frames.all())])
-                + Template(f'''<a href="{{% url 'remove_material' slug id %}}">×</a>''').render(Context({'id': self.id,
-                                                                                                         'slug': self.parent.related_page.slug}))
-                + '</div>……………')
+                
+                + '</div>')
