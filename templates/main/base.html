@@ -5,6 +5,7 @@
 <!--Probably it's would be better to get local rep copy; also strongly dislike idea using this css template-->
 
 <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+{% block style %}{% endblock %}
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock %}</title>
@@ -41,10 +42,10 @@
             <ul class="dropdown-menu">
                 <li><a href="{% url 'announce' %}">Объявления</a></li>
                 {% for ann in user.recieved_announcements.all %}
-                    <li>{{ann.name}}
+                    <li class="ann-notification">{{ann.name}}
                         <form enctype="multipart/form-data" method="post">
                             {% csrf_token %}
-                            <button name="delete_announcement_{{ann.id}}" type="submit">×</button>
+                            <button class="close-ann-button" name="delete_announcement_{{ann.id}}" type="submit">×</button>
                         </form>
                     </li>
                 {% endfor %}
