@@ -5,8 +5,9 @@
 
 {% block body %}
 
-
-    {{page.html}}
+    <div class="markdown">
+        {{page.html}}
+    </div>
 
     <a href="{% url 'edit_markdown_page' page.id %}">Редактировать страницу</a>
 

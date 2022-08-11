@@ -441,9 +441,9 @@ All forms classes
 .material-container{
     border: 1px solid black;
     border-radius: 10px;
-    background-color: hsl(270, 30%, 88%);
+    background-color: hsl(270, 30%, 96%);
     padding: 2px;
-        margin: 2px;
+    margin: 2px;
 }
 
 
@@ -452,7 +452,7 @@ All forms classes
     border-radius: 50px;
     width: 100px;
     height: 100px;
-    border: 5px solid hsl(300, 40%, 70%);
+    border: 5px solid hsl(220, 90%, 84%);
     float: left;
 }
 

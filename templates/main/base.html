@@ -5,6 +5,7 @@
 <!--Probably it's would be better to get local rep copy; also strongly dislike idea using this css template-->
 
 <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+<link rel="stylesheet" href="{% static 'main/css/markdown.css' %}">
 {% block style %}{% endblock %}
 <head>
     <meta charset="UTF-8">
@@ -12,6 +13,8 @@
     {% comment %}{% if not user.is_authenticated %}
         <meta http-equiv="refresh" content="1;URL={% url 'login' %}" />
     {% endif %}{% endcomment %}
+
+    <!-- Если включена математика, мы должны ее грузить как можно раньше, она тяжелая-->
     {% if enable_mathjax %}
         {% load static %}
         <script type="text/javascript" src="{% static 'main/tex-mml-chtml.js' %}">
