@@ -115,20 +115,11 @@ else:
     # See https://cloud.google.com/sql/docs/mysql-connect-proxy
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.mysql',
+            'ENGINE': 'django.db.backends.sqlite3',
             'HOST': '127.0.0.1',
             'PORT': '5432',
-            'USER': 'hse-physics',
-            'PASSWORD': 'hse-physics-2022',
-            'NAME': 'hse-physics',
-
+            'NAME': BASE_DIR / 'db.sqlite3',
         }
-        # 'default': {
-        #     'ENGINE': 'django.db.backends.sqlite3',
-        #     'HOST': '127.0.0.1',
-        #     'PORT': '5432',
-        #     'NAME': BASE_DIR / 'db.sqlite3',
-        # }
     }
 # [END db_setup]
 
