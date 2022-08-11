@@ -1,3 +1,7 @@
+'''
+Формы для создания материалов для курсов
+'''
+
 from embed_video.fields import EmbedVideoFormField
 
 from ..models import File, Url, Video, MarkdownMat, MaterialContainer, IFrame, CoursePage, Block
@@ -6,12 +10,21 @@ from django.forms import ModelForm, TextInput, Textarea, FileField
 from django import forms
 
 
+# Форма для ввода чистого маркдауна
 class MarkdownMatForm(ModelForm):
     class Meta:
         model = MarkdownMat
         fields = ('text',)
 
 
+
+# Форма для создания новых контейнеров
+
+# Увы, далеко не идеальная реализация — быстрая, "на коленке".
+# Сейчас оно позволяет прикрепить по одному элементу каждого типа
+# В идеале нужно сделать так, чтобы для каждого элемента *можно* было
+# добавить сколько нужно полей. Проще всего это сделать через кучу мелких форм,
+# которые появляются после нажатия соотвествующих кнопок 
 class ContainerForm(forms.Form):
     markdown_text = forms.CharField(required=False, widget=Textarea)
     url_material = forms.URLField(required=False)
@@ -27,11 +40,13 @@ class ContainerForm(forms.Form):
 
     def save(self, parent=None):
 
-        # this code is terrible, it would be wonderful to rewrite it
+        # отвратительный код, буду рад, если кто напишет получше
+
+        # выбираем "чистые" данные из введенных
         m_text, u_m, v_m, file_m, frame_m = (self.cleaned_data["markdown_text"], self.cleaned_data["url_material"],
                                              self.cleaned_data["video_material"], self.cleaned_data["file_material"],
                                              self.cleaned_data["frame_url"])
-
+        # создаем заготовки
         t = MarkdownMat()
         t.text = m_text
         t.save()
@@ -39,7 +54,9 @@ class ContainerForm(forms.Form):
         c = MaterialContainer(markdown=t)
         c.save()
 
+        # и дальше проходимся по всем данным,
         if u_m:
+            # если не пустые — создаем соответствующие элементы
             u = Url()
             u.address = u_m
             u.text = u_m
@@ -65,12 +82,14 @@ class ContainerForm(forms.Form):
             frame.save()
             c.frames.add(frame)
 
+        # привязываем заготовку с элементами к указанному элементу
         c.parent = parent
         c.save()
 
         return c
 
 
+# Создание нового курса
 class CreateCourseForm(ModelForm):
     class Meta:
         model = CoursePage
@@ -87,8 +106,11 @@ class CreateCourseForm(ModelForm):
 
     def save(self, commit=True):
         page = super(ModelForm, self).save(commit=False)
+
+        # создаем колонки для студентов и преподователей
         page.lecturer_block = Block()
         page.lecturer_block.save()
+
         page.student_block = Block()
         page.student_block.save()
         if commit:

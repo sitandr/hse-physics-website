@@ -1,3 +1,7 @@
+'''
+Страницы курсов и блоки для них
+'''
+
 from django.db import models
 from unidecode import unidecode
 from django.urls import reverse
@@ -7,7 +11,8 @@ from .user import LecturerUser
 
 
 class Block(models.Model):
-    # contains number of diff. materials, can be anchored to some page
+    # содержит в себе различные материалы, можно привязать к страницу
+
     # Page:
     # <Block>   <Block>
     # — Mat      — Mat
@@ -17,25 +22,34 @@ class Block(models.Model):
     OF_LECTURER = "lecturer's"
     UNKNOWN = 'unknown'
 
+    # генерируем html блока
     @property
     def html(self):
-        return ''.join(['<div>' + str(m.concretize().view) + '</div>' for m in self.materials.all()])
+        return ''.join(['<div>' + str(m.concretize().view) + '</div>'
+                         for m in self.materials.all()])
 
+    # определение типа блока
     def type_(self):
         if self.pages_as_st.count():
             return Block.OF_STUDENT
+
         elif self.pages_as_lect.count():
             return Block.OF_LECTURER
+
         return Block.UNKNOWN
 
+    # проверяем, может ли пользователь редактировать
     def can_edit(self, user):
         user = user.concretize()
+        # каждый — только свою колонку
         return ((user.role == Profile.STUD_ROLE and self.type_ == Block.OF_STUDENT)
                 or (user.role == Profile.LECT_ROLE and self.type_ == Block.OF_LECTURER))
 
+    # краткое описание блока
     def __str__(self):
         return self.type_() + ' ' + ''.join(map(str, list(self.pages_as_st.all()) + list(self.pages_as_lect.all())))
 
+    # страница, к которой привязан
     @property
     def related_page(self):
         if self.pages_as_st.count():
@@ -43,7 +57,7 @@ class Block(models.Model):
         else:
             return self.pages_as_lect.get()
 
-
+# Страница курса
 class CoursePage(models.Model):
 
     name = models.CharField('Название курса', max_length=50)
@@ -54,12 +68,16 @@ class CoursePage(models.Model):
                                        related_name='pages_as_lect')
 
     general_info = models.TextField('Общая информация')
+
+    # можем указать основного преподавателя
     main_lecturer = models.ForeignKey(LecturerUser, null=True, on_delete=models.SET_NULL, related_name='pages_as_lect')
 
-    def create_slug(self):  # self-written function for better generating slugs
+    # самописная функция для хорошей генерации slug-ов (имена страниц для ссылок)
+    def create_slug(self):
         self.slug = unidecode(self.name).replace(' ', '_')
         copies = CoursePage.objects.all().filter(slug__startswith=self.slug)
-        if copies:
+
+        if copies: # если имя повторяется, дописываем номер в конец
             self.slug += str(len(copies) + 1)
 
     def __str__(self):
@@ -69,7 +87,7 @@ class CoursePage(models.Model):
     def absolute_url(self):
         return reverse('pages', kwargs={'slug': self.slug})
 
-
+# Страница чистого markdown
 class MarkdownPage(models.Model):
 
     text = models.TextField()
@@ -82,6 +100,7 @@ class MarkdownPage(models.Model):
     def __str__(self):
         return self.name
 
+    # у markdown-страниц нет slug-ов, только id
     @property
     def absolute_url(self):
         return reverse('view_markdown_page', kwargs={"id": self.id})

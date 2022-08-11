@@ -1,3 +1,7 @@
+'''
+Формы, которые будут отображаться в профиле для изменения личной информации.
+'''
+
 from ..models import Profile
 from django import forms
 
