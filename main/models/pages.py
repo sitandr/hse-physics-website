@@ -27,6 +27,8 @@ class Block(models.Model):
     def html(self):
         return ''.join(['<div>' + str(m.concretize().view) + '</div>'
                          for m in self.materials.all()])
+                         # просто берем каждый материал, конкретизируем и берем его
+                         # view — т.е. html-код. Оборачиваем в div — и profit.
 
     # определение типа блока
     def type_(self):
