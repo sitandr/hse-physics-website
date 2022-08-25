@@ -1,3 +1,7 @@
+"""
+Модуль, где регистрируются модели, которые будут отображатся в админке
+"""
+
 from django.contrib import admin
 from .models import Profile, CoursePage, Material, Url, File, Video
 from .models import EmailUser, StudentUser, LecturerUser

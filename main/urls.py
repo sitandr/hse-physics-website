@@ -1,3 +1,7 @@
+"""
+Модуль, в котором регистрируются все ссылки
+"""
+
 from django.urls import path, include
 from . import views
 
